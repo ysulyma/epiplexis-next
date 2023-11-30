@@ -54,7 +54,9 @@
           }
         ]
       }
-    ]
+    ],
+    "no-useless-rename": "warn",
+    "object-shorthand": "warn"
   },
   "settings": {
     "import/parsers": {
