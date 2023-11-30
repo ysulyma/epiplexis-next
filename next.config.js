@@ -1,5 +1,3 @@
-/** @type {import('next').NextConfig} */
-
 // https://www.viget.com/articles/host-build-and-deploy-next-js-projects-on-github-pages/
 
 const isGithubActions = process.env.GITHUB_ACTIONS || false;
@@ -14,9 +12,11 @@ if (isGithubActions) {
   basePath = `/${repo}`;
 }
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   assetPrefix: assetPrefix,
   basePath: basePath,
+  output: "export",
 };
 
 module.exports = nextConfig;

@@ -2,6 +2,9 @@
   "name": "nextjs",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "pages"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "turbo run build",
@@ -28,6 +31,6 @@
     "typescript": "5.3.2"
   },
   "devDependencies": {
-    "turbo": "^1.10.4"
+    "turbo": "1.10.4"
   }
 }
