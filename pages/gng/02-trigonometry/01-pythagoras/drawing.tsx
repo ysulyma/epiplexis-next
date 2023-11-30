@@ -39,8 +39,8 @@ export default function DrawingCircles() {
     setCircles((prev) => [...prev, {...circle, fill: color}]);
 
   return (
-    <div className="flex flex-col w-full h-screen">
-      <form className="p-2 border-b flex items-center">
+    <div className="flex h-screen w-full flex-col">
+      <form className="flex items-center border-b p-2">
         Color
         <input
           className="ml-2"
@@ -50,7 +50,7 @@ export default function DrawingCircles() {
         />
         <span className="mx-2">Click and drag below to draw circles</span>
         <button
-          className="bg-red-700 border-red-800 border border-solid py-1 px-2 text-white"
+          className="border border-solid border-red-800 bg-red-700 px-2 py-1 text-white"
           onClick={() => setCircles([])}
           type="button"
         >
@@ -95,8 +95,9 @@ function Canvas({
       onPointerMove={onPointerMove}
       ref={ref}
     >
-      {circles.map((circ) => (
+      {circles.map((circ, i) => (
         <circle
+          key={circleKey(circ) + `|${i}`}
           cx={circ.center[0]}
           cy={circ.center[1]}
           r={circ.radius}
@@ -180,4 +181,8 @@ function useCursorHint(
     circleProps: position ? {cx: position[0], cy: position[1]} : undefined,
     onPointerMove,
   };
+}
+
+function circleKey(c: Circle) {
+  return c.center.join(",") + `|${c.radius}|${c.fill}`;
 }
