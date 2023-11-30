@@ -13,6 +13,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@liqvid/katex": "^0.1.0",
+    "@liqvid/mathjax": "^0.1.2",
     "@liqvid/utils": "^1.8.1",
     "@types/node": "20.10.1",
     "@types/react": "18.2.39",
@@ -24,10 +26,13 @@
     "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-katex": "^3.0.1",
     "tailwindcss": "3.3.5",
     "typescript": "5.3.2"
   },
   "devDependencies": {
+    "@types/katex": "^0.16.7",
+    "@types/react-katex": "^3.0.3",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
