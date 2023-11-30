@@ -1,10 +1,11 @@
-import type {GetStaticProps, InferGetStaticPropsType} from "next";
 import {promises as fsp} from "fs";
+
+import type {GetStaticProps, InferGetStaticPropsType} from "next";
 import Link from "next/link";
 
 type Filetree = string[];
 
-export const getStaticProps = (async (context) => {
+export const getStaticProps = (async () => {
   const files = await fsp.readdir("pages");
   return {props: {files}};
 }) satisfies GetStaticProps<{
