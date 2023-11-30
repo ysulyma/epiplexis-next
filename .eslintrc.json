@@ -1,7 +1,68 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
-  "plugins": ["prettier"],
+  "extends": [
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
   "rules": {
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "@typescript-eslint/no-import-type-side-effects": "warn",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    // "@typescript-eslint/sort-type-union-intersection-members": "warn",
+    "eqeqeq": "error",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "caseInsensitive": true,
+          "order": "asc"
+        },
+        "groups": [
+          "builtin",
+          "external",
+          "parent",
+          "sibling",
+          "index",
+          "unknown"
+        ],
+        "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "*.+(css|scss)",
+            "group": "unknown",
+            "position": "after",
+            "patternOptions": {
+              "matchBase": true
+            }
+          },
+          {
+            "pattern": "*.+(gif|jpg|jpeg|png|svg)",
+            "group": "unknown",
+            "position": "after",
+            "patternOptions": {
+              "matchBase": true
+            }
+          },
+          {
+            "pattern": "@/**",
+            "group": "parent",
+            "position": "before"
+          }
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    "import/resolver": "typescript"
   }
 }
