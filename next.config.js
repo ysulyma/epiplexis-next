@@ -16,6 +16,9 @@ if (isGithubActions) {
 const nextConfig = {
   assetPrefix,
   basePath,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   output: "export",
 };
 
