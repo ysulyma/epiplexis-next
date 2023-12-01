@@ -19,21 +19,11 @@ export default function Statement() {
   const yc = -(height / 2 + (c / 2) * Math.sin(angle + turn));
 
   return (
-    <svg className="mx-auto h-screen" viewBox="-105 -300 410 500">
-      <g>
-        <path
-          d={`M 0 0 l ${width} ${-height} v ${height} z`}
-          className="fill-violet-600"
-          stroke="#000"
-          strokeWidth="1"
-        />
-        <path
-          d={`M ${width} -20 h -20 v 20`}
-          fill="none"
-          stroke="#000"
-          strokeWidth="1"
-        />
-      </g>
+    <svg
+      className="mx-auto h-screen stroke-black text-2xl text-white dark:stroke-white"
+          strokeWidth="1.5"
+      viewBox="-105 -300 410 500"
+    >
 
       {/* a square */}
       <g>
@@ -43,7 +33,6 @@ export default function Statement() {
           width={width}
           height={width}
           className="fill-red-600"
-          stroke="#000"
           strokeWidth="1"
         />
         <foreignObject
@@ -53,7 +42,9 @@ export default function Statement() {
           width={height / 2}
           height={height / 2}
         >
-          <KTX className="block w-min -translate-y-1/2 text-white">a^2</KTX>
+          <KTX className="block w-min -translate-x-1/2 -translate-y-1/2">
+            a^2
+          </KTX>
         </foreignObject>
       </g>
 
@@ -65,7 +56,6 @@ export default function Statement() {
           width={height}
           height={height}
           className="fill-blue-600"
-          stroke="#000"
           strokeWidth="1"
         />
         <foreignObject
@@ -75,7 +65,7 @@ export default function Statement() {
           width="50"
           height="50"
         >
-          <KTX className="block w-min -translate-x-1/2 -translate-y-1/2 text-white">
+          <KTX className="block w-min -translate-x-1/2 -translate-y-1/2">
             b^2
           </KTX>
         </foreignObject>
@@ -88,7 +78,6 @@ export default function Statement() {
         width={c}
         height={c}
         className="fill-green-600"
-        stroke="#000"
         strokeWidth="1"
         transform={transform}
       />
@@ -99,10 +88,17 @@ export default function Statement() {
         width="50"
         height="50"
       >
-        <KTX className="block w-min -translate-x-1/2 -translate-y-1/2 text-white">
-          c^2
-        </KTX>
+        <KTX className="block w-min -translate-x-1/2 -translate-y-1/2">c^2</KTX>
       </foreignObject>
+
+      {/* triangle */}
+      <g>
+        <path
+          d={`M 0 0 l ${width} ${-height} v ${height} z`}
+          className="fill-violet-600"
+        />
+        <path d={`M ${width} -20 h -20 v 20`} fill="none" />
+      </g>
     </svg>
   );
 }

@@ -39,7 +39,7 @@ export default function DrawingCircles() {
     setCircles((prev) => [...prev, {...circle, fill: color}]);
 
   return (
-    <div className="flex h-screen w-full flex-col">
+    <div className="flex h-screen w-full flex-col dark:text-white">
       <form className="flex items-center border-b p-2">
         Color
         <input

@@ -26,13 +26,14 @@ export default function Proof() {
 
   return (
     <svg
-      className="max-h-[100dvh] max-w-[100dvw] text-white"
+      className="max-h-[100dvh] max-w-[100dvw] stroke-black text-white dark:stroke-white text-xl"
+      strokeWidth="1.5"
       viewBox={`${-a - padX} ${-padY} ${(a + b) * 2 + gap + 2 * padX} ${
         a + b + 2 * padY
       }`}
     >
       {/* left square */}
-      <g stroke="#000" transform={`translate(${-a}, 0)`}>
+      <g transform={`translate(${-a}, 0)`}>
         <rect x="0" y="0" height={a} width={a} className="fill-red-600" />
         <rect x={a} y="0" height={a} width={b} className="fill-violet-600" />
         <rect x="0" y={a} height={b} width={a} className="fill-violet-600" />
@@ -44,7 +45,7 @@ export default function Proof() {
       </g>
 
       {/* right square */}
-      <g stroke="#000" transform={`translate(${a}, 0)`}>
+      <g transform={`translate(${a}, 0)`}>
         <polygon points={`0,0 0,${b} ${a},0`} className="fill-violet-600" />
         <rect height={a + b} width={a + b} className="fill-violet-600" />
         <polygon

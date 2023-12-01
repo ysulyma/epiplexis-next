@@ -9,7 +9,7 @@ export default function Statement() {
 
   return (
     <svg
-      className="mx-auto max-h-[100dvh] max-w-[100dvw]"
+      className="mx-auto max-h-[100dvh] max-w-[100dvw] stroke-black dark:stroke-white dark:text-white"
       viewBox={`
       ${-padX} ${-height - padY}
       ${width + width / 8} ${height + height / 4}`}
@@ -18,15 +18,9 @@ export default function Statement() {
         <path
           d={`M 0 0 l ${width} ${-height} v ${height} z`}
           className="fill-violet-600"
-          stroke="#000"
           strokeWidth="1"
         />
-        <path
-          d={`M ${width} -20 h -20 v 20`}
-          fill="none"
-          stroke="#000"
-          strokeWidth="1"
-        />
+        <path d={`M ${width} -20 h -20 v 20`} fill="none" strokeWidth="1" />
       </g>
 
       {/* a square */}
