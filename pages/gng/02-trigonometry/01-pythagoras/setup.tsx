@@ -31,7 +31,7 @@ export default function Statement() {
         width={height / 2}
         height={height / 2}
       >
-        <KTX className="block w-min">a</KTX>
+        <KTX className="fixed block w-min">a</KTX>
       </foreignObject>
 
       <foreignObject
@@ -41,7 +41,9 @@ export default function Statement() {
         width="50"
         height="50"
       >
-        <KTX className="block w-min -translate-y-1/2 translate-x-full">b</KTX>
+        <KTX className="fixed block w-min -translate-y-1/2 translate-x-full">
+          b
+        </KTX>
       </foreignObject>
 
       <foreignObject
@@ -51,7 +53,9 @@ export default function Statement() {
         width="50"
         height="50"
       >
-        <KTX className="block w-min -translate-x-full -translate-y-full">c</KTX>
+        <KTX className="fixed block w-min -translate-x-full -translate-y-full">
+          c
+        </KTX>
       </foreignObject>
     </svg>
   );

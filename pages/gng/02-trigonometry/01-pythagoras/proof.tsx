@@ -1,5 +1,4 @@
 import {KTX} from "@/components/KTX";
-import classNames from "classnames";
 
 const KtxLabel = ({
   children,
@@ -13,7 +12,8 @@ const KtxLabel = ({
     width={200}
     height={100}
   >
-    <KTX className="block w-min -translate-x-1/2 -translate-y-1/2">
+    {/* fixed is only necessary for Safari */}
+    <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
       {children}
     </KTX>
   </foreignObject>

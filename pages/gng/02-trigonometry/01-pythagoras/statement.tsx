@@ -21,10 +21,9 @@ export default function Statement() {
   return (
     <svg
       className="mx-auto h-screen stroke-black text-2xl text-white dark:stroke-white"
-          strokeWidth="1.5"
+      strokeWidth="1.5"
       viewBox="-105 -300 410 500"
     >
-
       {/* a square */}
       <g>
         <rect
@@ -42,7 +41,7 @@ export default function Statement() {
           width={height / 2}
           height={height / 2}
         >
-          <KTX className="block w-min -translate-x-1/2 -translate-y-1/2">
+          <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
             a^2
           </KTX>
         </foreignObject>
@@ -65,7 +64,7 @@ export default function Statement() {
           width="50"
           height="50"
         >
-          <KTX className="block w-min -translate-x-1/2 -translate-y-1/2">
+          <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
             b^2
           </KTX>
         </foreignObject>
@@ -88,7 +87,9 @@ export default function Statement() {
         width="50"
         height="50"
       >
-        <KTX className="block w-min -translate-x-1/2 -translate-y-1/2">c^2</KTX>
+        <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
+          c^2
+        </KTX>
       </foreignObject>
 
       {/* triangle */}
