@@ -1,7 +1,9 @@
-import {Html as DreiHtml, useContextBridge} from "@react-three/drei";
+import {fadeIn} from "@/lib/animation/css";
+import {Html as DreiHtml} from "@react-three/drei";
 import katex from "katex";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import {forwardRef, useEffect, useRef} from "react";
 
 // @todo make Liqvid support Next
 export const Player = dynamic(
@@ -30,9 +32,27 @@ export const Player = dynamic(
   {ssr: false},
 );
 
-export const KTX = dynamic(() => import("@liqvid/katex").then(({KTX}) => KTX), {
-  ssr: false,
+export const KTX = forwardRef(function KTX(props, ref) {
+  return <DynamicKTX {...props} forwardedRef={ref} />;
 });
+
+const DynamicKTX = dynamic(
+  () =>
+    import("@liqvid/katex").then(({KTX}) => {
+      return function DynamicKTX({
+        forwardedRef,
+        ...props
+      }: React.ComponentProps<typeof KTX> & {
+        forwardedRef?: React.ComponentRef<typeof KTX>;
+      }) {
+        return <KTX {...props} ref={forwardedRef} />;
+      };
+    }),
+  {
+    loading: () => <span />,
+    ssr: false,
+  },
+);
 
 export const Canvas = dynamic(
   () => import("@liqvid/react-three").then(({Canvas}) => Canvas),
@@ -61,12 +81,74 @@ export const Html = dynamic(
 
 export function LoadKaTeX() {
   if (typeof globalThis.window !== "undefined") {
-    window.katex = katex;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).katex = katex;
   }
 
   return (
     <Head>
+      <script async src="/symbols.tex" type="math/tex" />
+      {/* @todo fix @liqvid/katex so this isn't necessary */}
       <script async src="katex.js"></script>
     </Head>
   );
 }
+
+export function toposort(a: Node, b: Node) {
+  const pos = a.compareDocumentPosition(b);
+  if (pos & Node.DOCUMENT_POSITION_PRECEDING) return -1;
+  else if (pos & Node.DOCUMENT_POSITION_FOLLOWING) return 1;
+  return 0;
+}
+
+export const KatexAnimations = dynamic(
+  () =>
+    import("liqvid").then(
+      ({usePlayback, useScript}) =>
+        function KatexAnimations({children}: {children: React.ReactNode}) {
+          const ref = useRef<HTMLDivElement>(null);
+          const playback = usePlayback();
+          const script = useScript();
+
+          useEffect(() => {
+            if (!ref.current) return;
+            const observer = new MutationObserver((mutations) => {
+              for (const mutation of mutations) {
+                const {target} = mutation;
+
+                // only process KaTeX descendants
+                if (!(target instanceof HTMLElement)) continue;
+                if (
+                  !(
+                    target.classList.contains("katex") ||
+                    target.classList.contains("katex-display")
+                  )
+                ) {
+                  continue;
+                }
+
+                console.log(target.textContent);
+
+                const anims = Array.from(
+                  target.querySelectorAll("*[data-anim]"),
+                ) as HTMLSpanElement[];
+                for (const node of anims) {
+                  const [name, marker] = node.dataset.anim!.split(";");
+                  fadeIn(playback, script.parseStart(marker))(node);
+                  // if (name in animations) {
+                  //   animations[name](marker)(node);
+                  // }
+                }
+              }
+            });
+
+            observer.observe(ref.current, {childList: true, subtree: true});
+
+            return () => observer.disconnect();
+          }, [playback, script]);
+
+          return <div ref={ref}>{children}</div>;
+        },
+    ),
+  {ssr: false},
+);
