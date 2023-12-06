@@ -85,9 +85,11 @@ export function LoadKaTeX() {
     (window as any).katex = katex;
   }
 
+  const base = "/epiplexis-next";
+
   return (
     <Head>
-      <script async src="/symbols.tex" type="math/tex" />
+      <script async src={`${base}/symbols.tex`} type="math/tex" />
       {/* @todo fix @liqvid/katex so this isn't necessary */}
       <script async src="katex.js"></script>
     </Head>
