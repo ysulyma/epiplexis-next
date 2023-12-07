@@ -20,7 +20,7 @@ export default function Statement() {
 
   return (
     <svg
-      className="mx-auto h-screen stroke-black text-2xl dark:stroke-white"
+      className="mx-auto h-screen text-2xl"
       strokeWidth="1.5"
       viewBox="-105 -300 410 500"
     >
