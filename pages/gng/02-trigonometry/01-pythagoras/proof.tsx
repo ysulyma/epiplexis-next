@@ -29,7 +29,7 @@ export default function Proof() {
 
   return (
     <svg
-      className="max-h-[100dvh] max-w-[100dvw] stroke-black text-xl text-black dark:stroke-white dark:text-white"
+      className="max-h-[100dvh] max-w-[100dvw] text-xl"
       strokeWidth="1.5"
       viewBox={`${-a - b - gap / 2 - padX} ${-padY} ${
         (a + b) * 2 + gap + 2 * padX

@@ -3,15 +3,22 @@ interface Message {
   value: "dark" | "light";
 }
 
-const bodyClass = "dark"
+const bodyClass = "dark";
 
 export function syncDarkMode() {
-  if (!globalThis.document?.body) return;
-  document.body.classList.toggle(bodyClass, true);
+  if (!globalThis.document?.documentElement) return;
+
+  document.documentElement.classList.toggle(
+    bodyClass,
+    new URLSearchParams(location.search).has("dark"),
+  );
 
   window.addEventListener("message", ({data}: {data: Message}) => {
     if (data.type === "color-scheme") {
-      document.body.classList.toggle(bodyClass, data.value === "dark");
+      document.documentElement.classList.toggle(
+        bodyClass,
+        data.value === "dark",
+      );
     }
   });
 }

@@ -1,12 +1,13 @@
+import {syncDarkMode} from "@/lib/dark-mode";
 import {Head, Html, Main, NextScript} from "next/document";
 
-import {syncDarkMode} from "@/lib/dark-mode";
-
 export default function Document() {
+  syncDarkMode();
+
   return (
     <Html lang="en">
       <Head />
-      <body>
+      <body className="dark:text-white">
         <Main />
         <NextScript />
       </body>

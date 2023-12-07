@@ -47,6 +47,7 @@ const q2 = new Quaternion().setFromUnitVectors(
   vac.clone().setZ(0).normalize(),
   // )
 );
+
 function useLiqvid() {
   const [Liqvid, setLiqvid] = useState<typeof TLiqvid | null>(null);
 
@@ -83,12 +84,15 @@ export default function ThreeD() {
       <LoadKaTeX />
       <Player script={script}>
         <section
-          className="h-full w-full dark:bg-stone-900 dark:text-white"
+          className="h-full w-full dark:text-white"
           data-affords="click"
+          style={{backgroundImage: `url("/epiplexis-next/grid.png")`}}
         >
           <Canvas
             camera={{position: [11.01, 9.73, 8.79]}}
-            onCreated={(state) => (state.gl.localClippingEnabled = true)}
+            onCreated={(state) => {
+              state.gl.localClippingEnabled = true;
+            }}
           >
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
@@ -102,7 +106,7 @@ export default function ThreeD() {
 
             {/* Question */}
             <Html position={vb}>
-              <span className="ml-72 block w-72">
+              <span className="ml-24 block w-max text-xl">
                 distance from <KTX className="text-red-600">(x_1,y_1,z_1)</KTX>{" "}
                 to <KTX className="text-blue-600">(x_2,y_2,z_2)</KTX>?
               </span>
@@ -168,7 +172,7 @@ export default function ThreeD() {
         </section>
         <KatexAnimations>
           <KTX
-            className="absolute bottom-20 right-8 rounded-md bg-[#fff1] p-2 text-white shadow-lg"
+            className="absolute bottom-20 right-8 rounded-md bg-gray-200/50 p-2 text-xl shadow-lg dark:bg-stone-800/50"
             display
             id="pyth3"
             data-from-first="dab"

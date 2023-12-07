@@ -13,19 +13,27 @@ export const Player = dynamic(
         props: React.ComponentPropsWithoutRef<typeof Liqvid.Player>,
       ) {
         return (
-          <Liqvid.Player
-            controls={
-              <>
-                <Liqvid.Controls.PlayPause />
-                <Liqvid.Controls.TimeDisplay />
+          <>
+            <Head>
+              <style>{String.raw`
+          .lv-player, .lv-canvas {
+            background: transparent !important;
+          }`}</style>
+            </Head>
+            <Liqvid.Player
+              controls={
+                <>
+                  <Liqvid.Controls.PlayPause />
+                  <Liqvid.Controls.TimeDisplay />
 
-                <div className="lv-controls-right">
-                  <Liqvid.Controls.FullScreen />
-                </div>
-              </>
-            }
-            {...props}
-          />
+                  <div className="lv-controls-right">
+                    <Liqvid.Controls.FullScreen />
+                  </div>
+                </>
+              }
+              {...props}
+            />
+          </>
         );
       };
     }),
