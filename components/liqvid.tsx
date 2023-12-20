@@ -93,7 +93,10 @@ export function LoadKaTeX() {
     (window as any).katex = katex;
   }
 
-  const base = "/epiplexis-next";
+  const base =
+    globalThis.location?.origin === "http://localhost:3000"
+      ? ""
+      : "/epiplexis-next";
 
   return (
     <Head>
