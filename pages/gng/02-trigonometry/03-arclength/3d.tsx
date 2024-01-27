@@ -17,7 +17,7 @@ class CustomCurve extends Curve<Vector3> {
     super();
   }
 
-  getPoint(t, optionalTarget = new Vector3()) {
+  getPoint(t: number, optionalTarget = new Vector3()) {
     t = -1 + 2 * t;
     const tx = 4 * t * Math.cos(3 * 2 * Math.PI * t);
     const ty = 5 * t * Math.sin(2 * 2 * Math.PI * t);

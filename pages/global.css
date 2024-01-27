@@ -7,11 +7,3 @@
   margin: 0;
   padding: 0;
 }
-
-svg {
-  stroke: black;
-}
-
-.dark svg {
-  stroke: white;
-}
