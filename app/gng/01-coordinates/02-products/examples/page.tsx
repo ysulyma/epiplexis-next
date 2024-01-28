@@ -35,7 +35,7 @@ export default function Examples() {
   const [controls, setControls] = useState<any>();
 
   return (
-    <main className="h-screen w-screen">
+    <main className="flex h-screen flex-col">
       <Controls />
       <Canvas
         camera={{
