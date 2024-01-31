@@ -9,13 +9,11 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "warn",
     "@typescript-eslint/no-import-type-side-effects": "warn",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/consistent-type-imports": "warn",
-    // "@typescript-eslint/sort-type-union-intersection-members": "warn",
     "eqeqeq": "error",
     "import/order": [
       "error",
@@ -63,6 +61,15 @@
         ]
       }
     ],
+    "prettier/prettier": "warn",
+    "react/jsx-curly-brace-presence": "warn",
+    "react/jsx-no-useless-fragment": [
+      "warn",
+      {
+        "allowExpressions": true
+      }
+    ],
+    // "@typescript-eslint/sort-type-union-intersection-members": "warn",
     "no-useless-rename": "warn",
     "object-shorthand": "warn"
   },
