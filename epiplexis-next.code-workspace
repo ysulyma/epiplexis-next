@@ -6,6 +6,11 @@
 	],
 	"settings": {
 		"editor.formatOnSave": true,
+		"files.exclude": {
+			"**/.next": true,
+			"**/.turbo": true,
+			"**/node_modules": true,
+		},
 		"[javascript]": {
 			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 		},

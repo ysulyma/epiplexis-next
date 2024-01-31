@@ -45,9 +45,6 @@ export default function Examples() {
           position: cameraPosition,
           zoom: 1,
         }}
-        onCreated={({gl}) => {
-          gl.setClearColor("#252934");
-        }}
       >
         <ControlsContext.Provider value={controls}>
           <PositionHelper />
