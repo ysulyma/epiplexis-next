@@ -2,8 +2,8 @@
 import {CircleControl} from "@/components/CircleControl";
 import {KTX} from "@/components/KTX";
 import {DEGREES, step} from "@/lib/constants";
+import {truncate} from "@/lib/math";
 import type {Pt3} from "@/lib/types";
-import {truncate} from "@/lib/utils";
 import {range} from "@liqvid/utils/misc";
 import {useCallback} from "react";
 import shallow from "zustand/shallow";
