@@ -76,7 +76,7 @@ export default function Table() {
             className="border border-solid border-gray-200 dark:border-gray-800"
             key={index}
           >
-            <thead className="bg-gray-100 dark:bg-gray-700">
+            <thead className="bg-gray-100 dark:bg-stone-700">
               <tr>
                 <Th>Base</Th>
                 <Th>Representation</Th>
@@ -85,7 +85,7 @@ export default function Table() {
             <tbody>
               {table.map((base) => (
                 <tr
-                  className="even:bg-gray-100 dark:even:bg-gray-700"
+                  className="even:bg-gray-100 dark:even:bg-stone-700"
                   key={base}
                 >
                   <Td>{base}</Td>
