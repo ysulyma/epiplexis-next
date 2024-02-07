@@ -1,9 +1,10 @@
 "use client";
 
+import {syncDarkMode} from "@/lib/dark-mode";
 import {useSearchParams} from "next/navigation";
+import {Suspense} from "react";
 
 import "../pages/global.css";
-import {syncDarkMode} from "@/lib/dark-mode";
 
 export default function RootLayout({
   children,
@@ -11,6 +12,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  return (
+    <Suspense>
+      <ApplyDarkMode>{children}</ApplyDarkMode>
+    </Suspense>
+  );
+}
+
+function ApplyDarkMode({children}: {children: React.ReactNode}) {
   const searchParams = useSearchParams();
   const isDark = searchParams?.has("dark") ?? false;
   syncDarkMode();
