@@ -6,12 +6,7 @@ import {Suspense} from "react";
 
 import "../pages/global.css";
 
-export default function RootLayout({
-  children,
-  ...props
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <Suspense>
       <ApplyDarkMode>{children}</ApplyDarkMode>

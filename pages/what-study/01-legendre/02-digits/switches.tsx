@@ -1,7 +1,7 @@
 import {Switch} from "@/components/ui/switch";
 import {useState} from "react";
 
-const Th = (props: React.HTMLProps<HTMLTableHeaderCellElement>) => (
+const Th = (props: React.HTMLProps<HTMLTableCellElement>) => (
   <th className="px-4 py-2 text-right" {...props} />
 );
 

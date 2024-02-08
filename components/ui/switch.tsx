@@ -30,4 +30,5 @@ export {Switch};
 /*
  * Unshackled info session
  * $150k for 10% ownership
+ * (reduces to 1-3% by time of IPO)
  */
