@@ -35,7 +35,7 @@ export function BaseTable({bases, nums}: {bases: number[]; nums: number[]}) {
       </thead>
       <tbody>
         {nums.map((n) => (
-          <tr className="odd:bg-stone-100" key={n}>
+          <tr className="odd:bg-stone-100 dark:odd:bg-stone-600" key={n}>
             {bases.map((b) => (
               <Td key={b}>
                 <KTX>{n.toString(b)}</KTX>
