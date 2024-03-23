@@ -1,6 +1,7 @@
 "use client";
 
-import {syncDarkMode} from "@/lib/dark-mode";
+import {syncDarkMode} from "@/lib/api/dark-mode";
+import {syncHeight} from "@/lib/api/height";
 import {useSearchParams} from "next/navigation";
 import {Suspense} from "react";
 
@@ -18,6 +19,7 @@ function ApplyDarkMode({children}: {children: React.ReactNode}) {
   const searchParams = useSearchParams();
   const isDark = searchParams?.has("dark") ?? false;
   syncDarkMode();
+  syncHeight();
 
   return (
     <html className={isDark ? "dark" : undefined} lang="en">

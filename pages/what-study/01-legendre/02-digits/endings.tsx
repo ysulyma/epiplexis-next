@@ -15,7 +15,7 @@ const Td = (props: React.HTMLProps<HTMLTableCellElement>) => (
 export default function Endings() {
   return (
     <main>
-      <div className="mx-auto flex max-w-lg justify-between">
+      <div className="mx-auto flex max-w-2xl justify-between">
         <BaseTable bases={[10, 2, 5]} nums={range(0, 5)} />
         <BaseTable bases={[10, 2, 5]} nums={range(5, 10)} />
       </div>

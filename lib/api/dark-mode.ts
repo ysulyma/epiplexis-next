@@ -1,7 +1,4 @@
-interface Message {
-  type: "color-scheme";
-  value: "dark" | "light";
-}
+import type {DownwardMessage} from "./messages";
 
 const bodyClass = "dark";
 
@@ -13,7 +10,7 @@ export function syncDarkMode() {
     new URLSearchParams(location.search).has("dark"),
   );
 
-  window.addEventListener("message", ({data}: {data: Message}) => {
+  window.addEventListener("message", ({data}: {data: DownwardMessage}) => {
     if (data.type === "color-scheme") {
       document.documentElement.classList.toggle(
         bodyClass,
