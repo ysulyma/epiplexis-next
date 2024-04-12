@@ -32,7 +32,11 @@ export default function Page({
       You can clone the repository from{" "}
       <ExternalLink href="https://github.com/ysulyma/epiplexis-next">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img alt="" className="mr-1 inline h-6 w-6" src="/github.svg" />
+        <img
+          alt=""
+          className="mr-1 inline h-6 w-6"
+          src={`${process.env.NEXT_PUBLIC_ROOT}/github.svg`}
+        />
         GitHub
       </ExternalLink>
       .
