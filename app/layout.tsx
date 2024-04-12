@@ -13,14 +13,14 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 function ApplyDarkMode({children}: {children: React.ReactNode}) {
   const searchParams = useSearchParams();
   const isDark = searchParams?.has("dark") ?? false;
-  syncDarkMode();
+  // syncDarkMode();
   syncHeight();
 
   return (
     <html
       className={isDark ? "dark" : undefined}
       lang="en"
-      suppressHydrationWarning
+      // suppressHydrationWarning
     >
       <body className="dark:bg-stone-800 dark:text-white">{children}</body>
     </html>
