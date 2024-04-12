@@ -1,5 +1,6 @@
 import {promises as fsp} from "fs";
 
+import {ExternalLink} from "@/components/ExternalLink";
 import type {GetStaticProps, InferGetStaticPropsType} from "next";
 import Link from "next/link";
 
@@ -26,6 +27,15 @@ export default function Page({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <main className="p-4 text-2xl leading-normal">
+      This is the content repository for{" "}
+      <ExternalLink href="https://beta.epiplexis.xyz/">Epiplexis</ExternalLink>.
+      You can clone the repository from{" "}
+      <ExternalLink href="https://github.com/ysulyma/epiplexis-next">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img alt="" className="mr-1 inline h-6 w-6" src="/github.svg" />
+        GitHub
+      </ExternalLink>
+      .
       {/* <pre>
         {JSON.stringify(dir, null, 2)}
       </pre> */}
