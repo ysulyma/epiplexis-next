@@ -1,4 +1,7 @@
+import dotenv from "dotenv";
 import type {Config} from "tailwindcss";
+
+dotenv.config();
 
 const config = {
   darkMode: ["class"],
@@ -18,6 +21,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        grid: `url("${process.env.NEXT_PUBLIC_ROOT}/grid.png")`,
+      },
       keyframes: {
         "accordion-down": {
           from: {height: "0"},

@@ -20,10 +20,10 @@ const orbitTarget: Pt3 = [2.3, -0.29, -1.81];
 const Scene = () => {
   return (
     <>
-      <ambientLight intensity={3} />
-      <pointLight intensity={30} position={[0, -2, 2]} />
-      <pointLight intensity={30} position={[0, 2, 2]} />
-      <pointLight intensity={30} position={[4, -1, 2]} />
+      <ambientLight intensity={Math.PI} />
+      <pointLight decay={0} intensity={Math.PI} position={[0, -2, 2]} />
+      <pointLight decay={0} intensity={Math.PI} position={[0, 2, 2]} />
+      <pointLight decay={0} intensity={Math.PI} position={[4, -1, 2]} />
       <Cube position={[-3, -0.5, -0.5]} />
       <Cylinder position={[0, 0, -1]} />
       <Torus position={[5, 0, 0]} />
@@ -37,27 +37,29 @@ export default function Examples() {
   return (
     <main className="flex h-screen flex-col">
       <Controls />
-      <Canvas
-        camera={{
-          near: 0.1,
-          far: 1000,
-          up: [0, 0, 1],
-          position: cameraPosition,
-          zoom: 1,
-        }}
-      >
-        <ControlsContext.Provider value={controls}>
-          <PositionHelper />
-          <OrbitControls
-            enableDamping={false}
-            target={orbitTarget}
-            ref={(ref) => setControls(ref)}
-          />
-          <Suspense fallback={null}>
-            <Scene />
-          </Suspense>
-        </ControlsContext.Provider>
-      </Canvas>
+      <div className="bg-grid flex-1">
+        <Canvas
+          camera={{
+            near: 0.1,
+            far: 1000,
+            up: [0, 0, 1],
+            position: cameraPosition,
+            zoom: 1,
+          }}
+        >
+          <ControlsContext.Provider value={controls}>
+            <PositionHelper />
+            <OrbitControls
+              enableDamping={false}
+              target={orbitTarget}
+              ref={(ref) => setControls(ref)}
+            />
+            <Suspense fallback={null}>
+              <Scene />
+            </Suspense>
+          </ControlsContext.Provider>
+        </Canvas>
+      </div>
     </main>
   );
 }

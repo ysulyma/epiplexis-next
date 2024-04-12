@@ -3,16 +3,11 @@
 import {syncDarkMode} from "@/lib/api/dark-mode";
 import {syncHeight} from "@/lib/api/height";
 import {useSearchParams} from "next/navigation";
-import {Suspense} from "react";
 
 import "../pages/global.css";
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
-  return (
-    <Suspense fallback={null}>
-      <ApplyDarkMode>{children}</ApplyDarkMode>
-    </Suspense>
-  );
+  return <ApplyDarkMode>{children}</ApplyDarkMode>;
 }
 
 function ApplyDarkMode({children}: {children: React.ReactNode}) {
@@ -22,7 +17,11 @@ function ApplyDarkMode({children}: {children: React.ReactNode}) {
   syncHeight();
 
   return (
-    <html className={isDark ? "dark" : undefined} lang="en">
+    <html
+      className={isDark ? "dark" : undefined}
+      lang="en"
+      suppressHydrationWarning
+    >
       <body className="dark:bg-stone-800 dark:text-white">{children}</body>
     </html>
   );
