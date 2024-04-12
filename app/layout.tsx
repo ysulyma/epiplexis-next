@@ -9,7 +9,7 @@ import "../pages/global.css";
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <Suspense>
+    <Suspense fallback={null}>
       <ApplyDarkMode>{children}</ApplyDarkMode>
     </Suspense>
   );

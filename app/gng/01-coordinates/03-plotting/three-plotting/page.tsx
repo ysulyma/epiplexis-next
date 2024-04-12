@@ -8,7 +8,6 @@ import type {Pt3} from "@/lib/types";
 import {OrbitControls} from "@react-three/drei";
 import {Canvas} from "@react-three/fiber";
 import {Suspense, useState} from "react";
-import {LinearSRGBColorSpace, NoToneMapping} from "three";
 
 import {CurveGraph} from "./components/Curve";
 import {SurfaceGraph} from "./components/Surface";

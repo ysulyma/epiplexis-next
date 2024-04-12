@@ -3,7 +3,7 @@ import {
   ControlsContext,
   PositionHelper,
 } from "@/components/three/PositionHelper";
-import {blue500, green400, green500, red500} from "@/components/three/theme";
+import {blue600, green600, red600} from "@/components/three/theme";
 import type {Pt3} from "@/lib/types";
 import {OrbitControls} from "@react-three/drei";
 import {Canvas, extend} from "@react-three/fiber";
@@ -18,29 +18,29 @@ const orbitTarget: Pt3 = [0, 0, 0];
 const Torus = () => (
   <mesh name="torus">
     <torusGeometry args={[4, 1, 32, 64]} />
-    <meshPhongMaterial color={green500} side={DoubleSide} />
+    <meshPhongMaterial color={green600} side={DoubleSide} />
   </mesh>
 );
 
 const Circle = () => (
   <mesh name="circle 1" position={[4, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
     <torusGeometry args={[1, 0.05, 32, 32]} />
-    <meshStandardMaterial color={blue500} />
+    <meshStandardMaterial color={blue600} />
   </mesh>
 );
 
 const Circle2 = () => (
   <mesh name="circle 2" position={[0, 0, 0]}>
     <torusGeometry args={[5, 0.05, 16, 64]} />
-    <meshStandardMaterial color={red500} />
+    <meshStandardMaterial color={red600} />
   </mesh>
 );
 
 const Scene = () => {
   return (
     <>
-      <ambientLight />
-      <pointLight intensity={1.0} position={[5, 3, 5]} />
+      <ambientLight intensity={Math.PI} />
+      <pointLight decay={0} intensity={Math.PI} position={[5, 3, 5]} />
       <Torus />
       <Circle />
       <Circle2 />
@@ -54,6 +54,7 @@ export default function CirclesOnTorus() {
   return (
     <div
       style={{
+        backgroundImage: `url("${process.env.NEXT_PUBLIC_ROOT}/grid.png")`,
         height: "100vh",
         width: "100vw",
       }}
@@ -68,7 +69,7 @@ export default function CirclesOnTorus() {
         }}
         onCreated={({gl}) => {
           // wtf?
-          gl.setClearColor("#252934");
+          // gl.setClearColor("#252934");
         }}
       >
         <ControlsContext.Provider value={controls}>
