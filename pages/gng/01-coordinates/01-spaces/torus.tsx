@@ -49,16 +49,12 @@ const Scene = () => {
 };
 
 export default function CirclesOnTorus() {
-  const [controls, setControls] = useState<any>();
+  const [controls, setControls] = useState<React.ComponentRef<
+    typeof OrbitControls
+  > | null>(null);
 
   return (
-    <div
-      style={{
-        backgroundImage: `url("${process.env.NEXT_PUBLIC_ROOT}/grid.png")`,
-        height: "100vh",
-        width: "100vw",
-      }}
-    >
+    <div className="h-screen w-screen rounded-md bg-grid">
       <Canvas
         camera={{
           near: 0.1,
@@ -66,10 +62,6 @@ export default function CirclesOnTorus() {
           up: [0, 0, 1],
           position: cameraPosition,
           zoom: 1,
-        }}
-        onCreated={({gl}) => {
-          // wtf?
-          // gl.setClearColor("#252934");
         }}
       >
         <ControlsContext.Provider value={controls}>

@@ -4,13 +4,9 @@ import {useThree} from "@react-three/fiber";
 import {createContext, useContext, useEffect} from "react";
 import type {Vector3} from "three";
 
-export type RefHandle<T> = T extends React.ForwardRefExoticComponent<infer C>
-  ? C
-  : never;
-
-export const ControlsContext = createContext<
-  undefined | RefHandle<typeof OrbitControls>
->(undefined);
+export const ControlsContext = createContext<React.ComponentRef<
+  typeof OrbitControls
+> | null>(null);
 
 export function useControls() {
   return useContext(ControlsContext);

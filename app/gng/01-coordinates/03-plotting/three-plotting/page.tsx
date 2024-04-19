@@ -29,10 +29,12 @@ const Scene = () => {
 };
 
 export default function Examples() {
-  const [controls, setControls] = useState<any>();
+  const [controls, setControls] = useState<React.ComponentRef<
+    typeof OrbitControls
+  > | null>(null);
 
   return (
-    <main className="flex h-screen flex-col">
+    <main className="flex h-screen rounded-md bg-grid">
       <Canvas
         camera={{
           near: 0.1,
