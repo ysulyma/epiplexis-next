@@ -1,31 +1,29 @@
+import {darkClass} from "./dark-mode-server";
 import type {DownwardMessage} from "./messages";
+import {Signal, useSignalValue} from "./signal";
 
-const darkClass = "dark";
+type ColorScheme = "light" | "dark";
 
-/** Apply dark background (instead of transparent) when not in an iframe. */
-const orphanBodyClass = "dark:bg-stone-800";
+const signal = new Signal<ColorScheme>("light");
 
-("dark:bg-stone-800");
+/**
+ * Set the color scheme.
+ * Passing `true` is the same as passing `"dark"`, and
+ * passing `false` is the same as passing `"light"`.
+ */
+function setColorScheme(value: ColorScheme | boolean) {
+  if (typeof value === "boolean") {
+    value = value ? "dark" : "light";
+  }
 
-export const darkModeScript = `
-  document.documentElement.classList.toggle(
-    "${darkClass}",
-    new URLSearchParams(location.search).has("dark"),
-  );
-
-  document.body.classList.toggle(
-    "${orphanBodyClass}",
-    parent === window,
-  );
-`;
+  document.documentElement.classList.toggle(darkClass, value === "dark");
+  signal.set(value);
+}
 
 export function initializeDarkMode() {
   if (!globalThis.document?.documentElement) return;
 
-  document.documentElement.classList.toggle(
-    darkClass,
-    new URLSearchParams(location.search).has("dark"),
-  );
+  setColorScheme(new URLSearchParams(location.search).has("dark"));
 }
 
 export function syncDarkMode() {
@@ -33,10 +31,15 @@ export function syncDarkMode() {
 
   window.addEventListener("message", ({data}: {data: DownwardMessage}) => {
     if (data.type === "color-scheme") {
-      document.documentElement.classList.toggle(
-        darkClass,
-        data.value === "dark",
-      );
+      setColorScheme(data.value);
     }
   });
+}
+
+export function useColorScheme() {
+  return useSignalValue(signal);
+}
+
+export function useSchemed<T>(values: {dark: T; light: T}) {
+  return values[useColorScheme()];
 }
