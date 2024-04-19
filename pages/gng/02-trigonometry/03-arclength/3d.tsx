@@ -105,12 +105,10 @@ export default function ThreeD() {
         </div>
       </fieldset>
       <Canvas
+        className="rounded-md bg-grid"
         camera={{position: [11.01, 9.73, 8.79]}}
         onCreated={(state) => {
           state.gl.localClippingEnabled = true;
-        }}
-        style={{
-          backgroundImage: `url("${process.env.NEXT_PUBLIC_ROOT}/grid.png")`,
         }}
       >
         <ambientLight />
