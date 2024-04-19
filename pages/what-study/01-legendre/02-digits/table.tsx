@@ -70,7 +70,7 @@ export default function Table() {
           onChange={onChange}
         />
       </fieldset>
-      <div className="mx-auto my-4 flex w-fit justify-between gap-8">
+      <div className="mx-auto my-4 flex w-full justify-between gap-8">
         {tables.map((table, index) => (
           <table
             className="border border-solid border-gray-200 dark:border-gray-800"
