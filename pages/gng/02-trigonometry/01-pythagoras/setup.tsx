@@ -9,7 +9,7 @@ export default function Statement() {
 
   return (
     <svg
-      className="mx-auto max-h-[100dvh] max-w-[100dvw] stroke-black dark:stroke-white"
+      className="mx-auto w-screen stroke-black dark:stroke-white"
       viewBox={`
       ${-padX} ${-height - padY}
       ${width + width / 8} ${height + height / 4}`}
