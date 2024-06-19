@@ -1,4 +1,4 @@
-import {TWOPI, pointRadius, resolution} from "@/lib/constants";
+import {TURN, pointRadius, resolution} from "@/lib/constants";
 import {toroidal} from "@/lib/parametrizations";
 import {useEffect, useRef} from "react";
 import {DoubleSide, type Mesh} from "three";

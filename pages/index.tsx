@@ -1,8 +1,11 @@
 import {promises as fsp} from "fs";
 
-import {ExternalLink} from "@/components/ExternalLink";
+import classNames from "classnames";
 import type {GetStaticProps, InferGetStaticPropsType} from "next";
 import Link from "next/link";
+import {useState} from "react";
+
+import {ExternalLink} from "@/components/ExternalLink";
 
 type Dir = {
   name: string;
@@ -44,7 +47,7 @@ export default function Page({
         {JSON.stringify(dir, null, 2)}
       </pre> */}
       <h1 className="my-2 text-3xl">Content</h1>
-      <ol className="font-mono">
+      <ol aria-label="Interactives" className="font-mono" role="tree">
         {dir.children.map((item) =>
           typeof item === "string" ? null : <Tree key={item.name} dir={item} />,
         )}
@@ -54,18 +57,26 @@ export default function Page({
 }
 
 function Tree({dir}: {dir: Dir}) {
+  const [expanded, setExpanded] = useState(true);
+
   return (
-    <li>
-      {formatPagesPath(dir.name) + "/"}
+    // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
+    <li aria-expanded={expanded} className="group" role="treeitem">
+      <span
+        className="cursor-pointer"
+        onClick={() => setExpanded((prev) => !prev)}
+      >
+        {formatPagesPath(dir.name) + "/"}
+      </span>
       {dir.children.length > 0 && (
-        <ol className="ml-8">
+        <ol className={classNames("ml-8", expanded || "hidden")}>
           {dir.children.map((item) => {
             if (typeof item === "string") {
               const isAppDir = item.startsWith("./app");
               if (isAppDir && !item.endsWith("page.tsx")) return null;
 
               return (
-                <li key={item}>
+                <li role="treeitem" key={item}>
                   <Link
                     className="text-blue-600"
                     href={isAppDir ? appHref(item) : pagesHref(item)}
@@ -158,8 +169,8 @@ function mergeDirs(appDir: Dir, pagesDir: Dir): Dir {
   }
 
   c.children.sort((a, b) => {
-    const keyA = typeof a === "string" ? a : a.name;
-    const keyB = typeof b === "string" ? b : b.name;
+    const keyA = typeof a === "string" ? a : normalize(a.name);
+    const keyB = typeof b === "string" ? b : normalize(b.name);
     return keyA.localeCompare(keyB);
   });
 

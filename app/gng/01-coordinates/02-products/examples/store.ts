@@ -1,4 +1,4 @@
-import {TWOPI} from "@/lib/constants";
+import {TURN} from "@/lib/constants";
 import type {Pt3} from "@/lib/types";
 import create from "zustand";
 import {subscribeWithSelector} from "zustand/middleware";
@@ -21,7 +21,7 @@ export interface State {
 export const useStore = create(
   subscribeWithSelector<State>(() => ({
     cube: [1, 0.5, 0.5] as Pt3,
-    cylinder: {z: 0.5, theta: 0.75 * TWOPI},
-    torus: [0.05 * TWOPI, 0.7 * TWOPI],
+    cylinder: {z: 0.5, theta: 0.75 * TURN},
+    torus: [0.05 * TURN, 0.7 * TURN],
   })),
 );

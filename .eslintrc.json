@@ -3,10 +3,6 @@
     "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
     "plugin:import/recommended",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
   ],
   "rules": {
     "@typescript-eslint/no-import-type-side-effects": "warn",

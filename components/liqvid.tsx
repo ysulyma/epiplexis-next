@@ -140,13 +140,11 @@ export const KatexAnimations = dynamic(
                   continue;
                 }
 
-                console.log(target.textContent);
-
                 const anims = Array.from(
                   target.querySelectorAll("*[data-anim]"),
                 ) as HTMLSpanElement[];
                 for (const node of anims) {
-                  const [name, marker] = node.dataset.anim!.split(";");
+                  const [, marker] = node.dataset.anim!.split(";");
                   fadeIn(playback, script.parseStart(marker))(node);
                   // if (name in animations) {
                   //   animations[name](marker)(node);
