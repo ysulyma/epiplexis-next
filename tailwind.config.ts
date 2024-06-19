@@ -24,6 +24,10 @@ const config = {
       backgroundImage: {
         grid: `url("${process.env.NEXT_PUBLIC_ROOT}/grid.png")`,
       },
+      fontFamily: {
+        "cm": ["KaTeX_Main", "Times New Roman", "serif"],
+        "cm-mono": ["KaTeX_Typewriter", "monospace"],
+      },
       keyframes: {
         "accordion-down": {
           from: {height: "0"},
