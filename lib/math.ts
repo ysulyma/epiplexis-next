@@ -13,3 +13,8 @@ export function lerp(a: number, b: number, t: number): number {
 export function truncate(x: number, digits = 0): number {
   return parseFloat(x.toFixed(digits));
 }
+
+/** Fixed version of a % b taking values in [0, b) */
+export function mod(a: number, b: number): number {
+  return ((a % b) + b) % b;
+}

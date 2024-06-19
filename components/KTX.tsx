@@ -1,19 +1,19 @@
 "use client";
 
 import katex from "katex";
-import {useEffect, useRef} from "react";
+import {forwardRef, useEffect, useRef} from "react";
 
 import "katex/dist/katex.min.css";
+import {combineRefs} from "@liqvid/utils/react";
 
-export function KTX({
-  className,
-  children,
-  display = false,
-}: {
-  className?: string;
-  children: string;
-  display?: boolean;
-}) {
+export const KTX = forwardRef<
+  HTMLSpanElement,
+  {
+    className?: string;
+    children: string;
+    display?: boolean;
+  }
+>(function KTX({className, children, display = false}, fwdRef) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -26,5 +26,5 @@ export function KTX({
     });
   }, [children, display]);
 
-  return <span className={className} ref={ref} />;
-}
+  return <span className={className} ref={combineRefs(ref, fwdRef)} />;
+});

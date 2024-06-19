@@ -1,4 +1,4 @@
-import {TWOPI, pointRadius, resolution} from "@/lib/constants";
+import {TURN, pointRadius, resolution} from "@/lib/constants";
 import {cylindrical} from "@/lib/parametrizations";
 import {useEffect, useRef} from "react";
 import {DoubleSide, type Mesh} from "three";
@@ -26,7 +26,7 @@ export function Cylinder(props: JSX.IntrinsicElements["group"]): JSX.Element {
 
   return (
     <group {...props}>
-      <mesh position={[0, 0, h / 2]} rotation={[TWOPI / 4, 0, 0]}>
+      <mesh position={[0, 0, h / 2]} rotation={[TURN / 4, 0, 0]}>
         <cylinderGeometry args={[r, r, h, resolution, resolution, true]} />
         <meshStandardMaterial color="blue" side={DoubleSide} />
       </mesh>

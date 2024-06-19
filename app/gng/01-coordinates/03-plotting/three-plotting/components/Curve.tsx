@@ -1,5 +1,5 @@
 import {red500} from "@/components/three/theme";
-import {TWOPI} from "@/lib/constants";
+import {TURN} from "@/lib/constants";
 import {lerp} from "@/lib/math";
 import {Curve, DoubleSide, Vector3} from "three";
 
@@ -11,7 +11,7 @@ class CustomCurve extends Curve<Vector3> {
   getPoint(t: number, target = new Vector3()) {
     const r = 5;
     const rotations = 2;
-    const angle = t * rotations * TWOPI;
+    const angle = t * rotations * TURN;
     const x = r * Math.cos(angle);
     const y = r * Math.sin(angle);
     const z = lerp(-3, 3, t);

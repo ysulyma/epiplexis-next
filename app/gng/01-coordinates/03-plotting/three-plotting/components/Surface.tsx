@@ -1,5 +1,5 @@
 import {blue600} from "@/components/three/theme";
-import {TWOPI} from "@/lib/constants";
+import {TURN} from "@/lib/constants";
 import {lerp} from "@/lib/math";
 import type {Object3DNode} from "@react-three/fiber";
 import {extend} from "@react-three/fiber";
@@ -23,8 +23,8 @@ declare module "@react-three/fiber" {
 export const SurfaceGraph = () => {
   const fn: Parametrization = (u, v, target) => {
     // we want to graph over [-3, 3] x [-3, 3]
-    const x = lerp(-TWOPI, TWOPI, u);
-    const y = lerp(-TWOPI, TWOPI, v);
+    const x = lerp(-TURN, TURN, u);
+    const y = lerp(-TURN, TURN, v);
     return target.set(x, y, Math.cos(x) * Math.sin(y));
   };
 
