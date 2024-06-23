@@ -38,7 +38,9 @@ const KtxLabel = ({
     setDims({height, width});
   }, []);
 
-  const dr = addedRadius({h: dims.height, w: dims.width, theta, r});
+  const padding = 3;
+
+  const dr = padding + addedRadius({h: dims.height, w: dims.width, theta, r});
 
   return (
     <foreignObject
@@ -102,7 +104,7 @@ export default function Minus() {
 
   return (
     <div className="h-screen w-screen">
-      <svg className="mx-auto h-full p-2" ref={ref} viewBox="-200 -100 400 200">
+      <svg className="mx-auto h-full p-2" ref={ref} viewBox="-175 -70 350 140">
         <circle
           className="stroke-violet-600"
           {...{cx, cy, r}}
@@ -128,7 +130,7 @@ export default function Minus() {
           stroke-linecap="round"
         />
 
-        <circle {...{cx, cy}} r="2" />
+        <circle className="dark:fill-white" {...{cx, cy}} r="2" />
         <circle
           className="draggable fill-red-600"
           cx={acx}
@@ -148,7 +150,7 @@ export default function Minus() {
           r={r}
           theta={alpha}
           className="select-none whitespace-nowrap stroke-red-600 text-red-600"
-          // fontSize={1}
+          fontSize={12}
         >
           {String.raw`(\cos\alpha,\sin\alpha)`}
         </KtxLabel>
@@ -156,7 +158,7 @@ export default function Minus() {
           r={r}
           theta={beta}
           className="select-none whitespace-nowrap text-blue-600"
-          // fontSize={1}
+          fontSize={12}
         >
           {String.raw`(\cos\beta,\sin\beta)`}
         </KtxLabel>
