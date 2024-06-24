@@ -2,6 +2,7 @@ import {onDrag} from "@liqvid/utils/react";
 import {screenToSVG, screenToSVGVector} from "@liqvid/utils/svg";
 import classNames from "classnames";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import {useRouter} from "next/router";
 
 import {KTX} from "@/components/KTX";
 import {DEGREES, TURN} from "@/lib/constants";
@@ -66,6 +67,7 @@ const KtxLabel = ({
 export default function Minus() {
   const [alpha, setAlpha] = useState(75 * DEGREES);
   const [beta, setBeta] = useState(-20 * DEGREES);
+  const router = useRouter();
 
   const r = 45;
 
@@ -112,6 +114,7 @@ export default function Minus() {
           strokeWidth="1"
         />
 
+        {/* lines */}
         <line className="stroke-red-700" x1={cx} y1={cy} x2={acx} y2={acy} />
         <line className="stroke-blue-700" x1={cx} y1={cy} x2={bcx} y2={bcy} />
         <line
@@ -122,30 +125,7 @@ export default function Minus() {
           y2={bcy}
         />
 
-        <path
-          className="stroke-green-600"
-          d={`M ${acx},${acy} V ${bcy} H ${bcx}`}
-          fill="none"
-          stroke-dasharray="0.2,1.5"
-          stroke-linecap="round"
-        />
-
-        <circle className="dark:fill-white" {...{cx, cy}} r="2" />
-        <circle
-          className="draggable fill-red-600"
-          cx={acx}
-          cy={acy}
-          r="2"
-          {...eventsA}
-        />
-        <circle
-          className="draggable fill-blue-600"
-          cx={bcx}
-          cy={bcy}
-          r="2"
-          {...eventsB}
-        />
-
+        {/* labels */}
         <KtxLabel
           r={r}
           theta={alpha}
@@ -162,6 +142,49 @@ export default function Minus() {
         >
           {String.raw`(\cos\beta,\sin\beta)`}
         </KtxLabel>
+
+        {/* right-angles in solution */}
+        {router.query.rightAngle !== undefined && (
+          <>
+            <path
+              className="stroke-green-600"
+              d={`M ${acx},${acy} V ${bcy} H ${bcx}`}
+              fill="none"
+              strokeDasharray="0.2,1.5"
+              strokeLinecap="round"
+            />
+          </>
+        )}
+
+        {/* bisection in solution */}
+        {router.query.bisect !== undefined && (
+          <>
+            <path
+              className="stroke-green-600"
+              d={`M ${cx},${cy} L ${(acx + bcx) / 2} ${(acy + bcy) / 2}`}
+              fill="none"
+              strokeDasharray="0.2,1.5"
+              strokeLinecap="round"
+            />
+          </>
+        )}
+
+        {/* circles */}
+        <circle className="dark:fill-white" {...{cx, cy}} r="2" />
+        <circle
+          className="draggable fill-red-600"
+          cx={acx}
+          cy={acy}
+          r="2"
+          {...eventsA}
+        />
+        <circle
+          className="draggable fill-blue-600"
+          cx={bcx}
+          cy={bcy}
+          r="2"
+          {...eventsB}
+        />
       </svg>
     </div>
   );
