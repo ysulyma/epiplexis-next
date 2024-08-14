@@ -1,24 +1,3 @@
-import {KTX} from "@/components/KTX";
-
-const KtxLabel = ({
-  children,
-  ...attrs
-}: React.SVGAttributes<SVGForeignObjectElement> & {
-  children: string;
-}) => (
-  <foreignObject
-    className="overflow-visible"
-    {...attrs}
-    width={200}
-    height={100}
-  >
-    {/* fixed is only necessary for Safari */}
-    <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
-      {children}
-    </KTX>
-  </foreignObject>
-);
-
 export default function Diagram() {
   return (
     <svg
@@ -104,7 +83,7 @@ export default function Diagram() {
         stroke="red"
         transform="translate(-224.59 -175.175)"
       />
-      <g clip-path="url(#a)" transform="matrix(0 -1 -1 0 525.591 575.006)">
+      <g clipPath="url(#a)" transform="matrix(0 -1 -1 0 525.591 575.006)">
         <path
           d="M0 0h100v100H0Z"
           fill="url(#b)"
@@ -119,7 +98,7 @@ export default function Diagram() {
         stroke="#fff"
         transform="matrix(1.33333 0 0 -1.33333 82.066 268.35)"
       />
-      <g clip-path="url(#c)" transform="matrix(0 -1 -1 0 525.591 575.006)">
+      <g clipPath="url(#c)" transform="matrix(0 -1 -1 0 525.591 575.006)">
         <path
           d="M0 0h100v100H0Z"
           fill="url(#d)"

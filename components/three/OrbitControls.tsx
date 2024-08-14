@@ -1,7 +1,8 @@
-import type {Pt3} from "@/lib/types";
 import {OrbitControls as DreiOrbitControls} from "@react-three/drei";
 import {extend, useFrame, useThree} from "@react-three/fiber"; /* camera */
 import {useEffect, useRef} from "react";
+
+import type {Pt3} from "@/lib/types";
 
 export function OrbitControls(props: {target?: Pt3}) {
   const $three = useThree();
@@ -26,7 +27,7 @@ export function OrbitControls(props: {target?: Pt3}) {
     if (props.target) {
       controls.current.target.set(...props.target);
     }
-    console.log(controls.current);
+    // console.log(controls.current);
     $three.controls = controls.current;
   }, [$three, props.target]);
 

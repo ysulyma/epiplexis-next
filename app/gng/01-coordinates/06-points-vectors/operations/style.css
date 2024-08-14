@@ -1,0 +1,11 @@
+.matrix-entry {
+  text-align: right;
+}
+
+[id*="_2r"],
+[id*="_3r"] {
+  padding-right: 1px;
+  translate: 0 1px;
+  text-align: right;
+  width: 2.5em;
+}
