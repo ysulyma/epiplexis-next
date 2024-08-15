@@ -4,7 +4,6 @@ export function syncHeight() {
   if (!globalThis.document?.documentElement) return;
 
   const onResize = () => {
-    console.log("resize", document.body.clientHeight);
     window.parent?.postMessage(
       {
         type: "sizing.height",
@@ -15,7 +14,6 @@ export function syncHeight() {
   };
 
   const observer = new ResizeObserver((entries) => {
-    console.log(entries);
     onResize();
   });
 
