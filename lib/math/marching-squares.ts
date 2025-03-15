@@ -12,7 +12,7 @@ export function marchingSquares(
   yMax: number,
   zFunc: (x: number, y: number) => number,
   c: number,
-  resolution: number
+  resolution: number,
 ) {
   const xStep = (xMax - xMin) / resolution;
   const yStep = (yMax - yMin) / resolution;
@@ -47,7 +47,7 @@ export function marchingSquares(
         // upper right corner
         points.push(
           [x + topInterp, y + yStep, c],
-          [x + xStep, y + rightInterp, c]
+          [x + xStep, y + rightInterp, c],
         );
       else if (n == 8 || n == 7)
         // upper left corner
@@ -64,7 +64,7 @@ export function marchingSquares(
           [x, y + leftInterp, c],
           [x + bottomInterp, y, c],
           [x + topInterp, y + yStep, c],
-          [x + xStep, y + rightInterp, c]
+          [x + xStep, y + rightInterp, c],
         );
       else if (n == 10)
         // should do subcase // lower right & upper left
@@ -73,7 +73,7 @@ export function marchingSquares(
           [x + xStep, y + rightInterp, c],
           [x, y + yStep / 2, c],
           [x, y + leftInterp, c],
-          [x + topInterp, y + yStep, c]
+          [x + topInterp, y + yStep, c],
         );
       else if (n == 0 || n == 15)
         // no line segments appear in this grid square.

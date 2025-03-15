@@ -31,17 +31,16 @@ export function brand<TagName extends keyof JSX.IntrinsicElements>(
     className?: string;
   } & typeof node.props;
 
-  const component = function (
+  const component = (
     {className, ...props}: Props & {className?: string},
     ref: React.ForwardedRef<Ref>,
-  ) {
-    return createElement(node.type, {
+  ) =>
+    createElement(node.type, {
       className: mergeClassNames(templateClassName, className),
       ...templateProps,
       ...props,
       ref,
     });
-  };
   component.displayName = displayName;
 
   return forwardRef(component);

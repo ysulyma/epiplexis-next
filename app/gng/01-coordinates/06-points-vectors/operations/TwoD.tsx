@@ -2,7 +2,7 @@
 
 import {combineRefs} from "@liqvid/utils/react";
 import {MathJax} from "better-react-mathjax";
-import {Coordinates, Mafs, MovablePoint, vec, Vector} from "mafs";
+import {Coordinates, Mafs, MovablePoint, Vector, vec} from "mafs";
 import {memo, useMemo, useReducer} from "react";
 
 import {useMathJaxElements, useMathJaxInputs} from "@/lib/hooks/mathjax";

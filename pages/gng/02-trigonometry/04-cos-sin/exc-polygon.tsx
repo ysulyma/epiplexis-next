@@ -5,9 +5,9 @@ import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 
 import {KTX} from "@/components/KTX";
 import {DEGREES, TURN} from "@/lib/constants";
-import {between} from "@liqvid/utils/misc";
 import {mod, truncate} from "@/lib/math";
 import {brand} from "@/lib/utils";
+import {between} from "@liqvid/utils/misc";
 
 const {cos, sin, tan, sqrt, atan2} = Math;
 
@@ -46,7 +46,7 @@ export default function Polygon() {
                 type="range"
                 min={3}
                 max={50}
-                onChange={(e) => setN(parseInt(e.currentTarget.value))}
+                onChange={(e) => setN(Number.parseInt(e.currentTarget.value))}
                 value={n}
               />
               <output className="w-6 text-right">{n}</output>

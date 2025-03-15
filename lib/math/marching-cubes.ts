@@ -259,7 +259,7 @@ export function marchingCubes(
   fn: Fn,
   axisMin: number,
   axisMax: number,
-  size: number
+  size: number,
 ) {
   const points = [],
     values = [];
@@ -415,7 +415,7 @@ export function marchingCubes(
 
   geometry.setAttribute(
     "position",
-    new THREE.BufferAttribute(new Float32Array(vertices), 3)
+    new THREE.BufferAttribute(new Float32Array(vertices), 3),
   );
   geometry.computeVertexNormals();
 
@@ -427,7 +427,7 @@ export function curvePoint(
   g: Fn,
   df: OneForm,
   dg: OneForm,
-  q0: THREE.Vector3
+  q0: THREE.Vector3,
 ) {
   const epsilon = 0.1;
 

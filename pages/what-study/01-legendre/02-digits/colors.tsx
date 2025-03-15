@@ -21,7 +21,7 @@ export default function Table() {
             const onChange: React.ChangeEventHandler<HTMLInputElement> = (
               e,
             ) => {
-              const value = parseInt(e.currentTarget.value, 10);
+              const value = Number.parseInt(e.currentTarget.value, 10);
               setComponent(c, value);
             };
 
@@ -66,9 +66,9 @@ export default function Table() {
 
 function useColor(initial = "#ffffff") {
   const [color, setColor] = useState(initial);
-  const r = parseInt(color.slice(1, 3), 16);
-  const g = parseInt(color.slice(3, 5), 16);
-  const b = parseInt(color.slice(5, 7), 16);
+  const r = Number.parseInt(color.slice(1, 3), 16);
+  const g = Number.parseInt(color.slice(3, 5), 16);
+  const b = Number.parseInt(color.slice(5, 7), 16);
 
   return useMemo(
     () => ({

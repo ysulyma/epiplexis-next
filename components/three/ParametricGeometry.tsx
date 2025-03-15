@@ -3,14 +3,14 @@
  * based on the brilliant article by @prideout https://prideout.net/blog/old/blog/index.html@p=44.html
  */
 
-import { BufferGeometry, Float32BufferAttribute, Vector3 } from "three";
+import {BufferGeometry, Float32BufferAttribute, Vector3} from "three";
 
 class ParametricGeometry extends BufferGeometry {
   constructor(
     func = (u: number, v: number, target: Vector3) =>
       target.set(u, v, Math.cos(u) * Math.sin(v)),
     slices = 8,
-    stacks = 8
+    stacks = 8,
   ) {
     super();
 
@@ -19,7 +19,7 @@ class ParametricGeometry extends BufferGeometry {
     this.parameters = {
       func: func,
       slices: slices,
-      stacks: stacks
+      stacks: stacks,
     };
 
     // buffers
@@ -109,4 +109,4 @@ class ParametricGeometry extends BufferGeometry {
   }
 }
 
-export { ParametricGeometry };
+export {ParametricGeometry};

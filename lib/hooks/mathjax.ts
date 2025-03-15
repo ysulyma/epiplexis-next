@@ -307,7 +307,7 @@ export function useMathJaxInputs<Id extends string>(
           callAll(
             ...ids.map((id, index) =>
               map.get(id).on("change", (input) => {
-                const value = parseFloat(input.value);
+                const value = Number.parseFloat(input.value);
                 if (!isFinite(value)) return;
 
                 point[index] = value;

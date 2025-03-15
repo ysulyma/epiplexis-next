@@ -38,5 +38,5 @@ export function PositionHelper() {
 }
 
 function fmtVec(vec: Vector3, precision = 2): number[] {
-  return Object.values(vec).map((x) => parseFloat(x.toFixed(precision)));
+  return Object.values(vec).map((x) => Number.parseFloat(x.toFixed(precision)));
 }

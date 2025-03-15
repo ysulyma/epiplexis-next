@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 
-import {Svg, Curve} from "./curve";
+import {Curve, Svg} from "./curve";
 
 interface State {
   segments: number;

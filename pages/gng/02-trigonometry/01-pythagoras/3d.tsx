@@ -2,15 +2,15 @@ import {FadeIn} from "@/components/animations/html";
 import {
   Canvas,
   Html,
-  KatexAnimations,
   KTX,
+  KatexAnimations,
   LoadKaTeX,
   Player,
 } from "@/components/liqvid";
-import {FadeIn3, FadeInOut3} from "@/components/three/animations";
 import {OrbitControls} from "@/components/three/OrbitControls";
 import {Point} from "@/components/three/Point";
 import {Segment} from "@/components/three/Segment";
+import {FadeIn3, FadeInOut3} from "@/components/three/animations";
 import {blue600, green500, pink600, red600} from "@/components/three/theme";
 import type {Pt3} from "@/lib/types";
 import {animate, bezier, easings} from "@liqvid/utils/animation";
@@ -44,7 +44,10 @@ q.setFromUnitVectors(new Vector3(0, 1, 0), new Vector3(0, 0, 1)).premultiply(
 
 const q2 = new Quaternion().setFromUnitVectors(
   new Vector3(-1, 0, 0),
-  vac.clone().setZ(0).normalize(),
+  vac
+    .clone()
+    .setZ(0)
+    .normalize(),
   // )
 );
 

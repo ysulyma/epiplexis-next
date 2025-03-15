@@ -16,14 +16,14 @@ const max = 1;
 const {raw} = String;
 
 const getValue = (e: React.ChangeEvent<HTMLInputElement>) =>
-  parseFloat(e.currentTarget.value);
+  Number.parseFloat(e.currentTarget.value);
 
 function setIndex(n: number) {
   return (e: React.ChangeEvent<HTMLInputElement>) => {
     useStore.setState((prev) => ({
       cube: [
         ...prev.cube.slice(0, n),
-        parseFloat(e.currentTarget.value),
+        Number.parseFloat(e.currentTarget.value),
         ...prev.cube.slice(n + 1),
       ] as Pt3,
     }));
@@ -99,7 +99,7 @@ function CylinderTable() {
       useStore.setState((prev) => ({
         cylinder: {
           ...prev.cylinder,
-          z: parseFloat(e.currentTarget.value),
+          z: Number.parseFloat(e.currentTarget.value),
         },
       })),
     [],

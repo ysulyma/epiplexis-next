@@ -2,7 +2,7 @@ import {setOpacity} from "@/lib/animation/three";
 import {useTime} from "@liqvid/playback/react";
 import {animate, bezier, easings} from "@liqvid/utils/animation";
 import dynamic from "next/dynamic";
-import {useRef, Children, cloneElement} from "react";
+import {Children, cloneElement, useRef} from "react";
 import type {Object3D} from "three";
 
 export const FadeIn3 = dynamic(

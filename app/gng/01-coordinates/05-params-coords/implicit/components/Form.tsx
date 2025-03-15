@@ -10,7 +10,7 @@ const {raw} = String;
 /** Form for adjusting the plane position */
 export function Form() {
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const z = parseFloat(e.currentTarget.value);
+    const z = Number.parseFloat(e.currentTarget.value);
     if (!isNaN(z)) {
       zSignal.set(z);
     }

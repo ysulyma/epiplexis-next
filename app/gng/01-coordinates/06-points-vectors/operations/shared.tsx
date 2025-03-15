@@ -1,4 +1,4 @@
-import {hexColor, blue800, red800, purple800} from "@/components/three/theme";
+import {blue800, hexColor, purple800, red800} from "@/components/three/theme";
 import {fakeMinus} from "@/lib/utils";
 
 export function format(num: number) {
