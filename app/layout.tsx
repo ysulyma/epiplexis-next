@@ -1,14 +1,16 @@
 import "../pages/global.css";
 
-import {darkModeScript} from "@/lib/api/dark-mode-server";
+import { darkModeScript } from "@/lib/api/dark-mode-server";
 import Script from "next/script";
 
-import {Providers} from "./providers";
+import { Providers } from "./providers";
 
 // apparently necessary for tailwind to generate this class
 ("dark:bg-stone-800");
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({
+  children,
+}: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="dark:text-white" suppressHydrationWarning={true}>

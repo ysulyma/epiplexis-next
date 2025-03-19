@@ -1,4 +1,4 @@
-import {KTX} from "@/components/KTX";
+import { KTX } from "@/components/KTX";
 
 const KtxLabel = ({
   children,
@@ -123,7 +123,7 @@ export default function Proof() {
 }
 
 type Pt2 = [number, number];
-function centroid(...points: Pt2[]): {x: number; y: number} {
+function centroid(...points: Pt2[]): { x: number; y: number } {
   const [totalX, totalY] = points.reduce(
     ([x, y], [x1, y1]) => [x + x1, y + y1],
     [0, 0],

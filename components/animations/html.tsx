@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
-import {Children, cloneElement, useMemo} from "react";
+import { Children, cloneElement, useMemo } from "react";
 
 export const FadeIn = dynamic(
   () =>
     import("liqvid").then(
-      ({useScript}) =>
+      ({ useScript }) =>
         function FadeIn({
           children,
           delay = 0,
@@ -25,8 +25,8 @@ export const FadeIn = dynamic(
             () =>
               script.playback.newAnimation(
                 [
-                  {opacity: 0, pointerEvents: "none"},
-                  {opacity: endValue, pointerEvents: "all"},
+                  { opacity: 0, pointerEvents: "none" },
+                  { opacity: endValue, pointerEvents: "all" },
                 ],
                 {
                   delay: script.parseStart(start) + delay,
@@ -46,8 +46,8 @@ export const FadeIn = dynamic(
             }
           };
 
-          return <>{cloneElement(Child, {ref})}</>;
+          return <>{cloneElement(Child, { ref })}</>;
         },
     ),
-  {ssr: false},
+  { ssr: false },
 );

@@ -1,14 +1,14 @@
 "use client";
 
-import {ControlsContext} from "@/components/three/PositionHelper";
-import type {Pt3} from "@/lib/types";
-import {OrbitControls} from "@react-three/drei";
-import {Canvas} from "@react-three/fiber";
-import {Suspense, useState} from "react";
+import { ControlsContext } from "@/components/three/PositionHelper";
+import type { Pt3 } from "@/lib/types";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Suspense, useState } from "react";
 
-import {Form} from "./components/Form";
-import {ImplicitSurface} from "./components/ImplicitSurface";
-import {CuttingPlane} from "./components/Plane";
+import { Form } from "./components/Form";
+import { ImplicitSurface } from "./components/ImplicitSurface";
+import { CuttingPlane } from "./components/Plane";
 
 const cameraPosition: Pt3 = [3.24, -2.63, 1.71];
 const orbitTarget: Pt3 = [0, 0, 0];

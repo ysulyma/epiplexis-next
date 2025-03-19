@@ -1,11 +1,11 @@
-import {useThree} from "@react-three/fiber";
-import {useEffect} from "react";
-import type {Vector3} from "three";
+import { useThree } from "@react-three/fiber";
+import { useEffect } from "react";
+import type { Vector3 } from "three";
 
-import {useControls} from "./controls";
+import { useControls } from "./controls";
 
 export function PositionHelper() {
-  const {camera} = useThree();
+  const { camera } = useThree();
   const controls = useControls();
 
   useEffect(() => {

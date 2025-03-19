@@ -1,7 +1,9 @@
 export default function Diagram() {
   return (
     <svg
+      aria-label="Illustration of the Frobenius on Ainf"
       className="max-h-[100dvh] max-w-[100dvw] fill-black stroke-black dark:fill-white dark:stroke-white"
+      role="img"
       strokeWidth="1.5"
       viewBox="50 50 250 250"
     >

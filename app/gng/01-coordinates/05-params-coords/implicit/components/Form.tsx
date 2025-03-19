@@ -1,17 +1,16 @@
-import {KTX} from "@/components/KTX";
-import {useSignalValue} from "@/lib/api/signal";
-import {truncate} from "@/lib/math";
-import {use} from "react";
+import { KTX } from "@/components/KTX";
+import { useSignalValue } from "@/lib/api/signal";
+import { truncate } from "@/lib/math";
 
-import {zSignal} from "../state";
+import { zSignal } from "../state";
 
-const {raw} = String;
+const { raw } = String;
 
 /** Form for adjusting the plane position */
 export function Form() {
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const z = Number.parseFloat(e.currentTarget.value);
-    if (!isNaN(z)) {
+    if (!Number.isNaN(z)) {
       zSignal.set(z);
     }
   };

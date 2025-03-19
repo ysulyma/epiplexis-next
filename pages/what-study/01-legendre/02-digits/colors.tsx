@@ -1,4 +1,4 @@
-import {useMemo, useState} from "react";
+import { useMemo, useState } from "react";
 
 const labels = {
   r: "Red",
@@ -10,14 +10,14 @@ const primary = ["r", "g", "b"] as const;
 type Primary = (typeof primary)[number];
 
 export default function Table() {
-  const {color, r, g, b, setColor, setComponent} = useColor("#ff0000");
+  const { color, r, g, b, setColor, setComponent } = useColor("#ff0000");
 
   return (
     <main className="flex h-full text-xl">
       <table>
         <tbody>
           {primary.map((c) => {
-            const value = {r, g, b}[c];
+            const value = { r, g, b }[c];
             const onChange: React.ChangeEventHandler<HTMLInputElement> = (
               e,
             ) => {
@@ -59,7 +59,7 @@ export default function Table() {
         />
         {color}
       </div>
-      <div className="flex-1" style={{backgroundColor: color}} />
+      <div className="flex-1" style={{ backgroundColor: color }} />
     </main>
   );
 }
@@ -80,7 +80,7 @@ function useColor(initial = "#ffffff") {
       b,
 
       setComponent: (c: Primary, value: number) => {
-        const components = {r, g, b};
+        const components = { r, g, b };
         components[c] = value;
         setColor(
           "#" +

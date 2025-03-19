@@ -1,19 +1,19 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-import {CircleControl} from "@/components/CircleControl";
-import {KTX} from "@/components/KTX";
-import {DEGREES, step} from "@/lib/constants";
-import {truncate} from "@/lib/math";
-import type {Pt3} from "@/lib/types";
-import {range} from "@liqvid/utils/misc";
-import {useCallback} from "react";
+import { useCallback } from "react";
 import shallow from "zustand/shallow";
 
-import {useStore} from "./store";
+import { CircleControl } from "@/components/CircleControl";
+import { KTX } from "@/components/KTX";
+import { DEGREES, step } from "@/lib/constants";
+import { truncate } from "@/lib/math";
+import type { Pt3 } from "@/lib/types";
+import { range } from "@liqvid/utils/misc";
+
+import { useStore } from "./store";
 
 const min = 0;
 const max = 1;
 
-const {raw} = String;
+const { raw } = String;
 
 const getValue = (e: React.ChangeEvent<HTMLInputElement>) =>
   Number.parseFloat(e.currentTarget.value);
@@ -71,7 +71,7 @@ function CubeTable() {
           <tr key={n}>
             <td>
               <input
-                {...{min, max, step}}
+                {...{ min, max, step }}
                 onChange={setIndex(n)}
                 type="range"
                 value={cube[n]}
@@ -79,7 +79,7 @@ function CubeTable() {
             </td>
             <td>
               <NumberInput
-                {...{min, max, step}}
+                {...{ min, max, step }}
                 onChange={setIndex(n)}
                 value={cube[n]}
               />
@@ -92,7 +92,7 @@ function CubeTable() {
 }
 
 function CylinderTable() {
-  const {z, theta} = useStore((state) => state.cylinder, shallow);
+  const { z, theta } = useStore((state) => state.cylinder, shallow);
 
   const onChangeZ = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -126,13 +126,17 @@ function CylinderTable() {
           <td>
             <input
               onChange={onChangeZ}
-              {...{min, max, step}}
+              {...{ min, max, step }}
               type="range"
               value={z}
             />
           </td>
           <td>
-            <NumberInput onChange={onChangeZ} {...{min, max, step}} value={z} />
+            <NumberInput
+              onChange={onChangeZ}
+              {...{ min, max, step }}
+              value={z}
+            />
           </td>
         </tr>
         <tr>

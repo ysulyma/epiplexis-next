@@ -1,5 +1,5 @@
-import type {OrbitControls} from "@react-three/drei";
-import {createContext, useContext} from "react";
+import type { OrbitControls } from "@react-three/drei";
+import { createContext, useContext } from "react";
 
 export type RefHandle<T> = T extends React.ForwardRefExoticComponent<infer C>
   ? C

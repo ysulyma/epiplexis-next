@@ -1,8 +1,8 @@
 "use client";
 
-import type {MathJax3Config} from "better-react-mathjax";
-import {MathJaxContext} from "better-react-mathjax";
-import {useMemo} from "react";
+import type { MathJax3Config } from "better-react-mathjax";
+import { MathJaxContext } from "better-react-mathjax";
+import { useMemo } from "react";
 
 type Feature = "input";
 
@@ -10,7 +10,7 @@ export function EpiplexisMathJaxContext({
   features = [],
   ...props
 }: Omit<
-  Extract<React.ComponentProps<typeof MathJaxContext>, {version?: 3}>,
+  Extract<React.ComponentProps<typeof MathJaxContext>, { version?: 3 }>,
   "config"
 > & {
   features?: Feature[];
@@ -22,12 +22,12 @@ export function EpiplexisMathJaxContext({
         paths: {},
       },
       tex: {
-        packages: {"[+]": ["color"]},
+        packages: { "[+]": ["color"] },
       },
     };
 
     if (features.length > 0) {
-      config.loader.paths["custom"] =
+      config.loader.paths.custom =
         "https://cdn.jsdelivr.net/gh/ysulyma/mathjax-extensions/";
     }
 

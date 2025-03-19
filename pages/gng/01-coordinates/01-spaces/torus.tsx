@@ -1,16 +1,16 @@
-import {ParametricGeometry} from "@/components/three/ParametricGeometry";
+import { ParametricGeometry } from "@/components/three/ParametricGeometry";
 import {
   ControlsContext,
   PositionHelper,
 } from "@/components/three/PositionHelper";
-import {blue600, green600, red600} from "@/components/three/theme";
-import type {Pt3} from "@/lib/types";
-import {OrbitControls} from "@react-three/drei";
-import {Canvas, extend} from "@react-three/fiber";
-import {Suspense, useState} from "react";
-import {DoubleSide} from "three";
+import { blue600, green600, red600 } from "@/components/three/theme";
+import type { Pt3 } from "@/lib/types";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas, extend } from "@react-three/fiber";
+import { Suspense, useState } from "react";
+import { DoubleSide } from "three";
 
-extend({ParametricGeometry});
+extend({ ParametricGeometry });
 
 const cameraPosition: Pt3 = [7.27, -5.04, 4.09];
 const orbitTarget: Pt3 = [0, 0, 0];

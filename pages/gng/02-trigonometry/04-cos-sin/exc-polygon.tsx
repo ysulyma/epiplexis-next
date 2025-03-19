@@ -1,15 +1,15 @@
-import {onDrag} from "@liqvid/utils/react";
-import {screenToSVG, screenToSVGVector} from "@liqvid/utils/svg";
+import { onDrag } from "@liqvid/utils/react";
+import { screenToSVG, screenToSVGVector } from "@liqvid/utils/svg";
 import classNames from "classnames";
-import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import {KTX} from "@/components/KTX";
-import {DEGREES, TURN} from "@/lib/constants";
-import {mod, truncate} from "@/lib/math";
-import {brand} from "@/lib/utils";
-import {between} from "@liqvid/utils/misc";
+import { KTX } from "@/components/KTX";
+import { DEGREES, TURN } from "@/lib/constants";
+import { mod, truncate } from "@/lib/math";
+import { brand } from "@/lib/utils";
+import { between } from "@liqvid/utils/misc";
 
-const {cos, sin, tan, sqrt, atan2} = Math;
+const { cos, sin, tan, sqrt, atan2 } = Math;
 
 export default function Polygon() {
   const [n, setN] = useState(3);
@@ -20,7 +20,7 @@ export default function Polygon() {
 
   const points = useMemo(
     () =>
-      Array.from({length: n}).map((_, i) =>
+      Array.from({ length: n }).map((_, i) =>
         [
           r * Math.cos((i * TURN) / n),
           -r * Math.sin((i * TURN) / n),

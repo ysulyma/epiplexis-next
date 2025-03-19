@@ -1,6 +1,6 @@
-import {animate, bezier, easings} from "@liqvid/utils/animation";
-import type {Playback} from "liqvid";
-import type {Material, Mesh, Object3D} from "three";
+import { animate, bezier, easings } from "@liqvid/utils/animation";
+import type { Playback } from "liqvid";
+import type { Material, Mesh, Object3D } from "three";
 
 /** Set opacity on THREE Mesh or Group */
 export const setOpacity = (target: Object3D, opacity: number) => {

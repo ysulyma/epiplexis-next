@@ -1,7 +1,7 @@
 // @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-import {range} from "@liqvid/utils/misc";
-import {useState} from "react";
+import { range } from "@liqvid/utils/misc";
+import { useState } from "react";
 
 /**
  * The minimum number that can be chosen by the user.
@@ -73,7 +73,8 @@ export default function Table() {
       <div className="mx-auto my-4 flex w-full justify-between gap-8">
         {tables.map((table, index) => (
           <table
-            className="border border-solid border-gray-200 dark:border-gray-800"
+            className="border border-gray-200 border-solid dark:border-gray-800"
+            // biome-ignore lint/suspicious/noArrayIndexKey:
             key={index}
           >
             <thead className="bg-gray-100 dark:bg-stone-700">

@@ -1,4 +1,4 @@
-import type {UpwardMessage} from "./messages";
+import type { UpwardMessage } from "./messages";
 
 export function syncHeight() {
   if (!globalThis.document?.documentElement) return;

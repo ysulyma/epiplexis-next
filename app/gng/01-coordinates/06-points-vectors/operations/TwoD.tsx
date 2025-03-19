@@ -1,23 +1,23 @@
 "use client";
 
-import {combineRefs} from "@liqvid/utils/react";
-import {MathJax} from "better-react-mathjax";
-import {Coordinates, Mafs, MovablePoint, Vector, vec} from "mafs";
-import {memo, useMemo, useReducer} from "react";
+import { combineRefs } from "@liqvid/utils/react";
+import { MathJax } from "better-react-mathjax";
+import { Coordinates, Mafs, MovablePoint, Vector, vec } from "mafs";
+import { memo, useMemo, useReducer } from "react";
 
-import {useMathJaxElements, useMathJaxInputs} from "@/lib/hooks/mathjax";
-import type {Pt2} from "@/lib/types";
-import {makeContext} from "@/lib/utils";
+import { useMathJaxElements, useMathJaxInputs } from "@/lib/hooks/mathjax";
+import type { Pt2 } from "@/lib/types";
+import { makeContext } from "@/lib/utils";
 
-import {format, leftColor, resultColor, rightColor} from "./shared";
+import { format, leftColor, resultColor, rightColor } from "./shared";
 
-const {raw} = String;
+const { raw } = String;
 
 /** MathJax helper */
 const $$ = memo(function $$({
   children,
   ...props
-}: React.ComponentProps<typeof MathJax> & {children: string}) {
+}: React.ComponentProps<typeof MathJax> & { children: string }) {
   return <MathJax {...props}>{raw`\[${children}\]`}</MathJax>;
 });
 
@@ -42,14 +42,14 @@ const initialState: State = {
 };
 
 type Action =
-  | {type: "setLeft"; value: Pt2}
-  | {type: "setRight"; value: Pt2}
-  | {type: "setResult"; value: Pt2}
-  | {type: "setTLeft"; value: Mode}
-  | {type: "setTRight"; value: Mode};
+  | { type: "setLeft"; value: Pt2 }
+  | { type: "setRight"; value: Pt2 }
+  | { type: "setResult"; value: Pt2 }
+  | { type: "setTLeft"; value: Mode }
+  | { type: "setTRight"; value: Mode };
 
 function reducer(state: State, action: Action) {
-  const {tLeft, tRight} = state;
+  const { tLeft, tRight } = state;
   const op = tLeft === "point" && tRight === "point" ? vec.sub : vec.add;
 
   switch (action.type) {
@@ -97,15 +97,15 @@ function reducer(state: State, action: Action) {
   }
 }
 
-const {context, useIt: useTwoDState} = makeContext<
-  State & {dispatch: React.Dispatch<Action>}
->({...initialState, dispatch: () => {}});
+const { context, useIt: useTwoDState } = makeContext<
+  State & { dispatch: React.Dispatch<Action> }
+>({ ...initialState, dispatch: () => {} });
 
 export function TwoD() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <context.Provider value={{...state, dispatch}}>
+    <context.Provider value={{ ...state, dispatch }}>
       <div className="flex flex-1 flex-col">
         <figure className="rounded-md border border-solid dark:border-stone-700">
           <Scene />
@@ -118,7 +118,7 @@ export function TwoD() {
 
 /** Mafs scene */
 function Scene() {
-  const {left, right, result, tLeft, tRight} = useTwoDState();
+  const { left, right, result, tLeft, tRight } = useTwoDState();
 
   return (
     <div className="aspect-video w-full">
@@ -175,34 +175,36 @@ function Scene() {
 }
 
 function LeftMovablePoint() {
-  const {left, dispatch} = useTwoDState();
+  const { left, dispatch } = useTwoDState();
   return (
     <MovablePoint
       color={leftColor}
       point={left}
-      onMove={(left: Coords) => dispatch({type: "setLeft", value: left})}
+      onMove={(left: Coords) => dispatch({ type: "setLeft", value: left })}
     />
   );
 }
 
 function RightMovablePoint() {
-  const {right, dispatch} = useTwoDState();
+  const { right, dispatch } = useTwoDState();
   return (
     <MovablePoint
       color={rightColor}
       point={right}
-      onMove={(right: Coords) => dispatch({type: "setRight", value: right})}
+      onMove={(right: Coords) => dispatch({ type: "setRight", value: right })}
     />
   );
 }
 
 function ResultMovablePoint() {
-  const {result, dispatch} = useTwoDState();
+  const { result, dispatch } = useTwoDState();
   return (
     <MovablePoint
       color={resultColor}
       point={result}
-      onMove={(result: Coords) => dispatch({type: "setResult", value: result})}
+      onMove={(result: Coords) =>
+        dispatch({ type: "setResult", value: result })
+      }
     />
   );
 }
@@ -213,7 +215,7 @@ const Td = (props: React.ComponentProps<"td">) => (
 
 /** Input */
 function Controls() {
-  const {left, right, result, tLeft, tRight, dispatch} = useTwoDState();
+  const { left, right, result, tLeft, tRight, dispatch } = useTwoDState();
 
   const $inputs = useMathJaxInputs(
     useMemo(
@@ -256,17 +258,17 @@ function Controls() {
   );
 
   // sync inputs
-  $inputs.useSyncPointDown(left, ["ax", "ay"], {format});
+  $inputs.useSyncPointDown(left, ["ax", "ay"], { format });
   $inputs.useSyncPointUp(left, ["ax", "ay"], {
-    onChange: (left) => dispatch({type: "setLeft", value: left}),
+    onChange: (left) => dispatch({ type: "setLeft", value: left }),
   });
 
-  $inputs.useSyncPointDown(right, ["bx", "by"], {format});
+  $inputs.useSyncPointDown(right, ["bx", "by"], { format });
   $inputs.useSyncPointUp(right, ["bx", "by"], {
-    onChange: (right) => dispatch({type: "setRight", value: right}),
+    onChange: (right) => dispatch({ type: "setRight", value: right }),
   });
 
-  $results.useSyncPointDown(result, ["ra", "rb"], {format});
+  $results.useSyncPointDown(result, ["ra", "rb"], { format });
 
   return (
     <fieldset ref={combineRefs($inputs.ref, $results.ref)}>

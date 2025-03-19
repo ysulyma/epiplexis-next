@@ -1,6 +1,6 @@
-import {lerp} from "@liqvid/utils/misc";
-import type {MutableRefObject} from "react";
-import {useCallback, useEffect, useRef, useState} from "react";
+import { lerp } from "@liqvid/utils/misc";
+import type { MutableRefObject } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type Bounds = {
   xMin: number;
@@ -27,7 +27,7 @@ export default function Mandelbrot() {
   const resize = () => {
     const canvas = ref.current;
     if (!canvas) return;
-    const {height, width} = canvas.getBoundingClientRect();
+    const { height, width } = canvas.getBoundingClientRect();
     canvas.height = height;
     canvas.width = height;
   };
@@ -40,7 +40,7 @@ export default function Mandelbrot() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const {height, width} = canvas;
+    const { height, width } = canvas;
 
     // faster to do with imagedata
     const imageData = ctx.getImageData(0, 0, width, height);
@@ -129,7 +129,7 @@ type Complex = {
 };
 
 function add(a: Complex, b: Complex): Complex {
-  return {re: a.re + b.re, im: a.im + b.im};
+  return { re: a.re + b.re, im: a.im + b.im };
 }
 
 function mul(a: Complex, b: Complex): Complex {
@@ -144,7 +144,7 @@ function normSquared(z: Complex): number {
 }
 
 function behavior(c: Complex): number {
-  let z = {re: 0, im: 0};
+  let z = { re: 0, im: 0 };
   let n = 0;
   while (n <= trials && normSquared(z) < 4) {
     z = add(mul(z, z), c);

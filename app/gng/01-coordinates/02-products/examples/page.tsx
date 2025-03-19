@@ -4,15 +4,15 @@ import {
   ControlsContext,
   PositionHelper,
 } from "@/components/three/PositionHelper";
-import type {Pt3} from "@/lib/types";
-import {OrbitControls} from "@react-three/drei";
-import {Canvas} from "@react-three/fiber";
-import {Suspense, useState} from "react";
+import type { Pt3 } from "@/lib/types";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Suspense, useState } from "react";
 
-import {Controls} from "./Controls";
-import {Cube} from "./Cube";
-import {Cylinder} from "./Cylinder";
-import {Torus} from "./Torus";
+import { Controls } from "./Controls";
+import { Cube } from "./Cube";
+import { Cylinder } from "./Cylinder";
+import { Torus } from "./Torus";
 
 const cameraPosition: Pt3 = [2.31, -5.86, 2.11];
 const orbitTarget: Pt3 = [2.3, -0.29, -1.81];
@@ -32,12 +32,14 @@ const Scene = () => {
 };
 
 export default function Examples() {
-  const [controls, setControls] = useState<any>();
+  const [controls, setControls] = useState<React.ComponentRef<
+    typeof OrbitControls
+  > | null>(null);
 
   return (
     <main className="flex h-screen flex-col">
       <Controls />
-      <div className="bg-grid flex-1">
+      <div className="flex-1 bg-grid">
         <Canvas
           camera={{
             near: 0.1,

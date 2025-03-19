@@ -1,8 +1,8 @@
-import {useTime} from "@liqvid/playback/react";
-import {lerp} from "@liqvid/utils/misc";
-import {forwardRef, useImperativeHandle, useRef, useState} from "react";
-import type {Mesh} from "three";
-import {Curve, Plane, TubeGeometry, Vector3} from "three";
+import { useTime } from "@liqvid/playback/react";
+import { lerp } from "@liqvid/utils/misc";
+import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import type { Mesh } from "three";
+import { Curve, Plane, TubeGeometry, Vector3 } from "three";
 
 type Pt3 = [number, number, number];
 

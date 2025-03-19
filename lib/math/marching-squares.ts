@@ -1,4 +1,4 @@
-import type {Pt3} from "../utils";
+import type { Pt3 } from "@/lib/types";
 
 /* marching squares */
 /* taken from https://stemkoski.github.io/MathBox/graph2d-implicit.html */
@@ -37,28 +37,28 @@ export function marchingSquares(
       const rightInterp = ((c - z2) / (z4 - z2)) * yStep;
 
       // for a visual diagram of cases: https://en.wikipedia.org/wiki/Marching_squares
-      if (n == 1 || n == 14)
+      if (n === 1 || n === 14)
         // lower left corner
         points.push([x, y + leftInterp, c], [x + bottomInterp, y, c]);
-      else if (n == 2 || n == 13)
+      else if (n === 2 || n === 13)
         // lower right corner
         points.push([x + bottomInterp, y, c], [x + xStep, y + rightInterp, c]);
-      else if (n == 4 || n == 11)
+      else if (n === 4 || n === 11)
         // upper right corner
         points.push(
           [x + topInterp, y + yStep, c],
           [x + xStep, y + rightInterp, c],
         );
-      else if (n == 8 || n == 7)
+      else if (n === 8 || n === 7)
         // upper left corner
         points.push([x, y + leftInterp, c], [x + topInterp, y + yStep, c]);
-      else if (n == 3 || n == 12)
+      else if (n === 3 || n === 12)
         // horizontal
         points.push([x, y + leftInterp, c], [x + xStep, y + rightInterp, c]);
-      else if (n == 6 || n == 9)
+      else if (n === 6 || n === 9)
         // vertical
         points.push([x + bottomInterp, y, c], [x + topInterp, y + yStep, c]);
-      else if (n == 5)
+      else if (n === 5)
         // should do subcase // lower left & upper right
         points.push(
           [x, y + leftInterp, c],
@@ -66,7 +66,7 @@ export function marchingSquares(
           [x + topInterp, y + yStep, c],
           [x + xStep, y + rightInterp, c],
         );
-      else if (n == 10)
+      else if (n === 10)
         // should do subcase // lower right & upper left
         points.push(
           [x + bottomInterp, y, c],
@@ -75,7 +75,7 @@ export function marchingSquares(
           [x, y + leftInterp, c],
           [x + topInterp, y + yStep, c],
         );
-      else if (n == 0 || n == 15)
+      else if (n === 0 || n === 15)
         // no line segments appear in this grid square.
         points.push();
     }

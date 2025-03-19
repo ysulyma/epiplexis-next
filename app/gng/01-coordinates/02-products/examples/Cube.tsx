@@ -1,8 +1,8 @@
-import {pointRadius, resolution} from "@/lib/constants";
-import {useEffect, useRef} from "react";
-import {BoxGeometry, type Mesh} from "three";
+import { pointRadius, resolution } from "@/lib/constants";
+import { useEffect, useRef } from "react";
+import { BoxGeometry, type Mesh } from "three";
 
-import {useStore} from "./store";
+import { useStore } from "./store";
 
 const box = new BoxGeometry(1, 1, 1);
 
@@ -14,7 +14,7 @@ export function Cube(props: JSX.IntrinsicElements["group"]): JSX.Element {
       useStore.subscribe(
         (state) => state.cube,
         (pos) => {
-          point.current!.position.set(...pos);
+          point.current?.position.set(...pos);
         },
       ),
     [],

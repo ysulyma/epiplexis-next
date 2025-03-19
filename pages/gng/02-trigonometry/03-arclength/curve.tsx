@@ -1,4 +1,4 @@
-import {forwardRef} from "react";
+import { forwardRef } from "react";
 
 // this is only a Page so that the dark-mode stroke will work
 export default function ShowCurve() {
@@ -9,7 +9,7 @@ export default function ShowCurve() {
   );
 }
 
-export const Svg = ({children}: {children: React.ReactNode}) => (
+export const Svg = ({ children }: { children: React.ReactNode }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 143.046 51.915">
     {children}
   </svg>

@@ -1,8 +1,8 @@
-import {useCallback, useId, useMemo, useRef} from "react";
+import { useCallback, useId, useMemo, useRef } from "react";
 
 export default function Demo() {
   return (
-    <main className="min-w-screen min-h-screen">
+    <main className="min-h-screen min-w-screen">
       <Popup title="Demo">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -26,12 +26,12 @@ function Popup({
 }) {
   const headerId = useId();
 
-  const {anchorEvents, ref} = useDragElement();
+  const { anchorEvents, ref } = useDragElement();
 
   return (
     <aside
       aria-labelledby={headerId}
-      className="max-w-[600px] overflow-hidden rounded-md border border-solid border-gray-200 shadow"
+      className="max-w-[600px] overflow-hidden rounded-md border border-gray-200 border-solid shadow"
       ref={ref}
       role="dialog"
     >
@@ -93,7 +93,7 @@ function useDrag<T = Element>(opts: {
     [opts.move, onPointerUp, onPointerLeave],
   );
 
-  return {onPointerDown};
+  return { onPointerDown };
 }
 
 /** Provides functionality to drag an element */
@@ -108,7 +108,7 @@ function useDragElement<TRoot extends HTMLElement, TAnchor extends Element>(): {
 } {
   const ref = useRef<TRoot>(null);
 
-  const offset = useRef({x: 0, y: 0});
+  const offset = useRef({ x: 0, y: 0 });
 
   const anchorEvents = useDrag(
     useMemo(
@@ -118,7 +118,7 @@ function useDragElement<TRoot extends HTMLElement, TAnchor extends Element>(): {
 
           // set offset
           const rect = ref.current.getBoundingClientRect();
-          offset.current = {x: rect.x - e.clientX, y: rect.y - e.clientY};
+          offset.current = { x: rect.x - e.clientX, y: rect.y - e.clientY };
         },
         move: (e: PointerEvent) => {
           if (!ref.current) return;

@@ -1,4 +1,4 @@
-import {useRef} from "react";
+import { useRef } from "react";
 
 export function useChanged(args: Record<string, unknown>) {
   const prev = useRef(args);

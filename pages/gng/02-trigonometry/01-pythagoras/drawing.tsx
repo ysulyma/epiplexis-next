@@ -1,6 +1,6 @@
-import {onDrag} from "@liqvid/utils/react";
-import {screenToSVG} from "@liqvid/utils/svg";
-import {useRef, useState} from "react";
+import { onDrag } from "@liqvid/utils/react";
+import { screenToSVG } from "@liqvid/utils/svg";
+import { useRef, useState } from "react";
 
 /** Vector in R^2 */
 type Vec2 = [number, number];
@@ -36,7 +36,7 @@ export default function DrawingCircles() {
   const [circles, setCircles] = useState<Circle[]>(initialCircles);
   const [color, setColor] = useState("#FF0000");
   const appendCircle: AppendCircle = (circle) =>
-    setCircles((prev) => [...prev, {...circle, fill: color}]);
+    setCircles((prev) => [...prev, { ...circle, fill: color }]);
 
   return (
     <div className="flex h-screen w-full flex-col dark:text-white">
@@ -57,7 +57,7 @@ export default function DrawingCircles() {
           Clear
         </button>
       </form>
-      <Canvas {...{appendCircle, circles, color}} />
+      <Canvas {...{ appendCircle, circles, color }} />
     </div>
   );
 }
@@ -82,7 +82,7 @@ function Canvas({
     circleProps: previewCircleProps,
   } = useDrawCircle(ref, appendCircle);
 
-  const {onPointerMove, circleProps: hintCircleProps} = useCursorHint(
+  const { onPointerMove, circleProps: hintCircleProps } = useCursorHint(
     ref,
     dragging,
   );
@@ -153,7 +153,7 @@ function useDrawCircle(
 
   return {
     circleProps: center.current
-      ? {cx: center.current[0], cy: center.current[1], r: radius}
+      ? { cx: center.current[0], cy: center.current[1], r: radius }
       : undefined,
     dragging,
     events,
@@ -178,7 +178,7 @@ function useCursorHint(
   };
 
   return {
-    circleProps: position ? {cx: position[0], cy: position[1]} : undefined,
+    circleProps: position ? { cx: position[0], cy: position[1] } : undefined,
     onPointerMove,
   };
 }

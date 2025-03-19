@@ -1,6 +1,6 @@
-import {darkClass} from "./dark-mode-server";
-import type {DownwardMessage} from "./messages";
-import {Signal, useSignalValue} from "./signal";
+import { darkClass } from "./dark-mode-server";
+import type { DownwardMessage } from "./messages";
+import { Signal, useSignalValue } from "./signal";
 
 type ColorScheme = "light" | "dark";
 
@@ -13,6 +13,7 @@ const signal = new Signal<ColorScheme>("light");
  */
 function setColorScheme(value: ColorScheme | boolean) {
   if (typeof value === "boolean") {
+    // biome-ignore lint/style/noParameterAssign:
     value = value ? "dark" : "light";
   }
 
@@ -29,7 +30,7 @@ export function initializeDarkMode() {
 export function syncDarkMode() {
   if (!globalThis.document?.documentElement) return;
 
-  window.addEventListener("message", ({data}: {data: DownwardMessage}) => {
+  window.addEventListener("message", ({ data }: { data: DownwardMessage }) => {
     if (data.type === "color-scheme") {
       setColorScheme(data.value);
     }
@@ -40,6 +41,6 @@ export function useColorScheme() {
   return useSignalValue(signal);
 }
 
-export function useSchemed<T>(values: {dark: T; light: T}) {
+export function useSchemed<T>(values: { dark: T; light: T }) {
   return values[useColorScheme()];
 }

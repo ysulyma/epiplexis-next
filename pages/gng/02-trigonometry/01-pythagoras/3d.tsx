@@ -1,4 +1,4 @@
-import {FadeIn} from "@/components/animations/html";
+import { FadeIn } from "@/components/animations/html";
 import {
   Canvas,
   Html,
@@ -7,16 +7,16 @@ import {
   LoadKaTeX,
   Player,
 } from "@/components/liqvid";
-import {OrbitControls} from "@/components/three/OrbitControls";
-import {Point} from "@/components/three/Point";
-import {Segment} from "@/components/three/Segment";
-import {FadeIn3, FadeInOut3} from "@/components/three/animations";
-import {blue600, green500, pink600, red600} from "@/components/three/theme";
-import type {Pt3} from "@/lib/types";
-import {animate, bezier, easings} from "@liqvid/utils/animation";
+import { OrbitControls } from "@/components/three/OrbitControls";
+import { Point } from "@/components/three/Point";
+import { Segment } from "@/components/three/Segment";
+import { FadeIn3, FadeInOut3 } from "@/components/three/animations";
+import { blue600, green500, pink600, red600 } from "@/components/three/theme";
+import type { Pt3 } from "@/lib/types";
+import { animate, bezier, easings } from "@liqvid/utils/animation";
 import type * as TLiqvid from "liqvid";
-import {useEffect, useMemo, useState} from "react";
-import {DoubleSide, Quaternion, Vector3} from "three";
+import { useEffect, useMemo, useState } from "react";
+import { DoubleSide, Quaternion, Vector3 } from "three";
 
 import "katex/dist/katex.min.css";
 import "liqvid/dist/liqvid.min.css";
@@ -31,7 +31,7 @@ const aux = [b[0], b[1], a[2]] as Pt3;
 const vc = new Vector3(...aux);
 const vab = new Vector3().subVectors(va, vb);
 const vac = new Vector3().subVectors(vc, va);
-const {raw} = String;
+const { raw } = String;
 
 const q = new Quaternion();
 
@@ -89,10 +89,10 @@ export default function ThreeD() {
         <section
           className="h-full w-full dark:text-white"
           data-affords="click"
-          style={{backgroundImage: `url("/epiplexis-next/grid.png")`}}
+          style={{ backgroundImage: `url("/epiplexis-next/grid.png")` }}
         >
           <Canvas
-            camera={{position: [11.01, 9.73, 8.79]}}
+            camera={{ position: [11.01, 9.73, 8.79] }}
             onCreated={(state) => {
               state.gl.localClippingEnabled = true;
             }}

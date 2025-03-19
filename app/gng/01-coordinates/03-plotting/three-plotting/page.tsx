@@ -4,13 +4,13 @@ import {
   ControlsContext,
   PositionHelper,
 } from "@/components/three/PositionHelper";
-import type {Pt3} from "@/lib/types";
-import {OrbitControls} from "@react-three/drei";
-import {Canvas} from "@react-three/fiber";
-import {Suspense, useState} from "react";
+import type { Pt3 } from "@/lib/types";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Suspense, useState } from "react";
 
-import {CurveGraph} from "./components/Curve";
-import {SurfaceGraph} from "./components/Surface";
+import { CurveGraph } from "./components/Curve";
+import { SurfaceGraph } from "./components/Surface";
 
 const cameraPosition: Pt3 = [10.77, -10.98, 9.41];
 const orbitTarget: Pt3 = [0, 0, 0];

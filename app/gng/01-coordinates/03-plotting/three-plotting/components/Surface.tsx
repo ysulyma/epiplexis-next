@@ -1,12 +1,12 @@
-import {blue600} from "@/components/three/theme";
-import {TURN} from "@/lib/constants";
-import {lerp} from "@/lib/math";
-import type {Object3DNode} from "@react-three/fiber";
-import {extend} from "@react-three/fiber";
-import {DoubleSide} from "three";
-import {ParametricGeometry} from "three-stdlib";
+import { blue600 } from "@/components/three/theme";
+import { TURN } from "@/lib/constants";
+import { lerp } from "@/lib/math";
+import type { Object3DNode } from "@react-three/fiber";
+import { extend } from "@react-three/fiber";
+import { DoubleSide } from "three";
+import { ParametricGeometry } from "three-stdlib";
 
-extend({ParametricGeometry});
+extend({ ParametricGeometry });
 
 type Parametrization = ConstructorParameters<typeof ParametricGeometry>[0];
 

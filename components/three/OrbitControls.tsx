@@ -1,29 +1,30 @@
-import {OrbitControls as DreiOrbitControls} from "@react-three/drei";
-import {extend, useFrame, useThree} from "@react-three/fiber"; /* camera */
-import {useEffect, useRef} from "react";
+import { OrbitControls as DreiOrbitControls } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
 
-import type {Pt3} from "@/lib/types";
+import type { Pt3 } from "@/lib/types";
 
-export function OrbitControls(props: {target?: Pt3}) {
+export function OrbitControls(props: { target?: Pt3 }) {
   const $three = useThree();
 
   const {
     camera,
-    gl: {domElement},
+    gl: { domElement },
     scene,
   } = $three;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny:
   (window as any).scene = scene;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny:
   (window as any).$three = $three;
 
   // set correct up direction
   camera.up.set(0, 0, 1);
 
   // controls
-  const controls = useRef<DreiOrbitControls>();
+  const controls = useRef<React.ComponentRef<typeof DreiOrbitControls>>();
   useFrame(() => controls.current?.update());
   useEffect(() => {
+    if (!controls.current) return;
     if (props.target) {
       controls.current.target.set(...props.target);
     }

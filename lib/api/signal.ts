@@ -1,5 +1,5 @@
-import {bind} from "@liqvid/utils/misc";
-import {useEffect, useState} from "react";
+import { bind } from "@liqvid/utils/misc";
+import { useEffect, useState } from "react";
 
 export class Signal<T> {
   #listeners: Set<(value: T) => void>;

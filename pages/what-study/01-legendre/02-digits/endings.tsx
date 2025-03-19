@@ -1,5 +1,5 @@
-import {KTX} from "@/components/KTX";
-import {range} from "@liqvid/utils/misc";
+import { KTX } from "@/components/KTX";
+import { range } from "@liqvid/utils/misc";
 
 const Th = (props: React.HTMLProps<HTMLTableCellElement>) => (
   <th
@@ -23,7 +23,10 @@ export default function Endings() {
   );
 }
 
-export function BaseTable({bases, nums}: {bases: number[]; nums: number[]}) {
+export function BaseTable({
+  bases,
+  nums,
+}: { bases: number[]; nums: number[] }) {
   return (
     <table>
       <thead>

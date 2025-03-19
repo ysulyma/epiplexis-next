@@ -1,8 +1,8 @@
-import {Canvas} from "@/components/liqvid";
-import {OrbitControls} from "@/components/three/OrbitControls";
-import {red500} from "@/components/three/theme";
-import {useEffect, useState} from "react";
-import {Curve, CurvePath, LineCurve3, Vector3} from "three";
+import { Canvas } from "@/components/liqvid";
+import { OrbitControls } from "@/components/three/OrbitControls";
+import { red500 } from "@/components/three/theme";
+import { useEffect, useState } from "react";
+import { Curve, CurvePath, LineCurve3, Vector3 } from "three";
 
 interface State {
   segments: number;
@@ -30,7 +30,7 @@ class CustomCurve extends Curve<Vector3> {
 const curve = new CustomCurve();
 
 export default function ThreeD() {
-  const [{segments, linearApproximation, arclength}, setState] =
+  const [{ segments, linearApproximation, arclength }, setState] =
     useState<State>(() => ({
       segments: initialSegments,
       linearApproximation: new CurvePath(),
@@ -62,7 +62,7 @@ export default function ThreeD() {
     // update
     const linearApproximation = new CurvePath();
     linearApproximation.curves = curves;
-    setState({segments, linearApproximation, arclength});
+    setState({ segments, linearApproximation, arclength });
   };
 
   // initial render
@@ -106,7 +106,7 @@ export default function ThreeD() {
       </fieldset>
       <Canvas
         className="rounded-md bg-grid"
-        camera={{position: [11.01, 9.73, 8.79]}}
+        camera={{ position: [11.01, 9.73, 8.79] }}
         onCreated={(state) => {
           state.gl.localClippingEnabled = true;
         }}

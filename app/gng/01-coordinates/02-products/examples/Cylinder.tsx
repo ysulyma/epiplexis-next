@@ -1,9 +1,9 @@
-import {TURN, pointRadius, resolution} from "@/lib/constants";
-import {cylindrical} from "@/lib/parametrizations";
-import {useEffect, useRef} from "react";
-import {DoubleSide, type Mesh} from "three";
+import { TURN, pointRadius, resolution } from "@/lib/constants";
+import { cylindrical } from "@/lib/parametrizations";
+import { useEffect, useRef } from "react";
+import { DoubleSide, type Mesh } from "three";
 
-import {useStore} from "./store";
+import { useStore } from "./store";
 
 const r = 0.5;
 const h = 2;
@@ -15,14 +15,14 @@ export function Cylinder(props: JSX.IntrinsicElements["group"]): JSX.Element {
     () =>
       useStore.subscribe(
         (state) => state.cylinder,
-        ({z, theta}) => {
-          point.current!.position.set(...cylindrical({r, z: z * h, theta}));
+        ({ z, theta }) => {
+          point.current?.position.set(...cylindrical({ r, z: z * h, theta }));
         },
       ),
     [],
   );
 
-  const {z, theta} = useStore.getState().cylinder;
+  const { z, theta } = useStore.getState().cylinder;
 
   return (
     <group {...props}>
@@ -30,7 +30,7 @@ export function Cylinder(props: JSX.IntrinsicElements["group"]): JSX.Element {
         <cylinderGeometry args={[r, r, h, resolution, resolution, true]} />
         <meshStandardMaterial color="blue" side={DoubleSide} />
       </mesh>
-      <mesh position={cylindrical({r, z: z * h, theta})} ref={point}>
+      <mesh position={cylindrical({ r, z: z * h, theta })} ref={point}>
         <sphereGeometry args={[pointRadius, resolution, resolution]} />
       </mesh>
     </group>

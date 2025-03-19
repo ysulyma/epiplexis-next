@@ -1,9 +1,16 @@
-import {useCallback, useEffect, useId, useMemo, useRef, useState} from "react";
-import {objectEntries} from "ts-extras";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { objectEntries } from "ts-extras";
 
-import type {GuaranteedMap, Unsubscribe} from "@/lib/types";
+import type { GuaranteedMap, Unsubscribe } from "@/lib/types";
 
-import {callAll} from "../utils";
+import { callAll } from "../utils";
 
 export interface MathJaxTagConfig {
   className?: string;
@@ -100,7 +107,7 @@ function useMathJaxMap<
     function useSyncPointDown<Point extends number[]>(
       point: Point,
       ids: Overwrite<Id, Point>,
-      {format = (x) => x.toString()}: {format?: (x: number) => string} = {},
+      { format = (x) => x.toString() }: { format?: (x: number) => string } = {},
     ) {
       useEffect(() => {
         for (let i = 0; i < ids.length; ++i) {
@@ -115,22 +122,26 @@ function useMathJaxMap<
     [map],
   );
 
-  return {idPrefix, map, onTypeset, ref, useSyncPointDown};
+  return { idPrefix, map, onTypeset, ref, useSyncPointDown };
 }
 
 export function useMathJaxElements<Id extends string>(
   config: Record<Id, MathJaxTagConfig>,
 ): MathJaxIds<Id> {
-  const {map, onTypeset, ref, useSyncPointDown} = useMathJaxMap<
+  const { map, onTypeset, ref, useSyncPointDown } = useMathJaxMap<
     Id,
     MathJaxTag,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny:
     any
   >(
     config,
     useMemo(
       () => ({
-        getItem: (element, id, {className, initial = ""}: MathJaxTagConfig) => {
+        getItem: (
+          element,
+          id,
+          { className, initial = "" }: MathJaxTagConfig,
+        ) => {
           let tex = String.raw`\cssId{${id}}{${initial}}`;
           if (className) {
             tex = String.raw`\class{${className}}{${tex}}`;
@@ -152,7 +163,7 @@ export function useMathJaxElements<Id extends string>(
     ),
   );
 
-  return {map, onTypeset, ref, useSyncPointDown};
+  return { map, onTypeset, ref, useSyncPointDown };
 }
 
 // inputs
@@ -206,7 +217,7 @@ type Overwrite<New, Arr extends unknown[]> = Arr extends []
 export function useMathJaxInputs<Id extends string>(
   config: Record<Id, MathJaxInputConfig>,
 ): MathJaxInputs<Id> {
-  const {idPrefix, map, onTypeset, ref, useSyncPointDown} = useMathJaxMap<
+  const { idPrefix, map, onTypeset, ref, useSyncPointDown } = useMathJaxMap<
     Id,
     MathJaxInput,
     MathJaxInputConfig
@@ -217,7 +228,7 @@ export function useMathJaxInputs<Id extends string>(
         getItem: (
           element,
           id,
-          {className = "", initial = "", size = 4}: MathJaxInputConfig,
+          { className = "", initial = "", size = 4 }: MathJaxInputConfig,
         ): MathJaxInput => {
           const listeners: Map<
             MathJaxInputEvent,
@@ -236,19 +247,19 @@ export function useMathJaxInputs<Id extends string>(
               }
             },
             emit: (event: MathJaxInputEvent, value: unknown) => {
-              for (const listener of listeners.get(event)!) {
+              for (const listener of listeners.get(event) ?? []) {
                 listener(value);
               }
             },
             on: (
               event: MathJaxInputEvent,
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              // biome-ignore lint/suspicious/noExplicitAny:
               listener: (value: any) => unknown,
             ) => {
-              listeners.get(event)!.add(listener);
+              listeners.get(event)?.add(listener);
 
               return () => {
-                listeners.get(event)!.delete(listener);
+                listeners.get(event)?.delete(listener);
               };
             },
           };
@@ -300,7 +311,7 @@ export function useMathJaxInputs<Id extends string>(
     function useSyncPointUp<Point extends number[]>(
       point: Point,
       ids: Overwrite<Id, Point>,
-      {onChange}: {onChange?: (point: Point) => void} = {},
+      { onChange }: { onChange?: (point: Point) => void } = {},
     ) {
       useEffect(
         () =>
@@ -308,7 +319,7 @@ export function useMathJaxInputs<Id extends string>(
             ...ids.map((id, index) =>
               map.get(id).on("change", (input) => {
                 const value = Number.parseFloat(input.value);
-                if (!isFinite(value)) return;
+                if (!Number.isFinite(value)) return;
 
                 point[index] = value;
 
@@ -323,5 +334,5 @@ export function useMathJaxInputs<Id extends string>(
     [map],
   );
 
-  return {map, onTypeset, ref, useSyncPointDown, useSyncPointUp};
+  return { map, onTypeset, ref, useSyncPointDown, useSyncPointUp };
 }

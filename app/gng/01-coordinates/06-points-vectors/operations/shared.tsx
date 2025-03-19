@@ -1,5 +1,5 @@
-import {blue800, hexColor, purple800, red800} from "@/components/three/theme";
-import {fakeMinus} from "@/lib/utils";
+import { blue800, hexColor, purple800, red800 } from "@/components/three/theme";
+import { fakeMinus } from "@/lib/utils";
 
 export function format(num: number) {
   return fakeMinus(num.toFixed(2));

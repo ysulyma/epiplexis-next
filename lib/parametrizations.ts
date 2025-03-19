@@ -1,6 +1,6 @@
-import type {Pt3} from "./types";
+import type { Pt3 } from "./types";
 
-const {cos, sin} = Math;
+const { cos, sin } = Math;
 
 /** Parametrization of a cylinder */
 export function cylindrical({

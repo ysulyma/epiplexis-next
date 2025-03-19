@@ -1,9 +1,10 @@
-import {TURN, pointRadius, resolution} from "@/lib/constants";
-import {toroidal} from "@/lib/parametrizations";
-import {useEffect, useRef} from "react";
-import {DoubleSide, type Mesh} from "three";
+import { useEffect, useRef } from "react";
+import { DoubleSide, type Mesh } from "three";
 
-import {useStore} from "./store";
+import { pointRadius, resolution } from "@/lib/constants";
+import { toroidal } from "@/lib/parametrizations";
+
+import { useStore } from "./store";
 
 const radius = 2;
 const tube = 0.5;
@@ -16,7 +17,7 @@ export function Torus(props: JSX.IntrinsicElements["group"]): JSX.Element {
       useStore.subscribe(
         (state) => state.torus,
         ([theta, phi]) => {
-          point.current!.position.set(...toroidal(radius, tube, theta, phi));
+          point.current?.position.set(...toroidal(radius, tube, theta, phi));
         },
       ),
     [],

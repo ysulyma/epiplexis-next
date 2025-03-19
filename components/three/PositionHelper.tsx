@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import type {OrbitControls} from "@react-three/drei";
-import {useThree} from "@react-three/fiber";
-import {createContext, useContext, useEffect} from "react";
-import type {Vector3} from "three";
+import type { OrbitControls } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+import { createContext, useContext, useEffect } from "react";
+import type { Vector3 } from "three";
 
 export const ControlsContext = createContext<React.ComponentRef<
   typeof OrbitControls
@@ -13,7 +13,7 @@ export function useControls() {
 }
 
 export function PositionHelper() {
-  const {camera} = useThree();
+  const { camera } = useThree();
   const controls = useControls();
 
   useEffect(() => {

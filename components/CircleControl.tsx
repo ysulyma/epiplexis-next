@@ -1,7 +1,7 @@
-import {DEGREES, TURN} from "@/lib/constants";
-import {onDrag} from "@liqvid/utils/react";
-import {screenToSVG} from "@liqvid/utils/svg";
-import {useMemo, useRef} from "react";
+import { DEGREES, TURN } from "@/lib/constants";
+import { onDrag } from "@liqvid/utils/react";
+import { screenToSVG } from "@liqvid/utils/svg";
+import { useMemo, useRef } from "react";
 
 export function CircleControl({
   onChange,
@@ -17,7 +17,9 @@ export function CircleControl({
     () =>
       onDrag(
         (e, hit) => {
-          const [x, y] = screenToSVG(target.current!, hit.x, hit.y);
+          if (!target.current) return;
+
+          const [x, y] = screenToSVG(target.current, hit.x, hit.y);
           onChange?.((Math.atan2(-y, x) + TURN) % TURN);
         },
         () => {

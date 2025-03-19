@@ -1,8 +1,8 @@
-import {useSchemed} from "@/lib/api/dark-mode";
-import {useEffect, useRef} from "react";
-import {DoubleSide} from "three";
+import { useSchemed } from "@/lib/api/dark-mode";
+import { useEffect, useRef } from "react";
+import { DoubleSide } from "three";
 
-import {zSignal} from "../state";
+import { zSignal } from "../state";
 
 export function CuttingPlane() {
   const ref = useRef<THREE.Mesh>(null);
@@ -16,7 +16,7 @@ export function CuttingPlane() {
     [],
   );
 
-  const color = useSchemed({light: 0x333333, dark: 0xffffff});
+  const color = useSchemed({ light: 0x333333, dark: 0xffffff });
 
   return (
     <mesh ref={ref} renderOrder={1} position={[0, 0, z]}>

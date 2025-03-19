@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import {type ClassValue, clsx} from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import {
   Children,
   createContext,
@@ -7,10 +7,10 @@ import {
   forwardRef,
   useContext,
 } from "react";
-import type {ClassNameValue} from "tailwind-merge";
-import {twMerge} from "tailwind-merge";
+import type { ClassNameValue } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 
-import type {Unsubscribe} from "./types";
+import type { Unsubscribe } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -27,12 +27,12 @@ export function brand<TagName extends keyof JSX.IntrinsicElements>(
   type Ref = React.ComponentRef<TagName>;
   type Props = JSX.IntrinsicElements[TagName];
   const node = Children.only(template) as React.ReactElement<Props, TagName>;
-  const {className: templateClassName, ...templateProps} = node.props as {
+  const { className: templateClassName, ...templateProps } = node.props as {
     className?: string;
   } & typeof node.props;
 
   const component = (
-    {className, ...props}: Props & {className?: string},
+    { className, ...props }: Props & { className?: string },
     ref: React.ForwardedRef<Ref>,
   ) =>
     createElement(node.type, {
@@ -54,7 +54,7 @@ export function makeContext<T>(initialValue: T) {
     return useContext(context);
   }
 
-  return {context, useIt};
+  return { context, useIt };
 }
 
 export function fakeMinus(str: string) {

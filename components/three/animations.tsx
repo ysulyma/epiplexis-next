@@ -1,14 +1,14 @@
-import {setOpacity} from "@/lib/animation/three";
-import {useTime} from "@liqvid/playback/react";
-import {animate, bezier, easings} from "@liqvid/utils/animation";
+import { setOpacity } from "@/lib/animation/three";
+import { useTime } from "@liqvid/playback/react";
+import { animate, bezier, easings } from "@liqvid/utils/animation";
 import dynamic from "next/dynamic";
-import {Children, cloneElement, useRef} from "react";
-import type {Object3D} from "three";
+import { Children, cloneElement, useRef } from "react";
+import type { Object3D } from "three";
 
 export const FadeIn3 = dynamic(
   () =>
     import("liqvid").then(
-      ({useScript}) =>
+      ({ useScript }) =>
         function FadeIn3({
           children,
           delay = 0,
@@ -38,16 +38,16 @@ export const FadeIn3 = dynamic(
             setOpacity(ref.current, opacity);
           }, animOpacity);
 
-          return <>{cloneElement(Child, {ref})}</>;
+          return <>{cloneElement(Child, { ref })}</>;
         },
     ),
-  {ssr: false},
+  { ssr: false },
 );
 
 export const FadeInOut3 = dynamic(
   () =>
     import("liqvid").then(
-      ({useScript}) =>
+      ({ useScript }) =>
         function FadeIn3({
           children,
 
@@ -95,8 +95,8 @@ export const FadeInOut3 = dynamic(
             setOpacity(ref.current, opacity);
           }, animOpacity);
 
-          return <>{cloneElement(Child, {ref})}</>;
+          return <>{cloneElement(Child, { ref })}</>;
         },
     ),
-  {ssr: false},
+  { ssr: false },
 );

@@ -1,11 +1,11 @@
-import {promises as fsp} from "fs";
+import { promises as fsp } from "fs";
 
 import classNames from "classnames";
-import type {GetStaticProps, InferGetStaticPropsType} from "next";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
-import {useState} from "react";
+import { useState } from "react";
 
-import {ExternalLink} from "@/components/ExternalLink";
+import { ExternalLink } from "@/components/ExternalLink";
 
 type Dir = {
   name: string;
@@ -19,7 +19,7 @@ export const getStaticProps = (async () => {
   const dir = mergeDirs(appDir, pagesDir);
 
   return {
-    props: {dir},
+    props: { dir },
   };
 }) satisfies GetStaticProps<{
   dir: Dir;
@@ -56,7 +56,7 @@ export default function Page({
   );
 }
 
-function Tree({dir}: {dir: Dir}) {
+function Tree({ dir }: { dir: Dir }) {
   const [expanded, setExpanded] = useState(true);
 
   return (
@@ -138,7 +138,7 @@ function mergeDirs(appDir: Dir, pagesDir: Dir): Dir {
   const aChildren = dirToMap(appDir);
   const bChildren = dirToMap(pagesDir);
 
-  const c: Dir = {name: normalize(appDir.name), children: []};
+  const c: Dir = { name: normalize(appDir.name), children: [] };
 
   for (const [key, value] of aChildren.entries()) {
     if (typeof value === "string") {
@@ -164,7 +164,7 @@ function mergeDirs(appDir: Dir, pagesDir: Dir): Dir {
     if (typeof value === "string") {
       c.children.push(value);
     } else {
-      c.children.push({...value, name: normalize(value.name)});
+      c.children.push({ ...value, name: normalize(value.name) });
     }
   }
 

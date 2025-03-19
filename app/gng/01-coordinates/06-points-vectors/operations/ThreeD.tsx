@@ -1,24 +1,24 @@
 "use client";
 
-import {combineRefs} from "@liqvid/utils/react";
-import {Canvas} from "@react-three/fiber";
-import {MathJax} from "better-react-mathjax";
-import {memo, useMemo, useReducer} from "react";
-import {Vector3} from "three";
+import { combineRefs } from "@liqvid/utils/react";
+import { Canvas } from "@react-three/fiber";
+import { MathJax } from "better-react-mathjax";
+import { memo, useMemo, useReducer } from "react";
+import { Vector3 } from "three";
 
-import {OrbitControls} from "@/components/three/OrbitControls";
-import {Point} from "@/components/three/Point";
-import {useMathJaxElements, useMathJaxInputs} from "@/lib/hooks/mathjax";
-import type {Pt3} from "@/lib/types";
-import {makeContext} from "@/lib/utils";
+import { OrbitControls } from "@/components/three/OrbitControls";
+import { Point } from "@/components/three/Point";
+import { useMathJaxElements, useMathJaxInputs } from "@/lib/hooks/mathjax";
+import type { Pt3 } from "@/lib/types";
+import { makeContext } from "@/lib/utils";
 
-import {format, leftColor, resultColor, rightColor} from "./shared";
+import { format, leftColor, resultColor, rightColor } from "./shared";
 
 /** MathJax helper */
 const $$ = memo(function $$({
   children,
   ...props
-}: React.ComponentProps<typeof MathJax> & {children: string}) {
+}: React.ComponentProps<typeof MathJax> & { children: string }) {
   return <MathJax {...props}>{raw`\[${children}\]`}</MathJax>;
 });
 
@@ -26,11 +26,11 @@ const $$ = memo(function $$({
 type Mode = "point" | "vector";
 
 type Action =
-  | {type: "setLeft"; value: Vector3}
-  | {type: "setRight"; value: Vector3}
-  | {type: "setResult"; value: Vector3}
-  | {type: "setTLeft"; value: Mode}
-  | {type: "setTRight"; value: Mode};
+  | { type: "setLeft"; value: Vector3 }
+  | { type: "setRight"; value: Vector3 }
+  | { type: "setResult"; value: Vector3 }
+  | { type: "setTLeft"; value: Mode }
+  | { type: "setTRight"; value: Mode };
 
 interface State {
   left: Vector3;
@@ -42,7 +42,7 @@ interface State {
 }
 
 function reducer(state: State, action: Action) {
-  const {tLeft, tRight} = state;
+  const { tLeft, tRight } = state;
   const op =
     tLeft === "point" && tRight === "point" ? "subVectors" : "addVectors";
 
@@ -100,17 +100,17 @@ const initialState: State = {
 };
 initialState.result.addVectors(initialState.left, initialState.right);
 
-const {context, useIt: useThreeDState} = makeContext<
-  State & {dispatch: React.Dispatch<Action>}
->({...initialState, dispatch: () => {}});
+const { context, useIt: useThreeDState } = makeContext<
+  State & { dispatch: React.Dispatch<Action> }
+>({ ...initialState, dispatch: () => {} });
 
-const {raw} = String;
+const { raw } = String;
 
 export function ThreeD() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <context.Provider value={{...state, dispatch}}>
+    <context.Provider value={{ ...state, dispatch }}>
       <div className="flex flex-1 flex-col">
         <Scene />
         <Controls />
@@ -124,7 +124,7 @@ const Td = (props: React.ComponentProps<"td">) => (
 );
 
 function Scene() {
-  const {left, right, result, tLeft, tRight} = useThreeDState();
+  const { left, right, result, tLeft, tRight } = useThreeDState();
 
   const leftVec = useMemo(() => new Vector3(...left), [left]);
   const rightVec = useMemo(() => new Vector3(...right), [right]);
@@ -138,8 +138,8 @@ function Scene() {
   return (
     <div className="aspect-video w-full bg-grid">
       <Canvas
-        camera={{position: [3.13, 1.12, 1.04]}}
-        gl={{alpha: true}}
+        camera={{ position: [3.13, 1.12, 1.04] }}
+        gl={{ alpha: true }}
         onCreated={(state) => {
           state.gl.localClippingEnabled = true;
         }}
@@ -265,7 +265,7 @@ function Scene() {
 }
 
 function Controls() {
-  const {left, right, result, tLeft, tRight, dispatch} = useThreeDState();
+  const { left, right, result, tLeft, tRight, dispatch } = useThreeDState();
 
   const $inputs = useMathJaxInputs(
     useMemo(
@@ -330,7 +330,7 @@ function Controls() {
           ["ax", "ay", "az"] as const,
           {
             onChange: (left) =>
-              dispatch({type: "setLeft", value: new Vector3(...left)}),
+              dispatch({ type: "setLeft", value: new Vector3(...left) }),
           },
         ] satisfies Parameters<typeof $inputs.useSyncPointUp<Pt3>>,
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -346,7 +346,7 @@ function Controls() {
           ["bx", "by", "bz"] as const,
           {
             onChange: (right) =>
-              dispatch({type: "setRight", value: new Vector3(...right)}),
+              dispatch({ type: "setRight", value: new Vector3(...right) }),
           },
         ] satisfies Parameters<typeof $inputs.useSyncPointUp<Pt3>>,
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -360,7 +360,7 @@ function Controls() {
         [
           result.toArray(),
           ["rx", "ry", "rz"] as const,
-          {format},
+          { format },
         ] satisfies Parameters<typeof $results.useSyncPointDown<Pt3>>,
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [result],
@@ -415,7 +415,7 @@ function Controls() {
                 className="dark dark:bg-stone-700"
                 value={tLeft}
                 onChange={(e) =>
-                  dispatch({type: "setTLeft", value: e.target.value as Mode})
+                  dispatch({ type: "setTLeft", value: e.target.value as Mode })
                 }
               >
                 <option>point</option>

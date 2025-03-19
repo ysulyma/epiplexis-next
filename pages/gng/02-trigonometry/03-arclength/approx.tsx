@@ -1,6 +1,6 @@
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 
-import {Curve, Svg} from "./curve";
+import { Curve, Svg } from "./curve";
 
 interface State {
   segments: number;
@@ -11,7 +11,7 @@ interface State {
 const initialSegments = 5;
 
 export default function Approx() {
-  const [{segments, d, arclength}, setState] = useState<State>({
+  const [{ segments, d, arclength }, setState] = useState<State>({
     segments: initialSegments,
     d: "",
     arclength: 0,
@@ -47,7 +47,7 @@ export default function Approx() {
     }
 
     // update
-    setState({segments, d, arclength});
+    setState({ segments, d, arclength });
   };
 
   // initial render

@@ -1,10 +1,10 @@
 "use client";
 
 import katex from "katex";
-import {forwardRef, useEffect, useRef} from "react";
+import { forwardRef, useEffect, useRef } from "react";
 
 import "katex/dist/katex.min.css";
-import {combineRefs} from "@liqvid/utils/react";
+import { combineRefs } from "@liqvid/utils/react";
 
 export const KTX = forwardRef<
   HTMLSpanElement,
@@ -13,7 +13,7 @@ export const KTX = forwardRef<
     children: string;
     display?: boolean;
   }
->(function KTX({className, children, display = false}, fwdRef) {
+>(function KTX({ className, children, display = false }, fwdRef) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {

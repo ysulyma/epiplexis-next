@@ -1,9 +1,10 @@
-import {fadeIn} from "@/lib/animation/css";
-import {Html as DreiHtml} from "@react-three/drei";
+import { Html as DreiHtml } from "@react-three/drei";
 import katex from "katex";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import {forwardRef, useEffect, useRef} from "react";
+import { forwardRef, useEffect, useRef } from "react";
+
+import { fadeIn } from "@/lib/animation/css";
 
 // @todo make Liqvid support Next
 export const Player = dynamic(
@@ -37,7 +38,7 @@ export const Player = dynamic(
         );
       };
     }),
-  {ssr: false},
+  { ssr: false },
 );
 
 export const KTX = forwardRef(function KTX(props, ref) {
@@ -46,7 +47,7 @@ export const KTX = forwardRef(function KTX(props, ref) {
 
 const DynamicKTX = dynamic(
   () =>
-    import("@liqvid/katex").then(({KTX}) => {
+    import("@liqvid/katex").then(({ KTX }) => {
       return function DynamicKTX({
         forwardedRef,
         ...props
@@ -63,14 +64,14 @@ const DynamicKTX = dynamic(
 );
 
 export const Canvas = dynamic(
-  () => import("@liqvid/react-three").then(({Canvas}) => Canvas),
-  {ssr: false},
+  () => import("@liqvid/react-three").then(({ Canvas }) => Canvas),
+  { ssr: false },
 );
 
 export const Html = dynamic(
   () =>
     import("liqvid").then(
-      ({Player, usePlayer}) =>
+      ({ Player, usePlayer }) =>
         function Html({
           children,
           ...props
@@ -84,12 +85,12 @@ export const Html = dynamic(
           );
         },
     ),
-  {ssr: false},
+  { ssr: false },
 );
 
 export function LoadKaTeX() {
   if (typeof globalThis.window !== "undefined") {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny:
     (window as any).katex = katex;
   }
 
@@ -102,7 +103,7 @@ export function LoadKaTeX() {
     <Head>
       <script async src={`${base}/symbols.tex`} type="math/tex" />
       {/* @todo fix @liqvid/katex so this isn't necessary */}
-      <script async src="katex.js"></script>
+      <script async src="katex.js" />
     </Head>
   );
 }
@@ -110,15 +111,15 @@ export function LoadKaTeX() {
 export function toposort(a: Node, b: Node) {
   const pos = a.compareDocumentPosition(b);
   if (pos & Node.DOCUMENT_POSITION_PRECEDING) return -1;
-  else if (pos & Node.DOCUMENT_POSITION_FOLLOWING) return 1;
+  if (pos & Node.DOCUMENT_POSITION_FOLLOWING) return 1;
   return 0;
 }
 
 export const KatexAnimations = dynamic(
   () =>
     import("liqvid").then(
-      ({usePlayback, useScript}) =>
-        function KatexAnimations({children}: {children: React.ReactNode}) {
+      ({ usePlayback, useScript }) =>
+        function KatexAnimations({ children }: { children: React.ReactNode }) {
           const ref = useRef<HTMLDivElement>(null);
           const playback = usePlayback();
           const script = useScript();
@@ -127,7 +128,7 @@ export const KatexAnimations = dynamic(
             if (!ref.current) return;
             const observer = new MutationObserver((mutations) => {
               for (const mutation of mutations) {
-                const {target} = mutation;
+                const { target } = mutation;
 
                 // only process KaTeX descendants
                 if (!(target instanceof HTMLElement)) continue;
@@ -144,7 +145,7 @@ export const KatexAnimations = dynamic(
                   target.querySelectorAll("*[data-anim]"),
                 ) as HTMLSpanElement[];
                 for (const node of anims) {
-                  const [, marker] = node.dataset.anim!.split(";");
+                  const [, marker] = node.dataset.anim?.split(";");
                   fadeIn(playback, script.parseStart(marker))(node);
                   // if (name in animations) {
                   //   animations[name](marker)(node);
@@ -153,7 +154,7 @@ export const KatexAnimations = dynamic(
               }
             });
 
-            observer.observe(ref.current, {childList: true, subtree: true});
+            observer.observe(ref.current, { childList: true, subtree: true });
 
             return () => observer.disconnect();
           }, [playback, script]);
@@ -161,5 +162,5 @@ export const KatexAnimations = dynamic(
           return <div ref={ref}>{children}</div>;
         },
     ),
-  {ssr: false},
+  { ssr: false },
 );

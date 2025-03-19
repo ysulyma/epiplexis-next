@@ -1,13 +1,8 @@
-import {red500} from "@/components/three/theme";
-import {TURN} from "@/lib/constants";
-import {lerp} from "@/lib/math";
-import {Curve, DoubleSide, Vector3} from "three";
+import { TURN } from "@/lib/constants";
+import { lerp } from "@/lib/math";
+import { Curve, DoubleSide, Vector3 } from "three";
 
 class CustomCurve extends Curve<Vector3> {
-  constructor() {
-    super();
-  }
-
   getPoint(t: number, target = new Vector3()) {
     const r = 5;
     const rotations = 2;

@@ -1,4 +1,4 @@
-import {KTX} from "@/components/KTX";
+import { KTX } from "@/components/KTX";
 
 export default function Statement() {
   const width = 200;

@@ -1,6 +1,6 @@
-import {range} from "@liqvid/utils/misc";
+import { range } from "@liqvid/utils/misc";
 
-import {BaseTable} from "./endings";
+import { BaseTable } from "./endings";
 
 export default function Endings() {
   return (

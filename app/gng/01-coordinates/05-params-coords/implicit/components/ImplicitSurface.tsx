@@ -1,11 +1,15 @@
-import {useSignalValue} from "@/lib/api/signal";
-import {marchingCubes} from "@/lib/math/marching-cubes";
-import {marchingSquares} from "@/lib/math/marching-squares";
-import {useMemo} from "react";
-import {DoubleSide} from "three";
-import {LineMaterial, LineSegments2, LineSegmentsGeometry} from "three-stdlib";
+import { useSignalValue } from "@/lib/api/signal";
+import { marchingCubes } from "@/lib/math/marching-cubes";
+import { marchingSquares } from "@/lib/math/marching-squares";
+import { useMemo } from "react";
+import { DoubleSide } from "three";
+import {
+  LineMaterial,
+  LineSegments2,
+  LineSegmentsGeometry,
+} from "three-stdlib";
 
-import {zSignal} from "../state";
+import { zSignal } from "../state";
 
 const resolution = 64;
 
