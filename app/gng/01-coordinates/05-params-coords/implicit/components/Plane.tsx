@@ -1,6 +1,7 @@
-import { useSchemed } from "@/lib/api/dark-mode";
 import { useEffect, useRef } from "react";
 import { DoubleSide } from "three";
+
+import { useSchemed } from "@/lib/api/dark-mode";
 
 import { zSignal } from "../state";
 
@@ -16,10 +17,10 @@ export function CuttingPlane() {
     [],
   );
 
-  const color = useSchemed({ light: 0x333333, dark: 0xffffff });
+  const color = useSchemed({ dark: 0xffffff, light: 0x333333 });
 
   return (
-    <mesh ref={ref} renderOrder={1} position={[0, 0, z]}>
+    <mesh position={[0, 0, z]} ref={ref} renderOrder={1}>
       <planeGeometry args={[4, 4]} />
       <meshPhongMaterial
         color={color}

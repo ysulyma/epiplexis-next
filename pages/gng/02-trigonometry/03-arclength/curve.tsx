@@ -10,7 +10,7 @@ export default function ShowCurve() {
 }
 
 export const Svg = ({ children }: { children: React.ReactNode }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 143.046 51.915">
+  <svg viewBox="0 0 143.046 51.915" xmlns="http://www.w3.org/2000/svg">
     {children}
   </svg>
 );

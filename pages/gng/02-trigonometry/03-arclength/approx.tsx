@@ -12,9 +12,9 @@ const initialSegments = 5;
 
 export default function Approx() {
   const [{ segments, d, arclength }, setState] = useState<State>({
-    segments: initialSegments,
-    d: "",
     arclength: 0,
+    d: "",
+    segments: initialSegments,
   });
 
   /** Ref for the curve we're approximating */
@@ -47,7 +47,7 @@ export default function Approx() {
     }
 
     // update
-    setState({ segments, d, arclength });
+    setState({ arclength, d, segments });
   };
 
   // initial render
@@ -66,10 +66,10 @@ export default function Approx() {
           <label htmlFor="segments">Segments</label>
           <input
             id="segments"
-            type="range"
-            onChange={onChange}
-            min={1}
             max={200}
+            min={1}
+            onChange={onChange}
+            type="range"
             value={segments}
           />
           <span className="w-4 text-right">{segments}</span>

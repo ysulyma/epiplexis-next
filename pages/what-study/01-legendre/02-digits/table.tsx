@@ -55,19 +55,19 @@ export default function Table() {
       </p>
       <fieldset className="mx-auto my-4 flex w-fit">
         <input
-          type="range"
-          min={min}
           max={max}
-          value={number}
+          min={min}
           onChange={onChange}
+          type="range"
+          value={number}
         />
         <input
           className="ml-4 w-16 text-right"
-          type="number"
-          min={min}
           max={max}
-          value={number}
+          min={min}
           onChange={onChange}
+          type="number"
+          value={number}
         />
       </fieldset>
       <div className="mx-auto my-4 flex w-full justify-between gap-8">

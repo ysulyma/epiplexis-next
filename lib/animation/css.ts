@@ -18,9 +18,9 @@ export const fadeIn = (
     ],
     {
       delay: startTime + delay,
-      fill: "both",
-      easing: "ease-in",
       duration,
+      easing: "ease-in",
+      fill: "both",
     },
   );
 };

@@ -16,15 +16,15 @@ if (isGithubActions) {
 let nextConfig = {
   assetPrefix,
   basePath,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     optimizePackageImports: [
       "@react-three/drei",
       "@react-three/fiber",
       "three",
     ],
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
   output: "export",
   typescript: {

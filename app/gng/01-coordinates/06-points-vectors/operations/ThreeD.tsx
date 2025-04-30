@@ -56,8 +56,8 @@ function reducer(state: State, action: Action) {
     case "setRight":
       return {
         ...state,
-        right: action.value,
         result: new Vector3()[op](state.left, action.value),
+        right: action.value,
       };
     case "setResult":
       if (tLeft === tRight) {
@@ -67,8 +67,8 @@ function reducer(state: State, action: Action) {
       if (tLeft === "point") {
         return {
           ...state,
-          right: new Vector3().subVectors(action.value, state.left),
           result: action.value,
+          right: new Vector3().subVectors(action.value, state.left),
         };
       } else {
         return {
@@ -93,8 +93,8 @@ function reducer(state: State, action: Action) {
 
 const initialState: State = {
   left: new Vector3(-0.5, 2, 2),
-  right: new Vector3(2, -1, -1),
   result: new Vector3(),
+  right: new Vector3(2, -1, -1),
   tLeft: "vector",
   tRight: "vector",
 };
@@ -215,7 +215,7 @@ function Scene() {
         {/* point + vector */}
         {tLeft === "point" && tRight === "vector" && (
           <>
-            <Point position={left} color={leftColor} />
+            <Point color={leftColor} position={left} />
             <arrowHelper
               args={[
                 rightVec.clone().normalize(),
@@ -224,14 +224,14 @@ function Scene() {
                 rightColor,
               ]}
             />
-            <Point position={result} color={resultColor} />
+            <Point color={resultColor} position={result} />
           </>
         )}
 
         {/* vector + point */}
         {tLeft === "vector" && tRight === "point" && (
           <>
-            <Point position={right} color={rightColor} />
+            <Point color={rightColor} position={right} />
             <arrowHelper
               args={[
                 leftVec.clone().normalize(),
@@ -240,15 +240,15 @@ function Scene() {
                 leftColor,
               ]}
             />
-            <Point position={result} color={resultColor} />
+            <Point color={resultColor} position={result} />
           </>
         )}
 
         {/* point - point */}
         {tLeft === "point" && tRight === "point" && (
           <>
-            <Point position={left} color={leftColor} />
-            <Point position={right} color={rightColor} />
+            <Point color={leftColor} position={left} />
+            <Point color={rightColor} position={right} />
             <arrowHelper
               args={[
                 resultVec.clone().normalize(),
@@ -413,10 +413,10 @@ function Controls() {
             <Td>
               <select
                 className="dark dark:bg-stone-700"
-                value={tLeft}
                 onChange={(e) =>
                   dispatch({ type: "setTLeft", value: e.target.value as Mode })
                 }
+                value={tLeft}
               >
                 <option>point</option>
                 <option>vector</option>
@@ -426,13 +426,13 @@ function Controls() {
             <Td>
               <select
                 className="dark dark:bg-stone-700"
-                value={tRight}
                 onChange={(e) =>
                   dispatch({
                     type: "setTRight",
                     value: e.currentTarget.value as Mode,
                   })
                 }
+                value={tRight}
               >
                 <option>point</option>
                 <option>vector</option>

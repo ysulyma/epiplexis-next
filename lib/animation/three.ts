@@ -24,10 +24,10 @@ export const fadeIn3 = (
   target = 1,
 ) => {
   const animOpacity = animate({
-    startTime: startTime + delay,
     duration,
-    endValue: target,
     easing: bezier(...easings.easeInCubic),
+    endValue: target,
+    startTime: startTime + delay,
   });
   let update: (t: number) => void | undefined;
 
@@ -57,11 +57,11 @@ export const fadeOut3 = (
   target = 1,
 ) => {
   const animOpacity = animate({
-    startTime: startTime + delay,
     duration,
-    startValue: target,
-    endValue: 0,
     easing: bezier(...easings.easeOutCubic),
+    endValue: 0,
+    startTime: startTime + delay,
+    startValue: target,
   });
   let update: (t: number) => void;
 
@@ -105,18 +105,18 @@ export const fadeOutIn3 = ({
 }) => {
   const animOpacity = animate([
     {
-      startTime: exit + exitDelay,
       duration: enterDuration,
-      endValue: 0,
-      startValue: target,
       easing: bezier(...easings.easeOutCubic),
+      endValue: 0,
+      startTime: exit + exitDelay,
+      startValue: target,
     },
     {
-      startTime: enter + enterDelay,
       duration: exitDuration,
-      startValue: 0,
-      endValue: target,
       easing: bezier(...easings.easeInCubic),
+      endValue: target,
+      startTime: enter + enterDelay,
+      startValue: 0,
     },
   ]);
   // let update: (t: number) => void;
@@ -161,17 +161,17 @@ export const fadeInOut3 = ({
 }) => {
   const animOpacity = animate([
     {
-      startTime: enter + enterDelay,
       duration: enterDuration,
-      endValue: target,
       easing: bezier(...easings.easeInCubic),
+      endValue: target,
+      startTime: enter + enterDelay,
     },
     {
-      startTime: exit + exitDelay,
       duration: exitDuration,
-      startValue: target,
-      endValue: 0,
       easing: bezier(...easings.easeOutCubic),
+      endValue: 0,
+      startTime: exit + exitDelay,
+      startValue: target,
     },
   ]);
   // let update: (t: number) => void;

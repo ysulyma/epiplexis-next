@@ -6,8 +6,8 @@ export function syncHeight() {
   const onResize = () => {
     window.parent?.postMessage(
       {
-        type: "sizing.height",
         height: document.body.clientHeight,
+        type: "sizing.height",
       } satisfies UpwardMessage,
       "*",
     );

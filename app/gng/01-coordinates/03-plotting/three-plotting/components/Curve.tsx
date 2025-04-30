@@ -1,6 +1,7 @@
+import { Curve, DoubleSide, Vector3 } from "three";
+
 import { TURN } from "@/lib/constants";
 import { lerp } from "@/lib/math";
-import { Curve, DoubleSide, Vector3 } from "three";
 
 class CustomCurve extends Curve<Vector3> {
   getPoint(t: number, target = new Vector3()) {

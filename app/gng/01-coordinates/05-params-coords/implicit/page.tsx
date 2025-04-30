@@ -1,10 +1,11 @@
 "use client";
 
-import { ControlsContext } from "@/components/three/PositionHelper";
-import type { Pt3 } from "@/lib/types";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useState } from "react";
+
+import { ControlsContext } from "@/components/three/PositionHelper";
+import type { Pt3 } from "@/lib/types";
 
 import { Form } from "./components/Form";
 import { ImplicitSurface } from "./components/ImplicitSurface";
@@ -35,21 +36,21 @@ export default function App() {
     <div className="flex h-screen w-screen flex-col">
       <Form />
       <Canvas
-        className="flex-1 rounded-md bg-grid"
         camera={{
-          near: 0.1,
           far: 1000,
-          up: [0, 0, 1],
+          near: 0.1,
           position: cameraPosition,
+          up: [0, 0, 1],
           zoom: 1,
         }}
+        className="flex-1 rounded-md bg-grid"
       >
         <ControlsContext.Provider value={controls}>
           {/* <PositionHelper /> */}
           <OrbitControls
             enableDamping={false}
-            target={orbitTarget}
             ref={(ref) => setControls(ref)}
+            target={orbitTarget}
           />
           <Suspense fallback={null}>
             <Scene />

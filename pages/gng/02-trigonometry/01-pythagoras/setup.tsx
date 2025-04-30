@@ -16,8 +16,8 @@ export default function Statement() {
     >
       <g>
         <path
-          d={`M 0 0 l ${width} ${-height} v ${height} z`}
           className="fill-violet-600"
+          d={`M 0 0 l ${width} ${-height} v ${height} z`}
           strokeWidth="1"
         />
         <path d={`M ${width} -20 h -20 v 20`} fill="none" strokeWidth="1" />
@@ -26,20 +26,20 @@ export default function Statement() {
       {/* a square */}
       <foreignObject
         className="overflow-visible"
+        height={height / 2}
+        width={height / 2}
         x={width / 2}
         y={0}
-        width={height / 2}
-        height={height / 2}
       >
         <KTX className="fixed block w-min">a</KTX>
       </foreignObject>
 
       <foreignObject
         className="overflow-visible"
+        height="50"
+        width="50"
         x={width}
         y={-height / 2}
-        width="50"
-        height="50"
       >
         <KTX className="fixed block w-min -translate-y-1/2 translate-x-full">
           b
@@ -48,10 +48,10 @@ export default function Statement() {
 
       <foreignObject
         className="overflow-visible"
+        height="50"
+        width="50"
         x={width / 2}
         y={-height / 2}
-        width="50"
-        height="50"
       >
         <KTX className="fixed block w-min -translate-x-full -translate-y-full">
           c

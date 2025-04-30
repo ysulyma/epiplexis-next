@@ -1,10 +1,3 @@
-import { KTX } from "@/components/KTX";
-import {
-  ControlsContext,
-  PositionHelper,
-  useControls,
-} from "@/components/three/PositionHelper";
-import { blue600, green600, red600, violet400 } from "@/components/three/theme";
 import { DragControls, Html, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import {
@@ -17,6 +10,14 @@ import {
   useState,
 } from "react";
 import { DoubleSide, type Group, type Mesh, Vector3 } from "three";
+
+import { KTX } from "@/components/KTX";
+import {
+  ControlsContext,
+  PositionHelper,
+  useControls,
+} from "@/components/three/PositionHelper";
+import { blue600, green600, red600, violet400 } from "@/components/three/theme";
 
 const { raw } = String;
 
@@ -104,11 +105,11 @@ export default function Luis() {
           <axesHelper args={[10]} />
 
           {/* vectors */}
-          <DragTarget onUpdate={setV} vector={v} snapLine={w} />
-          <ArrowHelper name="v" color={blue600} vector={v} />
+          <DragTarget onUpdate={setV} snapLine={w} vector={v} />
+          <ArrowHelper color={blue600} name="v" vector={v} />
 
-          <DragTarget onUpdate={setW} vector={w} snapLine={v} />
-          <ArrowHelper name="w" color={green600} vector={w} />
+          <DragTarget onUpdate={setW} snapLine={v} vector={w} />
+          <ArrowHelper color={green600} name="w" vector={w} />
 
           {/* span of the vectors */}
           {areParallel ? (
@@ -223,8 +224,8 @@ const ArrowHelper = forwardRef<
       {/* cone */}
       <mesh
         position={[0, 0, vector.length()]}
-        rotation={[Math.PI / 2, 0, 0]}
         ref={coneRef}
+        rotation={[Math.PI / 2, 0, 0]}
       >
         <meshBasicMaterial color={color} />
         <coneGeometry args={[coneRadius, coneHeight, 10, 10]} />
@@ -233,9 +234,9 @@ const ArrowHelper = forwardRef<
       {/* cylinder */}
       <mesh
         position={[0, 0, vector.length() / 2]}
+        ref={cylinderRef}
         rotation={[Math.PI / 2, 0, 0]}
         scale={[1, vector.length(), 1]}
-        ref={cylinderRef}
       >
         <meshBasicMaterial color={color} />
         <cylinderGeometry args={[lineWidth, lineWidth, 1, 32]} />
@@ -293,10 +294,10 @@ function DragTarget({
         }
         onUpdate(dest);
       }}
-      onDragStart={() => {
+      onDragEnd={() => {
         dragTarget.current.copy(vector);
       }}
-      onDragEnd={() => {
+      onDragStart={() => {
         dragTarget.current.copy(vector);
       }}
       onHover={(hovering) => {

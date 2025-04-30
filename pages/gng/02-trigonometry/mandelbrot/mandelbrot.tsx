@@ -18,10 +18,10 @@ export default function Mandelbrot() {
     // xMax: -0.53,
     // yMin: -0.545,
     // yMax: -0.52,
-    xMin: -2,
     xMax: 0.5,
-    yMin: -1,
+    xMin: -2,
     yMax: 1,
+    yMin: -1,
   });
 
   const resize = () => {
@@ -51,8 +51,8 @@ export default function Mandelbrot() {
       for (let y = 0; y < height; y++) {
         // get behavior of number
         const z = {
-          re: lerp(bounds.xMin, bounds.xMax, x / width),
           im: lerp(bounds.yMin, bounds.yMax, y / height),
+          re: lerp(bounds.xMin, bounds.xMax, x / width),
         };
 
         const escapeTime = behavior(z);
@@ -93,8 +93,8 @@ export default function Mandelbrot() {
     ];
 
     const z = {
-      re: lerp(bounds.xMin, bounds.xMax, percent[0]),
       im: lerp(bounds.yMin, bounds.yMax, percent[1]),
+      re: lerp(bounds.xMin, bounds.xMax, percent[0]),
     };
 
     const boundsWidth = bounds.xMax - bounds.xMin;
@@ -109,10 +109,10 @@ export default function Mandelbrot() {
 
     timeout.current = setTimeout(() => {
       setBounds((prev) => ({
-        xMin: prev.xMin,
         xMax: prev.xMin + newWidth + z.re,
-        yMin: prev.yMin,
+        xMin: prev.xMin,
         yMax: prev.yMin + newHeight + z.im,
+        yMin: prev.yMin,
       }));
     }, 500);
   };
@@ -129,13 +129,13 @@ type Complex = {
 };
 
 function add(a: Complex, b: Complex): Complex {
-  return { re: a.re + b.re, im: a.im + b.im };
+  return { im: a.im + b.im, re: a.re + b.re };
 }
 
 function mul(a: Complex, b: Complex): Complex {
   return {
-    re: a.re * b.re - a.im * b.im,
     im: a.re * b.im + a.im * b.re,
+    re: a.re * b.re - a.im * b.im,
   };
 }
 
@@ -144,7 +144,7 @@ function normSquared(z: Complex): number {
 }
 
 function behavior(c: Complex): number {
-  let z = { re: 0, im: 0 };
+  let z = { im: 0, re: 0 };
   let n = 0;
   while (n <= trials && normSquared(z) < 4) {
     z = add(mul(z, z), c);

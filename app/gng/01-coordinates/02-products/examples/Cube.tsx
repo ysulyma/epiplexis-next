@@ -1,6 +1,7 @@
-import { pointRadius, resolution } from "@/lib/constants";
 import { useEffect, useRef } from "react";
 import { BoxGeometry, type Mesh } from "three";
+
+import { pointRadius, resolution } from "@/lib/constants";
 
 import { useStore } from "./store";
 

@@ -1,7 +1,8 @@
-import { DEGREES, TURN } from "@/lib/constants";
 import { onDrag } from "@liqvid/utils/react";
 import { screenToSVG } from "@liqvid/utils/svg";
 import { useMemo, useRef } from "react";
+
+import { DEGREES, TURN } from "@/lib/constants";
 
 export function CircleControl({
   onChange,
@@ -35,8 +36,8 @@ export function CircleControl({
 
   return (
     <svg
-      aria-valuemin={0}
       aria-valuemax={360}
+      aria-valuemin={0}
       aria-valuenow={value / DEGREES}
       className="mx-auto block h-20"
       viewBox="-50 -50 100 100"

@@ -9,8 +9,8 @@ const KtxLabel = ({
   <foreignObject
     className="overflow-visible"
     {...attrs}
-    width={200}
     height={100}
+    width={200}
   >
     {/* fixed is only necessary for Safari */}
     <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
@@ -39,10 +39,10 @@ export default function Proof() {
       >
         {/* left square */}
         <g transform={`translate(${-(a + b + gap / 2)}, 0)`}>
-          <rect x="0" y="0" height={a} width={a} className="fill-red-600" />
-          <rect x={a} y="0" height={a} width={b} className="fill-violet-600" />
-          <rect x="0" y={a} height={b} width={a} className="fill-violet-600" />
-          <rect x={a} y={a} height={b} width={b} className="fill-blue-600" />
+          <rect className="fill-red-600" height={a} width={a} x="0" y="0" />
+          <rect className="fill-violet-600" height={a} width={b} x={a} y="0" />
+          <rect className="fill-violet-600" height={b} width={a} x="0" y={a} />
+          <rect className="fill-blue-600" height={b} width={b} x={a} y={a} />
           <g className="text-white">
             <KtxLabel {...centroid([0, 0], [a, a])}>a^2</KtxLabel>
             <KtxLabel {...centroid([a, 0], [a + b, a])}>ab</KtxLabel>
@@ -73,11 +73,11 @@ export default function Proof() {
         </g>
         {/* right square */}
         <g transform={`translate(${gap / 2}, 0)`}>
-          <polygon points={`0,0 0,${b} ${a},0`} className="fill-violet-600" />
-          <rect height={a + b} width={a + b} className="fill-violet-600" />
+          <polygon className="fill-violet-600" points={`0,0 0,${b} ${a},0`} />
+          <rect className="fill-violet-600" height={a + b} width={a + b} />
           <polygon
-            points={`0,${b} ${a},0 ${a + b},${a} ${b},${a + b}`}
             className="fill-green-600"
+            points={`0,${b} ${a},0 ${a + b},${a} ${b},${a + b}`}
           />
           <g className="text-white">
             <KtxLabel {...centroid([0, 0], [a, 0], [0, b])}>\frac12ab</KtxLabel>

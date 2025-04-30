@@ -4,13 +4,14 @@ import type { Config } from "tailwindcss";
 dotenvConfig();
 
 const config = {
-  darkMode: ["class"],
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./pages/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
+  darkMode: ["class"],
+  plugins: [require("tailwindcss-animate")],
   prefix: "",
   theme: {
     container: {
@@ -21,6 +22,10 @@ const config = {
       },
     },
     extend: {
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
       backgroundImage: {
         grid: `url("${process.env.NEXT_PUBLIC_ROOT}/grid.png")`,
       },
@@ -38,13 +43,8 @@ const config = {
           to: { height: "0" },
         },
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
 export default config;

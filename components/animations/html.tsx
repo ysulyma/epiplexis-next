@@ -30,9 +30,9 @@ export const FadeIn = dynamic(
                 ],
                 {
                   delay: script.parseStart(start) + delay,
-                  fill: "both",
-                  easing: "ease-in",
                   duration,
+                  easing: "ease-in",
+                  fill: "both",
                 },
               ),
             [delay, duration, endValue, script, start],

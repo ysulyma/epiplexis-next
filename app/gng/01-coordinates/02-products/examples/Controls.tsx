@@ -1,3 +1,4 @@
+import { range } from "@liqvid/utils/misc";
 import { useCallback } from "react";
 import shallow from "zustand/shallow";
 
@@ -6,7 +7,6 @@ import { KTX } from "@/components/KTX";
 import { DEGREES, step } from "@/lib/constants";
 import { truncate } from "@/lib/math";
 import type { Pt3 } from "@/lib/types";
-import { range } from "@liqvid/utils/misc";
 
 import { useStore } from "./store";
 
@@ -71,7 +71,7 @@ function CubeTable() {
           <tr key={n}>
             <td>
               <input
-                {...{ min, max, step }}
+                {...{ max, min, step }}
                 onChange={setIndex(n)}
                 type="range"
                 value={cube[n]}
@@ -79,7 +79,7 @@ function CubeTable() {
             </td>
             <td>
               <NumberInput
-                {...{ min, max, step }}
+                {...{ max, min, step }}
                 onChange={setIndex(n)}
                 value={cube[n]}
               />
@@ -126,7 +126,7 @@ function CylinderTable() {
           <td>
             <input
               onChange={onChangeZ}
-              {...{ min, max, step }}
+              {...{ max, min, step }}
               type="range"
               value={z}
             />
@@ -134,7 +134,7 @@ function CylinderTable() {
           <td>
             <NumberInput
               onChange={onChangeZ}
-              {...{ min, max, step }}
+              {...{ max, min, step }}
               value={z}
             />
           </td>
@@ -145,9 +145,9 @@ function CylinderTable() {
           </td>
           <td>
             <NumberInput
-              onChange={(e) => onChangeTheta(getValue(e) * DEGREES)}
-              min={0}
               max={360}
+              min={0}
+              onChange={(e) => onChangeTheta(getValue(e) * DEGREES)}
               step={step}
               value={truncate(theta / DEGREES)}
             />
@@ -176,9 +176,9 @@ function TorusTable() {
             </td>
             <td>
               <NumberInput
-                onChange={(e) => setIndexTorus(i)(getValue(e) * DEGREES)}
-                min={0}
                 max={360}
+                min={0}
+                onChange={(e) => setIndexTorus(i)(getValue(e) * DEGREES)}
                 step={step}
                 value={truncate(torus[i] / DEGREES)}
               />

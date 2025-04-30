@@ -240,12 +240,6 @@ export function useMathJaxInputs<Id extends string>(
 
           return {
             element,
-            tex: String.raw`\input[${size}][${className}][${initial}]{${id}}`,
-            update: (value) => {
-              if (element) {
-                element.value = value;
-              }
-            },
             emit: (event: MathJaxInputEvent, value: unknown) => {
               for (const listener of listeners.get(event) ?? []) {
                 listener(value);
@@ -261,6 +255,12 @@ export function useMathJaxInputs<Id extends string>(
               return () => {
                 listeners.get(event)?.delete(listener);
               };
+            },
+            tex: String.raw`\input[${size}][${className}][${initial}]{${id}}`,
+            update: (value) => {
+              if (element) {
+                element.value = value;
+              }
             },
           };
         },

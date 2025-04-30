@@ -21,14 +21,14 @@ type AppendCircle = (circle: Omit<Circle, "fill">) => void;
 
 const initialCircles: Circle[] = [
   {
-    radius: 80,
     center: [200, 200],
     fill: "purple",
+    radius: 80,
   },
   {
-    radius: 50,
     center: [500, 150],
     fill: "teal",
+    radius: 50,
   },
 ];
 
@@ -97,11 +97,11 @@ function Canvas({
     >
       {circles.map((circ, i) => (
         <circle
-          key={circleKey(circ) + `|${i}`}
           cx={circ.center[0]}
           cy={circ.center[1]}
-          r={circ.radius}
           fill={circ.fill}
+          key={circleKey(circ) + `|${i}`}
+          r={circ.radius}
         />
       ))}
       {hintCircleProps && <circle {...hintCircleProps} fill={color} r="3" />}

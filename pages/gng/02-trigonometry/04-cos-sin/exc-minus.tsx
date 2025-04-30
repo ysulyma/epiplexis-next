@@ -1,3 +1,4 @@
+import { between } from "@liqvid/utils/misc";
 import { onDrag } from "@liqvid/utils/react";
 import { screenToSVG, screenToSVGVector } from "@liqvid/utils/svg";
 import classNames from "classnames";
@@ -7,7 +8,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { KTX } from "@/components/KTX";
 import { DEGREES, TURN } from "@/lib/constants";
 import { mod } from "@/lib/math";
-import { between } from "@liqvid/utils/misc";
 
 const { cos, sin, tan, sqrt, atan2 } = Math;
 
@@ -41,17 +41,17 @@ const KtxLabel = ({
 
   const padding = 3;
 
-  const dr = padding + addedRadius({ h: dims.height, w: dims.width, theta, r });
+  const dr = padding + addedRadius({ h: dims.height, r, theta, w: dims.width });
 
   return (
     <foreignObject
       className={classNames("pointer-events-none overflow-visible", className)}
+      ref={foreign}
       x={(r + dr) * cos(theta)}
       y={-(r + dr) * sin(theta)}
-      ref={foreign}
       {...attrs}
-      width={2000}
       height={1000}
+      width={2000}
     >
       {/* fixed is only necessary for Safari */}
       <KTX
@@ -115,30 +115,30 @@ export default function Minus() {
         />
 
         {/* lines */}
-        <line className="stroke-red-700" x1={cx} y1={cy} x2={acx} y2={acy} />
-        <line className="stroke-blue-700" x1={cx} y1={cy} x2={bcx} y2={bcy} />
+        <line className="stroke-red-700" x1={cx} x2={acx} y1={cy} y2={acy} />
+        <line className="stroke-blue-700" x1={cx} x2={bcx} y1={cy} y2={bcy} />
         <line
           className="stroke-green-600"
           x1={acx}
-          y1={acy}
           x2={bcx}
+          y1={acy}
           y2={bcy}
         />
 
         {/* labels */}
         <KtxLabel
-          r={r}
-          theta={alpha}
           className="select-none whitespace-nowrap stroke-red-600 text-red-600"
           fontSize={12}
+          r={r}
+          theta={alpha}
         >
           {String.raw`(\cos\alpha,\sin\alpha)`}
         </KtxLabel>
         <KtxLabel
-          r={r}
-          theta={beta}
           className="select-none whitespace-nowrap text-blue-600"
           fontSize={12}
+          r={r}
+          theta={beta}
         >
           {String.raw`(\cos\beta,\sin\beta)`}
         </KtxLabel>

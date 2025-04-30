@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 
 const labels = {
-  r: "Red",
-  g: "Green",
   b: "Blue",
+  g: "Green",
+  r: "Red",
 };
 
 const primary = ["r", "g", "b"] as const;
@@ -17,7 +17,7 @@ export default function Table() {
       <table>
         <tbody>
           {primary.map((c) => {
-            const value = { r, g, b }[c];
+            const value = { b, g, r }[c];
             const onChange: React.ChangeEventHandler<HTMLInputElement> = (
               e,
             ) => {
@@ -30,18 +30,18 @@ export default function Table() {
                 <th className="pr-4 text-right">{labels[c]}</th>
                 <td className="flex items-center gap-4">
                   <input
+                    max={255}
+                    min={0}
                     onChange={onChange}
                     type="range"
-                    min={0}
-                    max={255}
                     value={value}
                   />
                   <input
                     className="w-16"
+                    max={255}
+                    min={0}
                     onChange={onChange}
                     type="number"
-                    min={0}
-                    max={255}
                     value={value}
                   />
                 </td>
@@ -72,15 +72,15 @@ function useColor(initial = "#ffffff") {
 
   return useMemo(
     () => ({
+      b,
       color,
+
+      g,
+      r,
       setColor,
 
-      r,
-      g,
-      b,
-
       setComponent: (c: Primary, value: number) => {
-        const components = { r, g, b };
+        const components = { b, g, r };
         components[c] = value;
         setColor(
           "#" +

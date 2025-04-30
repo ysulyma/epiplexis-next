@@ -22,9 +22,9 @@ interface ColoredPoint extends Point {
 }
 
 const config = {
-  granularity: 3,
   dotRadius: 1,
   drawRadius: 5,
+  granularity: 3,
 };
 
 export default function KNN() {
@@ -46,8 +46,8 @@ export default function KNN() {
         ))}
         <button
           className="border border-solid p-1"
-          type="button"
           onClick={() => canvas.current?.clear()}
+          type="button"
         >
           Clear
         </button>
@@ -95,7 +95,7 @@ const Canvas = forwardRef<CanvasRef, CanvasProps>(function Canvas(
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      points.current.push({ x, y, color });
+      points.current.push({ color, x, y });
 
       ctx.beginPath();
       ctx.fillStyle = color;

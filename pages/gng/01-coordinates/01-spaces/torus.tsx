@@ -1,3 +1,8 @@
+import { OrbitControls } from "@react-three/drei";
+import { Canvas, extend } from "@react-three/fiber";
+import { Suspense, useState } from "react";
+import { DoubleSide } from "three";
+
 import { ParametricGeometry } from "@/components/three/ParametricGeometry";
 import {
   ControlsContext,
@@ -5,10 +10,6 @@ import {
 } from "@/components/three/PositionHelper";
 import { blue600, green600, red600 } from "@/components/three/theme";
 import type { Pt3 } from "@/lib/types";
-import { OrbitControls } from "@react-three/drei";
-import { Canvas, extend } from "@react-three/fiber";
-import { Suspense, useState } from "react";
-import { DoubleSide } from "three";
 
 extend({ ParametricGeometry });
 
@@ -57,10 +58,10 @@ export default function CirclesOnTorus() {
     <div className="h-screen w-screen rounded-md bg-grid">
       <Canvas
         camera={{
-          near: 0.1,
           far: 1000,
-          up: [0, 0, 1],
+          near: 0.1,
           position: cameraPosition,
+          up: [0, 0, 1],
           zoom: 1,
         }}
       >
@@ -68,8 +69,8 @@ export default function CirclesOnTorus() {
           <PositionHelper />
           <OrbitControls
             enableDamping={false}
-            target={orbitTarget}
             ref={(ref) => setControls(ref)}
+            target={orbitTarget}
           />
           <Suspense fallback={null}>
             <Scene />

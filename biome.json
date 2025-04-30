@@ -1,42 +1,78 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": true },
-  "files": { "ignoreUnknown": false, "ignore": [".next", "node_modules"] },
+  "$schema": "https://biomejs.dev/schemas/2.0.0-beta.1/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              ":NODE:",
+              ":BLANK_LINE:",
+
+              ":PACKAGE:",
+              ":BLANK_LINE:",
+
+              ["@/**", "!**/*.css", "!**/*.json", "!**/*.scss"],
+              ":BLANK_LINE:",
+
+              ["../**", "!**/*.css", "!**/*.json", "!**/*.scss"],
+              ":BLANK_LINE:",
+
+              ["./**", "!**/*.css", "!**/*.json", "!**/*.scss"],
+              ":BLANK_LINE:",
+
+              ["**/*.css", "**/*.scss"],
+              ":BLANK_LINE:",
+
+              "**/*.json"
+            ]
+          }
+        },
+        "useSortedAttributes": "on",
+        "useSortedKeys": "on"
+      }
+    }
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": ["**", "!**/.next", "!**/node_modules"]
+  },
   "formatter": {
+    "attributePosition": "auto",
+    "bracketSpacing": true,
     "enabled": true,
-    "useEditorconfig": true,
     "formatWithErrors": false,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 80,
-    "attributePosition": "auto",
-    "bracketSpacing": true
+    "useEditorconfig": true
   },
-  "organizeImports": { "enabled": true },
+  "javascript": {
+    "formatter": {
+      "arrowParentheses": "always",
+      "attributePosition": "auto",
+      "bracketSameLine": false,
+      "bracketSpacing": true,
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "quoteStyle": "double",
+      "semicolons": "always",
+      "trailingCommas": "all"
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
       "correctness": {
         "useExhaustiveDependencies": "error"
       },
       "nursery": {
         "useSortedClasses": "warn"
-      }
+      },
+      "recommended": true
     }
   },
-  "javascript": {
-    "formatter": {
-      "jsxQuoteStyle": "double",
-      "quoteProperties": "asNeeded",
-      "trailingCommas": "all",
-      "semicolons": "always",
-      "arrowParentheses": "always",
-      "bracketSameLine": false,
-      "quoteStyle": "double",
-      "attributePosition": "auto",
-      "bracketSpacing": true
-    }
-  }
+  "vcs": { "clientKind": "git", "enabled": false, "useIgnoreFile": true }
 }

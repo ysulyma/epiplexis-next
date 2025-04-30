@@ -1,15 +1,17 @@
 {
   "name": "epiplexis-next",
-  "version": "0.1.0",
   "private": true,
-  "workspaces": ["."],
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "dev": "next dev",
     "export": "next export",
-    "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start": "next start"
   },
+  "version": "0.1.0",
+  "workspaces": [
+    "."
+  ],
   "dependencies": {
     "@liqvid/katex": "^0.1.0",
     "@liqvid/mathjax": "^0.1.2",
@@ -43,7 +45,7 @@
     "typescript": "5.3.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.0.0-beta.1",
     "@types/katex": "^0.16.7",
     "@types/react-katex": "^3.0.4",
     "@types/three": "^0.160.0",

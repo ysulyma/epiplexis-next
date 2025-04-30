@@ -1,9 +1,10 @@
-import { setOpacity } from "@/lib/animation/three";
 import { useTime } from "@liqvid/playback/react";
 import { animate, bezier, easings } from "@liqvid/utils/animation";
 import dynamic from "next/dynamic";
 import { Children, cloneElement, useRef } from "react";
 import type { Object3D } from "three";
+
+import { setOpacity } from "@/lib/animation/three";
 
 export const FadeIn3 = dynamic(
   () =>
@@ -26,10 +27,10 @@ export const FadeIn3 = dynamic(
           const script = useScript();
 
           const animOpacity = animate({
-            startTime: script.parseStart(start) + delay,
             duration,
-            endValue,
             easing: bezier(...easings.easeInCubic),
+            endValue,
+            startTime: script.parseStart(start) + delay,
           });
 
           const ref = useRef<Object3D>(null);
@@ -75,17 +76,17 @@ export const FadeInOut3 = dynamic(
 
           const animOpacity = animate([
             {
-              startTime: script.parseStart(enter) + enterDelay,
               duration: enterDuration,
-              endValue: target,
               easing: bezier(...easings.easeInCubic),
+              endValue: target,
+              startTime: script.parseStart(enter) + enterDelay,
             },
             {
-              startTime: script.parseStart(exit) + exitDelay,
               duration: exitDuration,
-              startValue: target,
-              endValue: 0,
               easing: bezier(...easings.easeOutCubic),
+              endValue: 0,
+              startTime: script.parseStart(exit) + exitDelay,
+              startValue: target,
             },
           ]);
 

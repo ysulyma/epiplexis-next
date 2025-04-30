@@ -1,13 +1,14 @@
 "use client";
 
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Suspense, useState } from "react";
+
 import {
   ControlsContext,
   PositionHelper,
 } from "@/components/three/PositionHelper";
 import type { Pt3 } from "@/lib/types";
-import { OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
 
 import { Controls } from "./Controls";
 import { Cube } from "./Cube";
@@ -42,10 +43,10 @@ export default function Examples() {
       <div className="flex-1 bg-grid">
         <Canvas
           camera={{
-            near: 0.1,
             far: 1000,
-            up: [0, 0, 1],
+            near: 0.1,
             position: cameraPosition,
+            up: [0, 0, 1],
             zoom: 1,
           }}
         >
@@ -53,8 +54,8 @@ export default function Examples() {
             <PositionHelper />
             <OrbitControls
               enableDamping={false}
-              target={orbitTarget}
               ref={(ref) => setControls(ref)}
+              target={orbitTarget}
             />
             <Suspense fallback={null}>
               <Scene />

@@ -27,19 +27,19 @@ export default function Statement() {
       {/* a square */}
       <g>
         <rect
+          className="fill-red-600"
+          height={width}
+          strokeWidth="1"
+          width={width}
           x="0"
           y="0"
-          width={width}
-          height={width}
-          className="fill-red-600"
-          strokeWidth="1"
         />
         <foreignObject
           className="overflow-visible"
+          height={height / 2}
+          width={height / 2}
           x={width / 2}
           y={width / 2}
-          width={height / 2}
-          height={height / 2}
         >
           <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
             a^2
@@ -50,19 +50,19 @@ export default function Statement() {
       {/* b square */}
       <g>
         <rect
+          className="fill-blue-600"
+          height={height}
+          strokeWidth="1"
+          width={height}
           x={width}
           y={-height}
-          width={height}
-          height={height}
-          className="fill-blue-600"
-          strokeWidth="1"
         />
         <foreignObject
           className="overflow-visible"
+          height="50"
+          width="50"
           x={width + height / 2}
           y={-height / 2}
-          width="50"
-          height="50"
         >
           <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
             b^2
@@ -72,20 +72,20 @@ export default function Statement() {
 
       {/* c square */}
       <rect
-        x="0"
-        y={-c}
-        width={c}
-        height={c}
         className="fill-green-600"
+        height={c}
         strokeWidth="1"
         transform={transform}
+        width={c}
+        x="0"
+        y={-c}
       />
       <foreignObject
         className="overflow-visible"
+        height="50"
+        width="50"
         x={xc}
         y={yc}
-        width="50"
-        height="50"
       >
         <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
           c^2
@@ -95,8 +95,8 @@ export default function Statement() {
       {/* triangle */}
       <g>
         <path
-          d={`M 0 0 l ${width} ${-height} v ${height} z`}
           className="fill-violet-600"
+          d={`M 0 0 l ${width} ${-height} v ${height} z`}
         />
         <path d={`M ${width} -20 h -20 v 20`} fill="none" />
       </g>

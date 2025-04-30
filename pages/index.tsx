@@ -49,7 +49,7 @@ export default function Page({
       <h1 className="my-2 text-3xl">Content</h1>
       <ol aria-label="Interactives" className="font-mono" role="tree">
         {dir.children.map((item) =>
-          typeof item === "string" ? null : <Tree key={item.name} dir={item} />,
+          typeof item === "string" ? null : <Tree dir={item} key={item.name} />,
         )}
       </ol>
     </main>
@@ -76,7 +76,7 @@ function Tree({ dir }: { dir: Dir }) {
               if (isAppDir && !item.endsWith("page.tsx")) return null;
 
               return (
-                <li role="treeitem" key={item}>
+                <li key={item} role="treeitem">
                   <Link
                     className="text-blue-600"
                     href={isAppDir ? appHref(item) : pagesHref(item)}
@@ -86,7 +86,7 @@ function Tree({ dir }: { dir: Dir }) {
                 </li>
               );
             } else {
-              return <Tree key={item.name} dir={item} />;
+              return <Tree dir={item} key={item.name} />;
             }
           })}
         </ol>
@@ -98,8 +98,8 @@ function Tree({ dir }: { dir: Dir }) {
 async function buildTree(dirname: string): Promise<Dir> {
   const files = await fsp.readdir(dirname);
   const dir: Dir = {
-    name: dirname,
     children: [],
+    name: dirname,
   };
 
   for (const file of files) {
@@ -138,7 +138,7 @@ function mergeDirs(appDir: Dir, pagesDir: Dir): Dir {
   const aChildren = dirToMap(appDir);
   const bChildren = dirToMap(pagesDir);
 
-  const c: Dir = { name: normalize(appDir.name), children: [] };
+  const c: Dir = { children: [], name: normalize(appDir.name) };
 
   for (const [key, value] of aChildren.entries()) {
     if (typeof value === "string") {

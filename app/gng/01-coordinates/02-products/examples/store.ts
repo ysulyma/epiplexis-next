@@ -1,7 +1,8 @@
-import { TURN } from "@/lib/constants";
-import type { Pt3 } from "@/lib/types";
 import create from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
+
+import { TURN } from "@/lib/constants";
+import type { Pt3 } from "@/lib/types";
 
 export interface State {
   /** Cube coordinates [x, y, z] */
@@ -21,7 +22,7 @@ export interface State {
 export const useStore = create(
   subscribeWithSelector<State>(() => ({
     cube: [1, 0.5, 0.5] as Pt3,
-    cylinder: { z: 0.5, theta: 0.75 * TURN },
+    cylinder: { theta: 0.75 * TURN, z: 0.5 },
     torus: [0.05 * TURN, 0.7 * TURN],
   })),
 );

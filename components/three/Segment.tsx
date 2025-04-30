@@ -50,11 +50,11 @@ export const Segment = forwardRef<Handle, Props>(function Segment(props, ref) {
     ref,
     () =>
       ({
+        mesh: innerRef.current,
         setTo(x: number, y: number, z: number) {
           vb.set(x, y, z);
           innerRef.current.geometry = new TubeGeometry(curve, undefined, 0.01);
         },
-        mesh: innerRef.current,
       }) as Mesh & Handle,
     [curve, vb],
   );
@@ -62,7 +62,7 @@ export const Segment = forwardRef<Handle, Props>(function Segment(props, ref) {
   const innerRef = useRef<Mesh>();
 
   return (
-    <mesh ref={innerRef} name="segment">
+    <mesh name="segment" ref={innerRef}>
       <tubeGeometry args={[curve, undefined, 0.01]} />
       <meshToonMaterial color={0xffffff} />
     </mesh>

@@ -1,6 +1,3 @@
-import { useSignalValue } from "@/lib/api/signal";
-import { marchingCubes } from "@/lib/math/marching-cubes";
-import { marchingSquares } from "@/lib/math/marching-squares";
 import { useMemo } from "react";
 import { DoubleSide } from "three";
 import {
@@ -8,6 +5,10 @@ import {
   LineSegments2,
   LineSegmentsGeometry,
 } from "three-stdlib";
+
+import { useSignalValue } from "@/lib/api/signal";
+import { marchingCubes } from "@/lib/math/marching-cubes";
+import { marchingSquares } from "@/lib/math/marching-squares";
 
 import { zSignal } from "../state";
 

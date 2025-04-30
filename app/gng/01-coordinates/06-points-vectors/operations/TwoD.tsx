@@ -35,8 +35,8 @@ interface State {
 
 const initialState: State = {
   left: [0.4, 0.6],
-  right: [1, -1],
   result: [1.4, -0.4],
+  right: [1, -1],
   tLeft: "vector",
   tRight: "vector",
 };
@@ -62,8 +62,8 @@ function reducer(state: State, action: Action) {
     case "setRight":
       return {
         ...state,
-        right: action.value,
         result: op(state.left, action.value),
+        right: action.value,
       };
     case "setResult":
       if (tLeft === tRight) {
@@ -73,8 +73,8 @@ function reducer(state: State, action: Action) {
       if (tLeft === "point") {
         return {
           ...state,
-          right: vec.sub(action.value, state.left),
           result: action.value,
+          right: vec.sub(action.value, state.left),
         };
       } else {
         return {
@@ -179,8 +179,8 @@ function LeftMovablePoint() {
   return (
     <MovablePoint
       color={leftColor}
-      point={left}
       onMove={(left: Coords) => dispatch({ type: "setLeft", value: left })}
+      point={left}
     />
   );
 }
@@ -190,8 +190,8 @@ function RightMovablePoint() {
   return (
     <MovablePoint
       color={rightColor}
-      point={right}
       onMove={(right: Coords) => dispatch({ type: "setRight", value: right })}
+      point={right}
     />
   );
 }
@@ -201,10 +201,10 @@ function ResultMovablePoint() {
   return (
     <MovablePoint
       color={resultColor}
-      point={result}
       onMove={(result: Coords) =>
         dispatch({ type: "setResult", value: result })
       }
+      point={result}
     />
   );
 }
@@ -313,13 +313,13 @@ function Controls() {
             <Td>
               <select
                 className="dark dark:bg-stone-700"
-                value={tLeft}
                 onChange={(e) =>
                   dispatch({
                     type: "setTLeft",
                     value: e.currentTarget.value as Mode,
                   })
                 }
+                value={tLeft}
               >
                 <option>point</option>
                 <option>vector</option>
@@ -329,13 +329,13 @@ function Controls() {
             <Td>
               <select
                 className="dark dark:bg-stone-700"
-                value={tRight}
                 onChange={(e) =>
                   dispatch({
                     type: "setTRight",
                     value: e.currentTarget.value as Mode,
                   })
                 }
+                value={tRight}
               >
                 <option>point</option>
                 <option>vector</option>

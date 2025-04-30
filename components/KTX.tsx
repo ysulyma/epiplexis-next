@@ -4,6 +4,7 @@ import katex from "katex";
 import { forwardRef, useEffect, useRef } from "react";
 
 import "katex/dist/katex.min.css";
+
 import { combineRefs } from "@liqvid/utils/react";
 
 export const KTX = forwardRef<

@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
+import { Curve, CurvePath, LineCurve3, Vector3 } from "three";
+
 import { Canvas } from "@/components/liqvid";
 import { OrbitControls } from "@/components/three/OrbitControls";
 import { red500 } from "@/components/three/theme";
-import { useEffect, useState } from "react";
-import { Curve, CurvePath, LineCurve3, Vector3 } from "three";
 
 interface State {
   segments: number;
@@ -32,9 +33,9 @@ const curve = new CustomCurve();
 export default function ThreeD() {
   const [{ segments, linearApproximation, arclength }, setState] =
     useState<State>(() => ({
-      segments: initialSegments,
-      linearApproximation: new CurvePath(),
       arclength: 0,
+      linearApproximation: new CurvePath(),
+      segments: initialSegments,
     }));
 
   /**
@@ -62,7 +63,7 @@ export default function ThreeD() {
     // update
     const linearApproximation = new CurvePath();
     linearApproximation.curves = curves;
-    setState({ segments, linearApproximation, arclength });
+    setState({ arclength, linearApproximation, segments });
   };
 
   // initial render
@@ -82,10 +83,10 @@ export default function ThreeD() {
             <label htmlFor="segments">Segments</label>
             <input
               id="segments"
-              type="range"
-              onChange={onChange}
-              min={1}
               max={200}
+              min={1}
+              onChange={onChange}
+              type="range"
               value={segments}
             />
             <span className="w-4 text-right">{segments}</span>
@@ -105,8 +106,8 @@ export default function ThreeD() {
         </div>
       </fieldset>
       <Canvas
-        className="rounded-md bg-grid"
         camera={{ position: [11.01, 9.73, 8.79] }}
+        className="rounded-md bg-grid"
         onCreated={(state) => {
           state.gl.localClippingEnabled = true;
         }}

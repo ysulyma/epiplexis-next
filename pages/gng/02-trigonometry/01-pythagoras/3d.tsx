@@ -1,22 +1,23 @@
-import { FadeIn } from "@/components/animations/html";
-import {
-  Canvas,
-  Html,
-  KTX,
-  KatexAnimations,
-  LoadKaTeX,
-  Player,
-} from "@/components/liqvid";
-import { OrbitControls } from "@/components/three/OrbitControls";
-import { Point } from "@/components/three/Point";
-import { Segment } from "@/components/three/Segment";
-import { FadeIn3, FadeInOut3 } from "@/components/three/animations";
-import { blue600, green500, pink600, red600 } from "@/components/three/theme";
-import type { Pt3 } from "@/lib/types";
 import { animate, bezier, easings } from "@liqvid/utils/animation";
 import type * as TLiqvid from "liqvid";
 import { useEffect, useMemo, useState } from "react";
 import { DoubleSide, Quaternion, Vector3 } from "three";
+
+import { FadeIn } from "@/components/animations/html";
+import {
+  Canvas,
+  Html,
+  KatexAnimations,
+  KTX,
+  LoadKaTeX,
+  Player,
+} from "@/components/liqvid";
+import { FadeIn3, FadeInOut3 } from "@/components/three/animations";
+import { OrbitControls } from "@/components/three/OrbitControls";
+import { Point } from "@/components/three/Point";
+import { Segment } from "@/components/three/Segment";
+import { blue600, green500, pink600, red600 } from "@/components/three/theme";
+import type { Pt3 } from "@/lib/types";
 
 import "katex/dist/katex.min.css";
 import "liqvid/dist/liqvid.min.css";
@@ -103,9 +104,9 @@ export default function ThreeD() {
             <axesHelper args={[10]} />
 
             {/* A and B points */}
-            <Point name="a" position={a} color={red600} />
-            <Point name="b" position={b} color={blue600} />
-            <Segment from={a} to={b} a={animateLine} />
+            <Point color={red600} name="a" position={a} />
+            <Point color={blue600} name="b" position={b} />
+            <Segment a={animateLine} from={a} to={b} />
 
             {/* Question */}
             <Html position={vb}>
@@ -117,7 +118,7 @@ export default function ThreeD() {
 
             {/* Pyth3 derivation */}
             <FadeIn3 start="aux">
-              <Point name="aux" position={aux} color={pink600} />
+              <Point color={pink600} name="aux" position={aux} />
             </FadeIn3>
 
             <Html position={a}>
@@ -161,7 +162,7 @@ export default function ThreeD() {
                 <meshToonMaterial color={green500} side={DoubleSide} />
               </mesh>
             </FadeInOut3>
-            <FadeIn3 start="plane2" endValue={0.5}>
+            <FadeIn3 endValue={0.5} start="plane2">
               <mesh
                 name="plane2"
                 position={va.clone().addScaledVector(vac, 0.5)}
@@ -176,9 +177,9 @@ export default function ThreeD() {
         <KatexAnimations>
           <KTX
             className="absolute bottom-20 right-8 rounded-md bg-gray-200/50 p-2 text-xl shadow-lg dark:bg-stone-800/50"
+            data-from-first="dab"
             display
             id="pyth3"
-            data-from-first="dab"
           >{raw`
         \begin{aligned}
           \fadeIn{dab}{d(\pA, \pB)^2} &\fadeIn{dab}{=
@@ -195,7 +196,7 @@ export default function ThreeD() {
 }
 
 const animateLine = animate({
-  startTime: 0,
   duration: 700,
   easing: bezier(...easings.easeInCubic),
+  startTime: 0,
 });
