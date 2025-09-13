@@ -78,7 +78,7 @@ export default function Mandelbrot() {
   useEffect(() => {
     resize();
     redraw();
-  }, [redraw]);
+  }, [redraw, resize]);
 
   const timeout = useRef<number | null>(null) as MutableRefObject<number>;
   const zoom = (e: React.WheelEvent<HTMLCanvasElement>) => {

@@ -1,12 +1,8 @@
-import { between } from "@liqvid/utils/misc";
-import { onDrag } from "@liqvid/utils/react";
-import { screenToSVG, screenToSVGVector } from "@liqvid/utils/svg";
-import classNames from "classnames";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { KTX } from "@/components/KTX";
-import { DEGREES, TURN } from "@/lib/constants";
-import { mod, truncate } from "@/lib/math";
+import { TURN } from "@/lib/constants";
+import { truncate } from "@/lib/math";
 import { brand } from "@/lib/utils";
 
 const { cos, sin, tan, sqrt, atan2 } = Math;
@@ -34,8 +30,8 @@ export default function Polygon() {
   const area = (n / 2) * sin(TURN / n);
 
   return (
-    <div className="font-cm h-screen w-screen text-xl">
-      <table className="absolute right-4 top-4">
+    <div className="h-screen w-screen font-cm text-xl">
+      <table className="absolute top-4 right-4">
         <tbody>
           <tr>
             <Th>
@@ -45,7 +41,9 @@ export default function Polygon() {
               <input
                 max={50}
                 min={3}
-                onChange={(e) => setN(Number.parseInt(e.currentTarget.value))}
+                onChange={(e) =>
+                  setN(Number.parseInt(e.currentTarget.value, 10))
+                }
                 type="range"
                 value={n}
               />

@@ -50,7 +50,7 @@ export default function DrawingCircles() {
         />
         <span className="mx-2">Click and drag below to draw circles</span>
         <button
-          className="border border-solid border-red-800 bg-red-700 px-2 py-1 text-white"
+          className="border border-red-800 border-solid bg-red-700 px-2 py-1 text-white"
           onClick={() => setCircles([])}
           type="button"
         >
@@ -122,18 +122,18 @@ function useDrawCircle(
 
   const events = onDrag(
     // move handler
-    (e, hit) => {
-      if (!ref.current) return;
+    (_e, hit) => {
+      if (!ref.current || !center.current) return;
       const position = screenToSVG(ref.current, hit.x, hit.y);
       const radius = Math.hypot(
-        position[0] - center.current![0],
-        position[1] - center.current![1],
+        position[0] - center.current[0],
+        position[1] - center.current[1],
       );
       radiusRef.current = radius;
       setRadius(radius);
     },
     // down handler
-    (e, hit) => {
+    (_e, hit) => {
       dragging.current = true;
       radiusRef.current = 0;
 
@@ -142,8 +142,10 @@ function useDrawCircle(
     },
     // up handler
     () => {
+      if (!center.current) return;
+
       appendCircle({
-        center: center.current!,
+        center: center.current,
         radius: radiusRef.current,
       });
       center.current = undefined;

@@ -14,10 +14,6 @@ interface State {
 const initialSegments = 5;
 
 class CustomCurve extends Curve<Vector3> {
-  constructor() {
-    super();
-  }
-
   getPoint(t: number, optionalTarget = new Vector3()) {
     t = -1 + 2 * t;
     const tx = 4 * t * Math.cos(3 * 2 * Math.PI * t);
@@ -67,7 +63,7 @@ export default function ThreeD() {
   };
 
   // initial render
-  useEffect(() => updateApproximation(initialSegments), []);
+  useEffect(() => updateApproximation(initialSegments), [updateApproximation]);
 
   /** Change event handler */
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {

@@ -13,7 +13,7 @@ const KtxLabel = ({
     width={200}
   >
     {/* fixed is only necessary for Safari */}
-    <KTX className="fixed block w-min -translate-x-1/2 -translate-y-1/2">
+    <KTX className="-translate-x-1/2 -translate-y-1/2 fixed block w-min">
       {children}
     </KTX>
   </foreignObject>

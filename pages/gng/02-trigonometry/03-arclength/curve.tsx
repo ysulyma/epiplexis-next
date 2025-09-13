@@ -16,7 +16,7 @@ export const Svg = ({ children }: { children: React.ReactNode }) => (
 );
 
 /** I made this in Inkscape */
-export const Curve = forwardRef<SVGPathElement>(function Curve(props, ref) {
+export const Curve = forwardRef<SVGPathElement>(function Curve(_props, ref) {
   return (
     <path
       className="fill-none stroke-black dark:stroke-white"

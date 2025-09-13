@@ -305,7 +305,7 @@ export function useMathJaxInputs<Id extends string>(
         inputObj.element?.removeEventListener("input", inputHandler);
       }
     };
-  }, [config, idPrefix, map, onTypeset]);
+  }, [config, idPrefix, map]);
 
   const useSyncPointUp = useCallback(
     function useSyncPointUp<Point extends number[]>(
@@ -328,7 +328,7 @@ export function useMathJaxInputs<Id extends string>(
             ),
           ),
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [ids, map, onChange, point],
+        [ids, onChange, point],
       );
     },
     [map],

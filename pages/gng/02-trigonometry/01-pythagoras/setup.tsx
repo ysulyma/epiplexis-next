@@ -41,7 +41,7 @@ export default function Statement() {
         x={width}
         y={-height / 2}
       >
-        <KTX className="fixed block w-min -translate-y-1/2 translate-x-full">
+        <KTX className="-translate-y-1/2 fixed block w-min translate-x-full">
           b
         </KTX>
       </foreignObject>
@@ -53,7 +53,7 @@ export default function Statement() {
         x={width / 2}
         y={-height / 2}
       >
-        <KTX className="fixed block w-min -translate-x-full -translate-y-full">
+        <KTX className="-translate-x-full -translate-y-full fixed block w-min">
           c
         </KTX>
       </foreignObject>

@@ -9,12 +9,11 @@ import { combineRefs } from "@liqvid/utils/react";
 
 export const KTX = forwardRef<
   HTMLSpanElement,
-  {
-    className?: string;
+  React.HTMLAttributes<HTMLSpanElement> & {
     children: string;
     display?: boolean;
   }
->(function KTX({ className, children, display = false }, fwdRef) {
+>(function KTX({ className, children, display = false, ...props }, fwdRef) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -27,5 +26,7 @@ export const KTX = forwardRef<
     });
   }, [children, display]);
 
-  return <span className={className} ref={combineRefs(ref, fwdRef)} />;
+  return (
+    <span className={className} ref={combineRefs(ref, fwdRef)} {...props} />
+  );
 });

@@ -1,4 +1,4 @@
-import { promises as fsp } from "fs";
+import { promises as fsp } from "node:fs";
 
 import classNames from "classnames";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";

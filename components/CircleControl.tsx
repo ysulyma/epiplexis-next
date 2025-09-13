@@ -17,7 +17,7 @@ export function CircleControl({
   const events = useMemo(
     () =>
       onDrag(
-        (e, hit) => {
+        (_e, hit) => {
           if (!target.current) return;
 
           const [x, y] = screenToSVG(target.current, hit.x, hit.y);

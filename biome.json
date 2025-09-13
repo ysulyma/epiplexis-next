@@ -71,7 +71,10 @@
       "nursery": {
         "useSortedClasses": "warn"
       },
-      "recommended": true
+      "recommended": true,
+      "style": {
+        "useTemplate": "off"
+      }
     }
   },
   "vcs": { "clientKind": "git", "enabled": false, "useIgnoreFile": true }

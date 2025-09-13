@@ -334,7 +334,7 @@ function Controls() {
           },
         ] satisfies Parameters<typeof $inputs.useSyncPointUp<Pt3>>,
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [left],
+      [left, dispatch],
     ),
   );
 

@@ -63,7 +63,7 @@ function useDrag<T = Element>(opts: {
       opts.up?.(e);
       unsubscribe();
     },
-    [opts.up],
+    [opts.up, unsubscribe],
   );
 
   const onPointerLeave = useCallback(
@@ -71,7 +71,7 @@ function useDrag<T = Element>(opts: {
       opts.leave?.(e);
       unsubscribe();
     },
-    [opts.leave],
+    [opts.leave, unsubscribe],
   );
 
   /** Remove event handlers from document.body */
@@ -90,7 +90,7 @@ function useDrag<T = Element>(opts: {
       document.body.addEventListener("pointermove", opts.move);
       document.body.addEventListener("pointerup", onPointerUp);
     },
-    [opts.move, onPointerUp, onPointerLeave],
+    [opts.move, onPointerUp, onPointerLeave, opts.down],
   );
 
   return { onPointerDown };

@@ -400,7 +400,7 @@ export function marchingCubes(
 
         // the while loop should run at most 5 times,
         //   since the 16th entry in each row is a -1.
-        while (triTable[cubeindex + i] != -1) {
+        while (triTable[cubeindex + i] !== -1) {
           const index1 = triTable[cubeindex + i];
           const index2 = triTable[cubeindex + i + 1];
           const index3 = triTable[cubeindex + i + 2];

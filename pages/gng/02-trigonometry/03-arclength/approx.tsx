@@ -51,7 +51,7 @@ export default function Approx() {
   };
 
   // initial render
-  useEffect(() => updateApproximation(initialSegments), []);
+  useEffect(() => updateApproximation(initialSegments), [updateApproximation]);
 
   /** Change event handler */
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {

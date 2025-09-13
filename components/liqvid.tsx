@@ -16,7 +16,7 @@ export const Player = dynamic(
         return (
           <>
             <Head>
-              <style>{String.raw`
+              <style>{`
           .lv-player, .lv-canvas {
             background: transparent !important;
           }`}</style>

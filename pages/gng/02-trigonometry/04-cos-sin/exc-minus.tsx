@@ -55,7 +55,7 @@ const KtxLabel = ({
     >
       {/* fixed is only necessary for Safari */}
       <KTX
-        className="fixed block w-min -translate-x-1/2 -translate-y-1/2"
+        className="-translate-x-1/2 -translate-y-1/2 fixed block w-min"
         ref={ref}
       >
         {children}
@@ -86,7 +86,7 @@ export default function Minus() {
     (setter: (angle: number) => void) =>
       onDrag(
         // move handler
-        (e, hit) => {
+        (_e, hit) => {
           if (!ref.current) return;
           const [x, y] = screenToSVG(ref.current, hit.x, hit.y);
           setter(mod(atan2(cy - y, x - cx), TURN));
@@ -145,28 +145,24 @@ export default function Minus() {
 
         {/* right-angles in solution */}
         {router.query.rightAngle !== undefined && (
-          <>
-            <path
-              className="stroke-green-600"
-              d={`M ${acx},${acy} V ${bcy} H ${bcx}`}
-              fill="none"
-              strokeDasharray="0.2,1.5"
-              strokeLinecap="round"
-            />
-          </>
+          <path
+            className="stroke-green-600"
+            d={`M ${acx},${acy} V ${bcy} H ${bcx}`}
+            fill="none"
+            strokeDasharray="0.2,1.5"
+            strokeLinecap="round"
+          />
         )}
 
         {/* bisection in solution */}
         {router.query.bisect !== undefined && (
-          <>
-            <path
-              className="stroke-green-600"
-              d={`M ${cx},${cy} L ${(acx + bcx) / 2} ${(acy + bcy) / 2}`}
-              fill="none"
-              strokeDasharray="0.2,1.5"
-              strokeLinecap="round"
-            />
-          </>
+          <path
+            className="stroke-green-600"
+            d={`M ${cx},${cy} L ${(acx + bcx) / 2} ${(acy + bcy) / 2}`}
+            fill="none"
+            strokeDasharray="0.2,1.5"
+            strokeLinecap="round"
+          />
         )}
 
         {/* circles */}

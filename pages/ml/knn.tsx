@@ -104,7 +104,7 @@ const Canvas = forwardRef<CanvasRef, CanvasProps>(function Canvas(
 
       redraw();
     },
-    [color],
+    [color, redraw],
   );
 
   /** Redraw the KNN canvas */

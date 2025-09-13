@@ -88,7 +88,7 @@ export default function ThreeD() {
       <LoadKaTeX />
       <Player script={script}>
         <section
-          className="h-full w-full dark:text-white"
+          className="h-full w-full bg-grid dark:text-white"
           data-affords="click"
           style={{ backgroundImage: `url("/epiplexis-next/grid.png")` }}
         >
@@ -176,7 +176,7 @@ export default function ThreeD() {
         </section>
         <KatexAnimations>
           <KTX
-            className="absolute bottom-20 right-8 rounded-md bg-gray-200/50 p-2 text-xl shadow-lg dark:bg-stone-800/50"
+            className="absolute right-8 bottom-20 rounded-md bg-gray-200/50 p-2 text-xl shadow-lg dark:bg-stone-800/50"
             data-from-first="dab"
             display
             id="pyth3"

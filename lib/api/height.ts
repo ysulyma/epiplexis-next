@@ -13,7 +13,7 @@ export function syncHeight() {
     );
   };
 
-  const observer = new ResizeObserver((entries) => {
+  const observer = new ResizeObserver(() => {
     onResize();
   });
 
