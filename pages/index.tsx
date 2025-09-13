@@ -31,8 +31,8 @@ export default function Page({
   return (
     <main className="p-4 text-2xl leading-normal">
       This is the content repository for{" "}
-      <ExternalLink href="https://beta.epiplexis.xyz/">Epiplexis</ExternalLink>.
-      You can clone the repository from{" "}
+      <ExternalLink href="https://epiplexis.xyz/">Epiplexis</ExternalLink>. You
+      can clone the repository from{" "}
       <ExternalLink href="https://github.com/ysulyma/epiplexis-next">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
